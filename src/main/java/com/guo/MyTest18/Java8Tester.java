@@ -1,6 +1,42 @@
 package com.guo.MyTest18;
 
 public class Java8Tester {
+	
+	interface MathOperation {
+		int operation(int a, int b);
+	}
+
+	interface GreetingService {
+		void sayMessage(String message);
+	}
+	
+	class GreetingServiceImpl implements GreetingService{
+
+		public GreetingServiceImpl() {
+			// TODO Auto-generated constructor stub
+		}
+
+		public GreetingServiceImpl(Object object) {
+			// TODO Auto-generated constructor stub
+		}
+
+		@Override
+		public void sayMessage(String message) {
+			// TODO Auto-generated method stub
+			System.out.println("2222" + message);			
+		}
+
+		public GreetingServiceImpl GreetingServiceImpl() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+	}
+
+	private int operate(int a, int b, MathOperation mathOperation) {
+		return mathOperation.operation(a, b);
+	}
+	
 	public static void main(String args[]) {
 		Java8Tester tester = new Java8Tester();
 
@@ -28,20 +64,14 @@ public class Java8Tester {
 
 		// 用括号
 		GreetingService greetService2 = (message) -> System.out.println("Hello " + message);
-
+		
+		GreetingService greetService3 = tester.new GreetingServiceImpl();
+		
 		greetService1.sayMessage("Runoob");
 		greetService2.sayMessage("Google");
+		
+		greetService3.sayMessage("=========3333");
 	}
 
-	interface MathOperation {
-		int operation(int a, int b);
-	}
-
-	interface GreetingService {
-		void sayMessage(String message);
-	}
-
-	private int operate(int a, int b, MathOperation mathOperation) {
-		return mathOperation.operation(a, b);
-	}
+	
 }
