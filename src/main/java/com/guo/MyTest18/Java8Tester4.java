@@ -17,6 +17,9 @@ public class Java8Tester4 {
 		System.out.println("当前时间戳: " + Instant.now());
 		// 获取当前的日期时间
 		LocalDateTime currentTime = LocalDateTime.now();
+		
+		
+		
 		System.out.println("当前时间: " + currentTime);
 
 		LocalDate date1 = currentTime.toLocalDate();
