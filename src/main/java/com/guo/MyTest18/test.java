@@ -20,6 +20,10 @@ public class test {
 		
 		String collectDate = "171115";
 		System.out.println(new Integer(collectDate.substring(4)));
+		
+		System.out.println(new Date());
+		
+		
 	}
 
 }
