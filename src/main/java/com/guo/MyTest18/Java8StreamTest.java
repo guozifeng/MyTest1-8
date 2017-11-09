@@ -15,6 +15,10 @@ import java.util.stream.Collectors;
 public class Java8StreamTest {
 
 	public static void main(String[] args) {
+		
+	}
+
+	private static void Test5() {
 		// 3 apple, 2 banana, others 1
 		List<Item> items = Arrays.asList(new Item("apple", 10, new BigDecimal("9.99")),
 				new Item("banana", 20, new BigDecimal("19.99")), new Item("orang", 10, new BigDecimal("29.99")),
