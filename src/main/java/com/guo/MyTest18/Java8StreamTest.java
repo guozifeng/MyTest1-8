@@ -2,6 +2,7 @@ package com.guo.MyTest18;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -9,16 +10,28 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+
+import com.google.common.collect.Lists;
 
 public class Java8StreamTest {
 
 	public static void main(String[] args) {
-		Test5();
-		Test4();
-		Test3();
-		Test2();
+		Test5();Test4();
+		List<Integer> ints = Lists.newArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+		System.out.println("ints sum is:" + ints.stream().reduce((sum, item) -> sum + item).get());
+		System.out.println("ints sum is:" + ints.stream().reduce(0, (sum, item) -> sum + item));
+		
+		List<Integer> nums = Lists.newArrayList(1, 1, null, 2, 3, 4, null, 5, 6, 7, 8, 9, 10);
+
+		List<Integer> numsWithoutNull = nums.stream().filter(num -> num != null).collect(() -> new ArrayList<Integer>(),
+				(list, item) -> list.add(item), (list1, list2) -> list1.addAll(list2));
+		
+		System.out.println(numsWithoutNull);
+		
 	}
 
 	private static void Test5() {
@@ -30,7 +43,19 @@ public class Java8StreamTest {
 				new Item("apple", 20, new BigDecimal("9.99")));
 
 		// group by price
-		Map<BigDecimal, List<Item>> groupByPriceMap = items.stream().collect(Collectors.groupingBy(Item::getPrice));
+		Map<String, Map<Integer, Item>> groupByPriceMap = items.stream().collect(Collectors.groupingBy(Item::getName,
+				Collectors.groupingBy(Item::getQty, Collectors.reducing(new Item(),(Item a )-> {
+					return a;
+					},(Item v1, Item v2) -> {
+					Item v3= new Item();
+					
+					if(v2.getPrice() != null){
+						v3.setPrice(v2.getPrice());
+					}
+					
+					System.out.println(v3);
+					return v3;
+				}))));
 
 		System.out.println(groupByPriceMap);
 
@@ -39,7 +64,14 @@ public class Java8StreamTest {
 				.collect(Collectors.groupingBy(Item::getPrice, Collectors.mapping(Item::getName, Collectors.toSet())));
 
 		System.out.println(result);
+		
+		Map<String, Map<Integer, List<Item>>> result1 = items.stream()
+				.collect(Collectors.groupingBy(Item::getName, Collectors.groupingBy(Item::getQty)));
+
+		System.out.println(result1);
+		
 	}
+
 
 	private static void Test4() {
 		// 3 apple, 2 banana, others 1
@@ -58,9 +90,13 @@ public class Java8StreamTest {
 				.collect(Collectors.groupingBy(Item::getName, Collectors.summingInt(Item::getQty)));
 
 		System.out.println(sum);
-		
-		Map<String, Map<Integer, List<Item>>> sum1 = items.stream()
-				.collect(Collectors.groupingBy(Item::getName, Collectors.groupingBy(Item::getQty)));
+
+		Map<String, Map<Integer, BigDecimal>> sum1 = items.stream()
+				.collect(Collectors.groupingBy(Item::getName, Collectors.groupingBy(Item::getQty,
+						Collectors.reducing(BigDecimal.ZERO, (Item a ) -> {
+							System.out.println(a);
+							return a.getPrice();
+						}, (x, y) -> x.add(y)))));
 
 		System.out.println(sum1);
 	}
