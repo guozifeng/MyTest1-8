@@ -5,7 +5,7 @@ public class Java8Tester7 {
 		Java8Tester7 tester = new Java8Tester7();
 
 		// 类型声明
-		MathOperation addition = (int a, int b) -> a + b;
+		MathOperation addition = (int a1, int b1) -> a1 + b1;
 
 		// 不用类型声明
 		MathOperation subtraction = (a, b) -> a - b;

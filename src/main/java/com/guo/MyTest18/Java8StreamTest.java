@@ -15,7 +15,10 @@ import java.util.stream.Collectors;
 public class Java8StreamTest {
 
 	public static void main(String[] args) {
-		
+		Test5();
+		Test4();
+		Test3();
+		Test2();
 	}
 
 	private static void Test5() {
@@ -55,6 +58,11 @@ public class Java8StreamTest {
 				.collect(Collectors.groupingBy(Item::getName, Collectors.summingInt(Item::getQty)));
 
 		System.out.println(sum);
+		
+		Map<String, Map<Integer, List<Item>>> sum1 = items.stream()
+				.collect(Collectors.groupingBy(Item::getName, Collectors.groupingBy(Item::getQty)));
+
+		System.out.println(sum1);
 	}
 
 	private static void Test3() {
