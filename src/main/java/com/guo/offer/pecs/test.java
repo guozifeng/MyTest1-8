@@ -83,24 +83,33 @@ public class test {
 	public static void main(String[] args) {
 		Apple apple = new Apple();
 		apple.setI(11);
+		
 		Fruit fruit = new Fruit();
 		fruit.setA(12);
+		
 		GreenApple greenapple = new GreenApple();
 		greenapple.setB(220);
+		
 		Strawberry strawberry = new Strawberry();
 		strawberry.setC(23);
+		
 		Apple[] apples1 = new Apple[1];
 		apples1[0] = apple;
+		
 		Fruit[] fruits = apples1;
 		fruits[0] = new GreenApple();
 		System.out.println(fruits[0]);
 
+		
+		
 		List<Apple> apples = new ArrayList<Apple>();
 		apples.add(apple);
 		apples.add(greenapple);
+		
 		List<? extends Fruit> fruits1 = apples;
 		fruits1.add(null);
 		System.out.println("+++++++fruits1.size()++++++++" + fruits1.size());
+		
 		for (int j = 0; j < fruits1.size(); j++) {
 			Apple get = (Apple) fruits1.get(j);
 			System.out.println(get);
