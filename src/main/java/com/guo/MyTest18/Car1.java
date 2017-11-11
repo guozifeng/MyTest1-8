@@ -5,10 +5,20 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class Car1 {
+	
+	private String name;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	@Override
 	public String toString() {
-		return "Car1 [getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+		return "Car1 [name=" + name + "]";
 	}
 
 	public static Car1 create(final Supplier<Car1> supplier) {
