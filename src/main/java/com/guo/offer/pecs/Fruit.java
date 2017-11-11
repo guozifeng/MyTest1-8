@@ -1,18 +1,18 @@
 package com.guo.offer.pecs;
 
 public class Fruit {
-	private int a = 1;
+	private Integer a = 1;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
 	}
 
-	public int getA() {
+	public Integer getA() {
 		return a;
 	}
 
-	public void setA(int a) {
+	public void setA(Integer a) {
 		this.a = a;
 	}
 
@@ -20,5 +20,6 @@ public class Fruit {
 	public String toString() {
 		return "Fruit [a=" + a + "]";
 	}
+
 
 }
