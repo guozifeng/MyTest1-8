@@ -1,4 +1,4 @@
-package com.guo.seri;
+package com.guo.offer.testserializable;
 
 import java.io.File;
 import java.io.FileInputStream;
