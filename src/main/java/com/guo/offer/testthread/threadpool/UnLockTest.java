@@ -1,4 +1,4 @@
-package com.guo.offer.testthread.deadthread;
+package com.guo.offer.testthread.threadpool;
 
 import java.util.Date;
 import java.util.concurrent.Semaphore;
