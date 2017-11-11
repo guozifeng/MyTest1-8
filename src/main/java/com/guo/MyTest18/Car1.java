@@ -39,6 +39,7 @@ public class Car1 {
 	
 	public static void main(String args[]){
 		final Car1 car = Car1.create( Car1::new );
+		car.setName("1");
 		final List< Car1 > cars = Arrays.asList( car );
 		
 		cars.forEach( Car1::collide );
@@ -46,6 +47,7 @@ public class Car1 {
 		cars.forEach( Car1::repair );
 		
 		final Car1 police = Car1.create( Car1::new );
+		police.setName("police");
 		cars.forEach( police::follow );
 	}
 }
