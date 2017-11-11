@@ -12,6 +12,13 @@ public class testBigDecimal {
 	
 	public static void main(String[] args) {
 		
+		System.out.println(0.02+0.01);
+        System.out.println(0.05+0.01);
+        
+        System.out.println(new BigDecimal(Double.valueOf(0.09)));
+        System.out.println(new BigDecimal(0.06).toString());
+        System.out.println(new BigDecimal("0.06").doubleValue());
+        System.out.println(new BigDecimal("0.06"));
 	}
 	
 	/**
