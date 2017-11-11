@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class Car1 {
+public class testNewMethod {
 	
 	private String name;
 
@@ -21,15 +21,15 @@ public class Car1 {
 		return "Car1 [name=" + name + "]";
 	}
 
-	public static Car1 create(final Supplier<Car1> supplier) {
+	public static testNewMethod create(final Supplier<testNewMethod> supplier) {
 		return supplier.get();
 	}
 
-	public static void collide(final Car1 car) {
+	public static void collide(final testNewMethod car) {
 		System.out.println("Collided " + car.toString());
 	}
 
-	public void follow(final Car1 another) {
+	public void follow(final testNewMethod another) {
 		System.out.println("Following the " + another.toString());
 	}
 
@@ -38,15 +38,15 @@ public class Car1 {
 	}
 	
 	public static void main(String args[]){
-		final Car1 car = Car1.create( Car1::new );
+		final testNewMethod car = testNewMethod.create( testNewMethod::new );
 		car.setName("1");
-		final List< Car1 > cars = Arrays.asList( car );
+		final List< testNewMethod > cars = Arrays.asList( car );
 		
-		cars.forEach( Car1::collide );
+		cars.forEach( testNewMethod::collide );
 		
-		cars.forEach( Car1::repair );
+		cars.forEach( testNewMethod::repair );
 		
-		final Car1 police = Car1.create( Car1::new );
+		final testNewMethod police = testNewMethod.create( testNewMethod::new );
 		police.setName("police");
 		cars.forEach( police::follow );
 	}
