@@ -11,7 +11,7 @@ public class User {
 
 	public void setName(String name) {
 		this.name = Optional.ofNullable(name).filter(User::isNameValid)
-                .orElseThrow(()->new IllegalArgumentException("Invalid username."));
+				.orElseThrow(() -> new IllegalArgumentException("Invalid username."));
 	}
 	public static Boolean isNameValid(String name){
 		return true;
