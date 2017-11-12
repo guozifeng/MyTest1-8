@@ -13,6 +13,7 @@ public class Item {
 		this.name = "";
 		this.price = new BigDecimal("0");
 		this.qty = 0;
+		
 		//System.out.println("-------------");
 	}
 	public Item(String name, Integer qty, BigDecimal price) {
