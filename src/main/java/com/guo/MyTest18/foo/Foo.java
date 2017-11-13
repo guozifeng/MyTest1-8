@@ -44,4 +44,10 @@ public class Foo {
 	public void setCount(Integer count) {
 		this.count = count;
 	}
+
+	@Override
+	public String toString() {
+		return "Foo [name=" + name + ", type=" + type + ", typeValue=" + typeValue + ", count=" + count + "]";
+	}
+	
 }

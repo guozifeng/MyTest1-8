@@ -13,6 +13,7 @@ public class ReduceTest {
 		List<Bar> barList = Lists.newArrayList();
 		fooList.stream().collect(Collectors.groupingBy(Foo::getName, Collectors.toList()))
 				.forEach((name, fooListByName) -> {
+					System.out.println(name + fooListByName);
 					Bar bar = new Bar();
 					bar = fooListByName.stream().reduce(bar, (u, t) -> u.sum(t), (u, t) -> u);
 					System.out.println(bar.toString());
