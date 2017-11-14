@@ -81,55 +81,85 @@ import java.util.List;
 public class test {
 
 	public static void main(String[] args) {
+		test2();
+		//test2();
+	}
+
+	/**
+	 * 如果你想从一个数据类型里获取数据，使用 ? extends 通配符
+	 */
+	public static void test1() {
 		Apple apple = new Apple();
-		apple.setI(11);
-		
+		apple.setI(1);
+
 		Fruit fruit = new Fruit();
-		fruit.setA(12);
-		
+		fruit.setA(2);
+
 		GreenApple greenapple = new GreenApple();
-		greenapple.setB(220);
-		
+		greenapple.setB(3);
+
 		Strawberry strawberry = new Strawberry();
-		strawberry.setC(23);
-		
+		strawberry.setC(4);
+
 		Apple[] apples1 = new Apple[1];
 		apples1[0] = apple;
-		
+
 		Fruit[] fruits = apples1;
 		fruits[0] = new GreenApple();
+		//此行打开会运行报错。
+		//fruits[1] = new Strawberry();
 		System.out.println(fruits[0]);
 
-		
-		
+		//=================================================
 		List<Apple> apples = new ArrayList<Apple>();
 		apples.add(apple);
 		apples.add(greenapple);
-		
+
 		List<? extends Fruit> fruits1 = apples;
+		//此数组fruits1什么都放不进去，只能放进去null值。
 		fruits1.add(null);
 		System.out.println("+++++++fruits1.size()++++++++" + fruits1.size());
-		
+
 		for (int j = 0; j < fruits1.size(); j++) {
-			Apple get = (Apple) fruits1.get(j);
+			Fruit get = fruits1.get(j);
 			System.out.println(get);
 		}
+	}
 
+	/**
+	 * 如果你想把对象写入一个数据结构里，使用 ? super 通配符
+	 * 如果你既想存，又想取，那就别用通配符。
+	 * 
+	 */
+	public static void test2() {
+		
+		Apple apple = new Apple();
+		apple.setI(1);
+
+		Fruit fruit = new Fruit();
+		fruit.setA(2);
+
+		GreenApple greenapple = new GreenApple();
+		greenapple.setB(3);
+
+		Strawberry strawberry = new Strawberry();
+		strawberry.setC(4);
+		
 		List<Fruit> fruits2 = new ArrayList<Fruit>();
 		// fruits2.add(fruit);
 		fruits2.add(apple);
+		fruits2.add(greenapple);
 		// fruits2.add(strawberry);
 		List<? super Apple> a = fruits2;
 		a.add(new GreenApple());
 		a.add(new Apple());
-
+		//a.add(strawberry);
 		// a.add(new Strawberry());
 		System.out.println("+++++++a.size()++++++++" + a.size());
 		for (int i = 0; i < a.size(); i++) {
 			Apple aaa = (Apple) a.get(i);
-			System.out.println(aaa);
+			Fruit f = (Fruit) a.get(i);
+			System.out.println(f);
 		}
-
 	}
-
 }
