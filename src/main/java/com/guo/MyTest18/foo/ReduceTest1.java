@@ -7,8 +7,8 @@ import java.util.function.BinaryOperator;
 import java.util.stream.Stream;
 
 /**
- * http://blog.csdn.net/IO_Field/article/details/54971608
- * reduce 操作可以实现从Stream中生成一个值，其生成的值不是随意的，而是根据指定的计算模型。比如，之前提到count、min和max方
+ * http://blog.csdn.net/IO_Field/article/details/54971608 reduce
+ * 操作可以实现从Stream中生成一个值，其生成的值不是随意的，而是根据指定的计算模型。比如，之前提到count、min和max方
  * 法，因为常用而被纳入标准库中。事实上，这些方法都是reduce操作。
  * 
  * reduce方法有三个override的方法：
@@ -118,6 +118,10 @@ import java.util.stream.Stream;
 public class ReduceTest1 {
 
 	public static void main(String[] args) {
+		test3();
+	}
+
+	public static void test3() {
 		ArrayList<Integer> accResult_ = Stream.of(1, 2, 3, 4).reduce(new ArrayList<Integer>(),
 				new BiFunction<ArrayList<Integer>, Integer, ArrayList<Integer>>() {
 					@Override
@@ -157,8 +161,8 @@ public class ReduceTest1 {
 	}
 
 	public static void test1() {
-		// TODO Auto-generated method stub
-		Optional accResult = Stream.of(1, 2, 3, 4).reduce((acc, item) -> {
+
+		Optional<Integer> accResult = Stream.of(1, 2, 3, 4).reduce((acc, item) -> {
 			System.out.println("acc : " + acc);
 			acc += item;
 			System.out.println("item: " + item);
