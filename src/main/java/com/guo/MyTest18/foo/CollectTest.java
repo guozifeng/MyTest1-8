@@ -12,10 +12,10 @@ import java.util.stream.Stream;
 
 public class CollectTest {
 	public static void main(String[] args) {
-		List<Integer> collectList = Stream.of(1, 2, 3, 4).collect(Collectors.toList());
+		List<Integer> collectList = Stream.of(1, 2, 3, 4, 1).collect(Collectors.toList());
 		System.out.println("collectList: " + collectList);
 
-		Set<Integer> collectSet = Stream.of(1, 2, 3, 4).collect(Collectors.toSet());
+		Set<Integer> collectSet = Stream.of(1, 2, 3, 4, 1).collect(Collectors.toSet());
 		System.out.println("collectSet: " + collectSet);
 
 		Optional<Integer> collectMaxBy = Stream.of(1, 2, 3, 4)
@@ -52,13 +52,21 @@ public class CollectTest {
 		Map<Boolean, List<Integer>> collectParti1 = Stream.of(1, 2, 3, 4)
 				.collect(Collectors.partitioningBy(it -> it % 2 == 0));
 
+		System.out.println("collectParti1: " + collectParti1);
+
 		Map<Boolean, Integer> mapSize = new HashMap<>();
-		collectParti1.entrySet().forEach(entry -> mapSize.put(entry.getKey(), entry.getValue().size()));
+		collectParti1.entrySet().forEach(entry -> {
+			
+			System.out.println("entry.getKey():"+entry.getKey()+"  entry.getValue():"+entry.getValue());
+			mapSize.put(entry.getKey(), entry.getValue().size());
+			
+		});
 
 		System.out.println("mapSize : " + mapSize);
 
 		Map<Boolean, Long> partiCount = Stream.of(1, 2, 3, 4)
 				.collect(Collectors.partitioningBy(it -> it.intValue() % 2 == 0, Collectors.counting()));
 		System.out.println("partiCount: " + partiCount);
+		
 	}
 }
