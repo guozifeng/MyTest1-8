@@ -93,7 +93,7 @@ public class Java8StreamTest {
 				new Item("apple", 10, new BigDecimal("9.99")), new Item("banana", 10, new BigDecimal("19.99")),
 				new Item("apple", 20, new BigDecimal("9.99")));
 
-		Map<String, Long> counting = items.stream()
+		/*Map<String, Long> counting = items.stream()
 				.collect(Collectors.groupingBy(Item::getName, Collectors.counting()));
 
 		System.out.println(counting);
@@ -109,7 +109,9 @@ public class Java8StreamTest {
 					return a.getPrice();
 				}, (x, y) -> x.add(y)))));
 
-		System.out.println(sum1);
+		System.out.println(sum1);*/
+		
+		
 	}
 
 	private static void Test3() {

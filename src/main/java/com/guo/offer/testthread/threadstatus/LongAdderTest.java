@@ -9,7 +9,7 @@ public class LongAdderTest {
 		// TODO Auto-generated method stub
 		
 		LongAdder a = new LongAdder();
-		a.add(1);
+		a.add(1);a.add(1);a.add(1);a.add(1);
 		
 		AtomicLong count = new AtomicLong();
 		count.addAndGet(1);

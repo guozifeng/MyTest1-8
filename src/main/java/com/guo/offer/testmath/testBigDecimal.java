@@ -19,6 +19,14 @@ public class testBigDecimal {
         System.out.println(new BigDecimal(0.06).toString());
         System.out.println(new BigDecimal("0.06").doubleValue());
         System.out.println(new BigDecimal("0.06"));
+        BigDecimal cc = new BigDecimal("0.00");
+        BigDecimal bb = new BigDecimal("10.00");
+        BigDecimal aa = new BigDecimal("110.00");
+        
+        bb = bb.add(aa);
+        System.out.println(aa);
+        System.out.println(bb);
+        System.out.println(cc);
 	}
 	
 	/**
