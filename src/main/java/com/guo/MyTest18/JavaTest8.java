@@ -10,9 +10,9 @@ public class JavaTest8 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Function<String, String> function = (x) -> {
+		Function<String, Integer> function = (x) -> {
 			System.out.print(x + ": ");
-			return "Function";
+			return 2222;
 		};
 		System.out.println(function.apply("hello world1"));
 
