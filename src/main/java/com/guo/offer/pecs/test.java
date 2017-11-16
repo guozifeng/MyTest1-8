@@ -51,6 +51,18 @@ import java.util.List;
  * 通配符告诉编译器我们在处理一个类型T的子类型，但我们不知道这个子类型究竟是什么。因为没法确定，为了保证类型安全，我们就不允许往里面加入任何这种类型的数据。
  * 另一方面，因为我们知道，不论它是什么类型，它总是类型T的子类型，当我们在读取数据时，能确保得到的数据是一个T类型的实例：
  * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
  * 1 Fruit get = fruits.get(0); ? super
  * 
  * 使用 ? super 通配符一般是什么情况？让我们先看看这个：
@@ -116,7 +128,8 @@ public class test {
 		List<Apple> apples = new ArrayList<Apple>();
 		apples.add(apple);
 		apples.add(greenapple);
-
+		//apples.add(strawberry);
+		
 		List<? extends Fruit> fruits1 = apples;
 		//此数组fruits1什么都放不进去，只能放进去null值。
 		fruits1.add(null);
@@ -156,7 +169,7 @@ public class test {
 		//fruits2.add(fruit);
 		fruits2.add(apple);
 		fruits2.add(greenapple);
-		// fruits2.add(strawberry);
+		//fruits2.add(strawberry);
 		List<? super Apple> a = fruits2;
 		a.add(new GreenApple());
 		a.add(new Apple());
