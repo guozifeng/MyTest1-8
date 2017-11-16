@@ -133,6 +133,7 @@ public class test {
 		List<? extends Fruit> fruits1 = apples;
 		//此数组fruits1什么都放不进去，只能放进去null值。
 		fruits1.add(null);
+		//fruits1.add("");
 		//fruits1.add(fruit);
 		//fruits1.add(apple);
 		//fruits1.add(greenapple);
