@@ -20,37 +20,34 @@ public class Java8StreamTest {
 
 	public static void main(String[] args) {
 		Test5();
-		/*
-		 * Test4(); List<Integer> ints = Lists.newArrayList(1, 2, 3, 4, 5, 6, 7,
-		 * 8, 9, 10);
-		 * 
-		 * System.out.println("ints sum is:" + ints.stream().reduce((sum, item)
-		 * -> sum + item).get()); System.out.println("ints sum is:" +
-		 * ints.stream().reduce(0, (sum, item) -> sum + item));
-		 * 
-		 * List<Integer> nums = Lists.newArrayList(1, 1, null, 2, 3, 4, null, 5,
-		 * 6, 7, 8, 9, 10);
-		 * 
-		 * List<Integer> numsWithoutNull = nums.stream().filter(num -> num !=
-		 * null).collect(() -> new ArrayList<Integer>(), (list, item) ->
-		 * list.add(item), (list1, list2) -> list1.addAll(list2));
-		 * 
-		 * System.out.println(numsWithoutNull);
-		 */
+
+		Test4();
+		List<Integer> ints = Lists.newArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+		System.out.println("ints sum is:" + ints.stream().reduce((sum, item) -> sum + item).get());
+		System.out.println("ints sum is:" + ints.stream().reduce(0, (sum, item) -> sum + item));
+
+		List<Integer> nums = Lists.newArrayList(1, 1, null, 2, 3, 4, null, 5, 6, 7, 8, 9, 10);
+
+		List<Integer> numsWithoutNull = nums.stream().filter(num -> num != null).collect(() -> new ArrayList<Integer>(),
+				(list, item) -> list.add(item), (list1, list2) -> list1.addAll(list2));
+
+		System.out.println(numsWithoutNull);
 
 	}
 
 	private static void Test5() {
 		// 3 apple, 2 banana, others 1
+		
 		List<Item> items = Arrays.asList(new Item("apple", 10, new BigDecimal("9.99")),
 				new Item("banana", 20, new BigDecimal("19.99")), new Item("orang", 10, new BigDecimal("29.99")),
 				new Item("watermelon", 10, new BigDecimal("29.99")), new Item("papaya", 20, new BigDecimal("9.99")),
 				new Item("apple", 10, new BigDecimal("9.99")), new Item("banana", 10, new BigDecimal("19.99")),
 				new Item("apple", 20, new BigDecimal("9.99")));
+		
 		List<Item> itemlist = new ArrayList();
 		// group by price
-		items.stream()
-				.collect(Collectors.groupingBy(Item::getName, Collectors.groupingBy(Item::getQty)))
+		items.stream().collect(Collectors.groupingBy(Item::getName, Collectors.groupingBy(Item::getQty)))
 				.forEach((name, map) -> {
 					System.out.println(name + "------------");
 					map.forEach((a, b) -> {
@@ -93,7 +90,7 @@ public class Java8StreamTest {
 				new Item("apple", 10, new BigDecimal("9.99")), new Item("banana", 10, new BigDecimal("19.99")),
 				new Item("apple", 20, new BigDecimal("9.99")));
 
-		/*Map<String, Long> counting = items.stream()
+		Map<String, Long> counting = items.stream()
 				.collect(Collectors.groupingBy(Item::getName, Collectors.counting()));
 
 		System.out.println(counting);
@@ -109,9 +106,8 @@ public class Java8StreamTest {
 					return a.getPrice();
 				}, (x, y) -> x.add(y)))));
 
-		System.out.println(sum1);*/
-		
-		
+		System.out.println(sum1);
+
 	}
 
 	private static void Test3() {
@@ -144,12 +140,12 @@ public class Java8StreamTest {
 		Date date = new Date();
 		Calendar ca = Calendar.getInstance();
 		ca.setTime(date);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy骞碝M鏈坉d鏃�");
 
 		String st = sdf.format(date);
 		int i = ca.get(Calendar.DAY_OF_YEAR);
 		int a = ca.get(Calendar.DAY_OF_MONTH);
-		System.out.println("当前时间是：" + st + ";一年中的" + i + "一个月中的" + a);
+		System.out.println("褰撳墠鏃堕棿鏄細" + st + ";涓�骞翠腑鐨�" + i + "涓�涓湀涓殑" + a);
 
 		String collectDate = "171115";
 		System.out.println(new Integer(collectDate.substring(4)));
