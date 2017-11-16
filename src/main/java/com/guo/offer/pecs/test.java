@@ -81,8 +81,10 @@ import java.util.List;
 public class test {
 
 	public static void main(String[] args) {
+		test1();
+		System.out.println();
+		System.out.println();
 		test2();
-		//test2();
 	}
 
 	/**
@@ -118,7 +120,12 @@ public class test {
 		List<? extends Fruit> fruits1 = apples;
 		//此数组fruits1什么都放不进去，只能放进去null值。
 		fruits1.add(null);
-		System.out.println("+++++++fruits1.size()++++++++" + fruits1.size());
+		//fruits1.add(fruit);
+		//fruits1.add(apple);
+		//fruits1.add(greenapple);
+		//fruits1.add(strawberry);
+		
+		System.out.println("fruits1.size()=" + fruits1.size());
 
 		for (int j = 0; j < fruits1.size(); j++) {
 			Fruit get = fruits1.get(j);
@@ -146,16 +153,17 @@ public class test {
 		strawberry.setC(4);
 		
 		List<Fruit> fruits2 = new ArrayList<Fruit>();
-		// fruits2.add(fruit);
+		//fruits2.add(fruit);
 		fruits2.add(apple);
 		fruits2.add(greenapple);
 		// fruits2.add(strawberry);
 		List<? super Apple> a = fruits2;
 		a.add(new GreenApple());
 		a.add(new Apple());
+		//a.add(fruit);
 		//a.add(strawberry);
 		// a.add(new Strawberry());
-		System.out.println("+++++++a.size()++++++++" + a.size());
+		System.out.println("a.size()=" + a.size());
 		for (int i = 0; i < a.size(); i++) {
 			Apple aaa = (Apple) a.get(i);
 			Fruit f = (Fruit) a.get(i);
