@@ -26,7 +26,7 @@ public class JavaTest8 {
 		// Consumer<T> - T作为输入，执行某种动作但没有返回值
 		Consumer<String> con = (x) -> {
 			System.out.println(x);
-		};
+		}; 
 		con.accept("hello world3");
 
 		// Supplier<T> - 没有任何输入，返回T
@@ -37,7 +37,7 @@ public class JavaTest8 {
 
 		// BinaryOperator<T> -两个T作为输入，返回一个T作为输出，对于“reduce”操作很有用
 		BinaryOperator<String> bina = (x, y) -> {
-			System.out.print(x + "====" + y);
+			System.out.println(x + "====" + y);
 			return "BinaryOperator";
 		};
 		System.out.println("+++" + bina.apply("hello1 ", "world5"));
