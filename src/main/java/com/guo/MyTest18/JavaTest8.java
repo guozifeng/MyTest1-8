@@ -9,7 +9,7 @@ import java.util.function.Supplier;
 public class JavaTest8 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
 		Function<String, Integer> function = (x) -> {
 			System.out.print(x + ": ");
 			return 2222;
