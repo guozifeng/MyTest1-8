@@ -10,6 +10,7 @@ public class JavaTest8 {
 
 	public static void main(String[] args) {
 
+		//第一个参数是输入，第二个参数是输出。
 		Function<String, Integer> function = (x) -> {
 			System.out.print(x + ": ");
 			return 2222;
