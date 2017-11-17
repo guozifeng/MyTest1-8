@@ -2,10 +2,10 @@ package com.guo.MyTest18;
 
 import java.util.Optional;
 
-public class Java8Tester3 {
+public class testOptional2 {
 	public static void main(String args[]) {
 
-		Java8Tester3 java8Tester = new Java8Tester3();
+		testOptional2 java8Tester = new testOptional2();
 		Integer value1 = null;
 		Integer value2 = new Integer(10);
 
