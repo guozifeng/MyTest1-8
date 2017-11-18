@@ -45,7 +45,7 @@ public class Java8StreamTest {
 				new Item("apple", 10, new BigDecimal("9.99")), new Item("banana", 10, new BigDecimal("19.99")),
 				new Item("apple", 20, new BigDecimal("9.99")));
 		
-		List<Item> itemlist = new ArrayList();
+		List<Item> itemlist = new ArrayList<Item>();
 		// group by price
 		items.stream().collect(Collectors.groupingBy(Item::getName, Collectors.groupingBy(Item::getQty)))
 				.forEach((name, map) -> {

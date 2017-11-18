@@ -47,7 +47,7 @@ public class JavaTest8 {
 		// BinaryOperator<T> -两个T作为输入，返回一个T作为输出，对于“reduce”操作很有用
 		BinaryOperator<String> bina = (x, y) -> {
 			System.out.println(x + "====" + y);
-			return "BinaryOperator";
+			return y;
 		};
 		System.out.println("+++" + bina.apply("hello1 ", "world5"));
 	}
