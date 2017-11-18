@@ -4,6 +4,7 @@ public class Competition {
 	CompResult compResult;
 	User user;
 	public CompResult getCompResult() {
+		System.out.println("------getCompResult-------");
 		return compResult;
 	}
 	public void setCompResult(CompResult compResult) {

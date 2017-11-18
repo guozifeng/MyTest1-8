@@ -4,6 +4,7 @@ public class CompResult {
 	User user;
 
 	public User getUser() {
+		System.out.println("------getUser-------");
 		return user;
 	}
 

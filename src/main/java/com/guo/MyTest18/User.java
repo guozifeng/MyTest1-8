@@ -6,6 +6,7 @@ public class User {
 	String name;
 
 	public String getName() {
+		System.out.println("---------getName-------");
 		return name;
 	}
 
