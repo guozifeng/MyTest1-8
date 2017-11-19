@@ -2,13 +2,15 @@ package com.guo.offer.testkeyword;
 
 /**
  * 
+ * https://www.cnblogs.com/guoyansi19900907/archive/2015/11/15/4966832.html
+ * 
  * @author Administrator
  *
  */
 public class testFinal {
 
 	public static void main(String[] args) {
-		test3();
+		test1();
 	}
 
 	public static void test3() {
@@ -30,20 +32,24 @@ public class testFinal {
 		StringBuffer buffer = new StringBuffer("hello");
 		myClass.changeValue(buffer);
 		System.out.println(buffer.toString());
+		System.out.println();
+		final StringBuffer buffer1 = new StringBuffer("hello");
+		buffer1.append(" 2121");
+		System.out.println(buffer1);
 	}
 
 	public static void test2() {
 		MyClass1 myClass = new MyClass1();
 		int i = 0;
 		myClass.changeValue(i);
-		System.out.println(i);
+		System.out.println("main = "+i);
 	}
 }
 
 class MyClass {
 
-	void changeValue(final StringBuffer buffer) {
-		buffer.append("world");
+	void changeValue(StringBuffer buffer) { 
+		buffer.append(" world");
 	}
 }
 
