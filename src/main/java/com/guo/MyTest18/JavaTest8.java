@@ -1,6 +1,7 @@
 package com.guo.MyTest18;
 
 import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -18,6 +19,16 @@ public class JavaTest8 {
 		};
 		System.out.println(function.apply("hello world1"));
 
+		
+		BiFunction<String,Integer,String> biFunction = (x,y)->{
+			System.out.println(x);
+			System.out.println(y);
+			return x+y;
+		};
+		
+		System.out.println(biFunction.apply("hello world4",3333));
+		
+		
 		// Predicate<T> -T作为输入，返回的boolean值作为输出
 		Predicate<String> pre = (x) -> {
 			System.out.print(x);
