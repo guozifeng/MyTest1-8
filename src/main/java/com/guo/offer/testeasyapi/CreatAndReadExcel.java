@@ -35,22 +35,11 @@ public class CreatAndReadExcel {
 
 	public static void main(String[] args) throws Exception {
 
-		creat2003Excel();// 创建2007版Excel文件
-		creat2007Excel();// 创建2003版Excel文件
-		//读取2003Excel文件
-		String path2003 = System.getProperty("user.dir")
-				+ System.getProperty("file.separator") + "style_2003.xls";// 获取项目文件路径+2003版文件名
-		System.out.println("路径：" + path2003);
-		File f2003 = new File(path2003);
-		try {
-			readExcel(f2003);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        //读取2007Excel文件
-		String path2007 = System.getProperty("user.dir")
-				+ System.getProperty("file.separator") + "style_2007.xlsx";// 获取项目文件路径 +2007版文件名
+		//creat2007Excel();// 创建2003版Excel文件
+
+		// 读取2007Excel文件
+		String path2007 = System.getProperty("user.dir") + System.getProperty("file.separator") + "style_2007.xlsx";// 获取项目文件路径
+
 		System.out.println("路径：" + path2007);
 		File f2007 = new File(path2007);
 		try {
@@ -60,6 +49,20 @@ public class CreatAndReadExcel {
 			e.printStackTrace();
 		}
 
+	}
+
+	public void test1() throws Exception {
+		creat2003Excel();// 创建2007版Excel文件
+		// 读取2003Excel文件
+		String path2003 = System.getProperty("user.dir") + System.getProperty("file.separator") + "style_2003.xls";// 获取项目文件路径+2003版文件名
+		System.out.println("路径：" + path2003);
+		File f2003 = new File(path2003);
+		try {
+			readExcel(f2003);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -326,14 +329,12 @@ public class CreatAndReadExcel {
 
 				switch (cell.getCellType()) {
 				case XSSFCell.CELL_TYPE_STRING:
-					// System.out.println(i + "行" + j + " 列 is String type");
+					System.out.println(i + "行" + j + " 列 is String type");
 					value = cell.getStringCellValue();
-					System.out.print("  " + value + "  ");
+					System.out.println("  " + value + "  ");
 					break;
 				case XSSFCell.CELL_TYPE_NUMERIC:
-					// System.out.println(i + "行" + j
-					// + " 列 is Number type ; DateFormt:"
-					// + cell.getCellStyle().getDataFormatString());
+					System.out.println(i + "行" + j + " 列 is Number type ; DateFormt:" + cell.getCellStyle().getDataFormatString());
 					if ("@".equals(cell.getCellStyle().getDataFormatString())) {
 						value = df.format(cell.getNumericCellValue());
 
@@ -342,22 +343,22 @@ public class CreatAndReadExcel {
 					} else {
 						value = sdf.format(HSSFDateUtil.getJavaDate(cell.getNumericCellValue()));
 					}
-					System.out.print("  " + value + "  ");
+					System.out.println("  " + value + "  ");
 					break;
 				case XSSFCell.CELL_TYPE_BOOLEAN:
-					// System.out.println(i + "行" + j + " 列 is Boolean type");
+					System.out.println(i + "行" + j + " 列 is Boolean type");
 					value = cell.getBooleanCellValue();
-					System.out.print("  " + value + "  ");
+					System.out.println("  " + value + "  ");
 					break;
 				case XSSFCell.CELL_TYPE_BLANK:
-					// System.out.println(i + "行" + j + " 列 is Blank type");
+					System.out.println(i + "行" + j + " 列 is Blank type");
 					value = "";
-					// System.out.println(value);
+					System.out.println(value);
 					break;
 				default:
-					// System.out.println(i + "行" + j + " 列 is default type");
+					System.out.println(i + "行" + j + " 列 is default type");
 					value = cell.toString();
-					System.out.print("  " + value + "  ");
+					System.out.println("  " + value + "  ");
 				}
 				if (value == null || "".equals(value)) {
 					continue;
