@@ -21,8 +21,8 @@ public class JavaTest8 {
 
 		
 		BiFunction<String,Integer,String> biFunction = (x,y)->{
-			System.out.println(x);
-			System.out.println(y);
+			System.out.println("x = "+x);
+			System.out.println("y = "+y);
 			return x+y;
 		};
 		
