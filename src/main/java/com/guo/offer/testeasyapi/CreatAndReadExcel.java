@@ -19,6 +19,7 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFFont;
@@ -38,8 +39,8 @@ public class CreatAndReadExcel {
 		//creat2007Excel();// 创建2003版Excel文件
 
 		// 读取2007Excel文件
-		String path2007 = System.getProperty("user.dir") + System.getProperty("file.separator") + "style_2007.xlsx";// 获取项目文件路径
-
+		//String path2007 = System.getProperty("user.dir") + System.getProperty("file.separator") + "style_2007.xlsx";// 获取项目文件路径
+		String path2007 = "C:\\Users\\Administrator\\Desktop\\aaa.xlsx";
 		System.out.println("路径：" + path2007);
 		File f2007 = new File(path2007);
 		try {
@@ -318,15 +319,20 @@ public class CreatAndReadExcel {
 			}
 			List<Object> linked = new LinkedList<Object>();
 			for (int j = row.getFirstCellNum(); j <= row.getLastCellNum(); j++) {
-				cell = row.getCell(j);
+				cell = row.getCell(j,Row.CREATE_NULL_AS_BLANK);
+				//System.out.println(cell);
+				//System.out.println("cell.getCellType()="+cell.getCellType());
 				if (cell == null) {
 					continue;
+				}
+				if(j ==39){
+					break;
 				}
 				DecimalFormat df = new DecimalFormat("0");// 格式化 number String
 				// 字符
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 格式化日期字符串
 				DecimalFormat nf = new DecimalFormat("0.00");// 格式化数字
-
+				
 				switch (cell.getCellType()) {
 				case XSSFCell.CELL_TYPE_STRING:
 					System.out.println(i + "行" + j + " 列 is String type");
