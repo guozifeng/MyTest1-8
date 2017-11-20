@@ -6,20 +6,16 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
 
-public class Java8Tester4 {
-	
-	public static void main(String args[]) {
-		Java8Tester4 java8tester = new Java8Tester4();
-		java8tester.testLocalDateTime();
-	}
+import org.junit.Test;
 
+public class Java8Tester4 {
+
+	@Test
 	public void testLocalDateTime() {
 		System.out.println("当前时间戳: " + Instant.now());
 		// 获取当前的日期时间
 		LocalDateTime currentTime = LocalDateTime.now();
-		
-		
-		
+					
 		System.out.println("当前时间: " + currentTime);
 
 		LocalDate date1 = currentTime.toLocalDate();
