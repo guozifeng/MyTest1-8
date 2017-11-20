@@ -10,6 +10,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+
+import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFDataFormat;
@@ -19,7 +21,12 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFFont;
@@ -203,8 +210,10 @@ public class CreatAndReadExcel {
 
 	/**
 	 * 对外提供读取excel 的方法
+	 * @throws InvalidFormatException 
+	 * @throws EncryptedDocumentException 
 	 */
-	public static List<List<Object>> readExcel(File file) throws IOException {
+	public static List<List<Object>> readExcel(File file) throws IOException, EncryptedDocumentException, InvalidFormatException {
 		String fileName = file.getName();
 		String extension = fileName.lastIndexOf(".") == -1 ? "" : fileName.substring(fileName.lastIndexOf(".") + 1);
 		if ("xls".equals(extension)) {
@@ -295,22 +304,30 @@ public class CreatAndReadExcel {
 
 	/**
 	 * 读取Office 2007 excel
+	 * @throws InvalidFormatException 
+	 * @throws EncryptedDocumentException 
 	 */
 
-	private static List<List<Object>> read2007Excel(File file) throws IOException {
+	private static List<List<Object>> read2007Excel(File file) throws IOException, EncryptedDocumentException, InvalidFormatException {
 
 		List<List<Object>> list = new LinkedList<List<Object>>();
 		// String path = System.getProperty("user.dir") +
 		// System.getProperty("file.separator")+"dd.xlsx";
 		// System.out.println("路径："+path);
 		// 构造 XSSFWorkbook 对象，strPath 传入文件路径
-		XSSFWorkbook xwb = new XSSFWorkbook(new FileInputStream(file));
+		//XSSFWorkbook xwb = new XSSFWorkbook(new FileInputStream(file));
 
 		// 读取第一章表格内容
-		XSSFSheet sheet = xwb.getSheetAt(0);
+		//XSSFSheet sheet = xwb.getSheetAt(0);
 		Object value = null;
-		XSSFRow row = null;
-		XSSFCell cell = null;
+		//XSSFRow row = null;
+		//XSSFCell cell = null;
+		
+		Workbook workbook = WorkbookFactory.create(new FileInputStream(file));
+		Sheet sheet = workbook.getSheetAt(0);
+		Row row = null;
+		Cell cell = null;
+		
 		System.out.println("读取office 2007 excel内容如下：");
 		for (int i = sheet.getFirstRowNum(); i <= sheet.getPhysicalNumberOfRows(); i++) {
 			row = sheet.getRow(i);
@@ -366,14 +383,21 @@ public class CreatAndReadExcel {
 					value = cell.toString();
 					System.out.println("  " + value + "  ");
 				}
-				if (value == null || "".equals(value)) {
+				/*if (value == null || "".equals(value)) {
 					continue;
-				}
+				}*/
 				linked.add(value);
 			}
-			System.out.println("");
+			System.out.println(linked.size());
+			System.out.println(linked);
 			list.add(linked);
 		}
+		list.stream().skip(0).forEach(x-> {
+			System.out.println(x.get(0).toString());
+			System.out.println(x.get(1).toString());
+			System.out.println(x.get(2));
+			System.out.println(x.get(3));
+		});
 		return list;
 	}
 }
