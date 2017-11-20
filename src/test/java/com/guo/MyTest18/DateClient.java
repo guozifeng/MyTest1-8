@@ -18,9 +18,8 @@ public class DateClient {
 		
         LocalDateTime ldt = LocalDateTime.now();
         DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyyÄêMMÔÂddÈÕ HH:mm:ss");
-        String strDate2 = dtf2.format(ldt);
-        System.out.println(strDate2);
-
+        System.out.println(dtf2.format(ldt));
+        System.out.println(ldt.format(dtf2));
 	}
 	
 	@Test
