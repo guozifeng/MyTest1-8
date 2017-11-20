@@ -1,10 +1,7 @@
 package com.guo.MyTest18;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Set;
 
 import org.junit.Test;
 
@@ -50,5 +47,6 @@ public class DateClient {
         String strDateMe="2017-11-02 15:30:22";
         LocalDateTime ldtMe= ldt.parse(strDateMe,dtf);
         System.out.println(ldtMe);//2017-11-02T15:30:22
+        System.out.println(ldtMe.format(dtf));
 	}
 }
