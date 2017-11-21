@@ -90,7 +90,7 @@ import java.util.List;
  * @author Administrator
  *
  */
-public class test {
+public class TestPECS {
 
 	public static void main(String[] args) {
 		test1();
