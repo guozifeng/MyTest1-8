@@ -9,25 +9,29 @@ public class testOptional2 {
 		Integer value1 = null;
 		Integer value2 = new Integer(10);
 
-		// Optional.ofNullable - å…è®¸ä¼ é€’ä¸º null å‚æ•°
+		// Optional.ofNullable - ÔÊĞí´«µİÎª null ²ÎÊı
 		Optional<Integer> a = Optional.ofNullable(value1);
 
-		// Optional.of - å¦‚æœä¼ é€’çš„å‚æ•°æ˜¯ nullï¼ŒæŠ›å‡ºå¼‚å¸¸ NullPointerException
+		//Optional<Integer> c = Optional.of(value1);
+		//System.out.println(c.isPresent());
+		
+		
+		// Optional.of - Èç¹û´«µİµÄ²ÎÊıÊÇ null£¬Å×³öÒì³£ NullPointerException
 		Optional<Integer> b = Optional.of(value2);
 		System.out.println(java8Tester.sum(a, b));
 	}
 
 	public Integer sum(Optional<Integer> a, Optional<Integer> b) {
 
-		// Optional.isPresent - åˆ¤æ–­å€¼æ˜¯å¦å­˜åœ¨
+		// Optional.isPresent - ÅĞ¶ÏÖµÊÇ·ñ´æÔÚ
 
-		System.out.println("ç¬¬ä¸€ä¸ªå‚æ•°å€¼å­˜åœ¨: " + a.isPresent());
-		System.out.println("ç¬¬äºŒä¸ªå‚æ•°å€¼å­˜åœ¨: " + b.isPresent());
+		System.out.println("µÚÒ»¸ö²ÎÊıÖµ´æÔÚ: " + a.isPresent());
+		System.out.println("µÚ¶ş¸ö²ÎÊıÖµ´æÔÚ: " + b.isPresent());
 
-		// Optional.orElse - å¦‚æœå€¼å­˜åœ¨ï¼Œè¿”å›å®ƒï¼Œå¦åˆ™è¿”å›é»˜è®¤å€¼
+		// Optional.orElse - Èç¹ûÖµ´æÔÚ£¬·µ»ØËü£¬·ñÔò·µ»ØÄ¬ÈÏÖµ
 		Integer value1 = a.orElse(new Integer(0));
 
-		// Optional.get - è·å–å€¼ï¼Œå€¼éœ€è¦å­˜åœ¨
+		// Optional.get - »ñÈ¡Öµ£¬ÖµĞèÒª´æÔÚ
 		Integer value2 = b.get();
 		return value1 + value2;
 	}

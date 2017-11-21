@@ -19,16 +19,19 @@ public class JavaTest8 {
 		};
 		System.out.println(function.apply("hello world1"));
 
+		// 第一个参数是输入，第二个参数是输出。
+		Function<String, Integer> function1 = (x) -> x.length();
+		System.out.println(function1.apply("hello world1"));
+
 		
-		BiFunction<String,Integer,String> biFunction = (x,y)->{
-			System.out.println("x = "+x);
-			System.out.println("y = "+y);
-			return x+y;
+		BiFunction<String, Integer, String> biFunction = (x, y) -> {
+			System.out.println("x = " + x);
+			System.out.println("y = " + y);
+			return x + y;
 		};
-		
-		System.out.println(biFunction.apply("hello world4",3333));
-		
-		
+
+		System.out.println(biFunction.apply("hello world4", 3333));
+
 		// Predicate<T> -T作为输入，返回的boolean值作为输出
 		Predicate<String> pre = (x) -> {
 			System.out.print(x);
