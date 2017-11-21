@@ -1,4 +1,4 @@
-package com.guo.offer;
+package com.guo.offer.commons;
 
 public class DuoTai {
 	public static void main(String[] args) {
