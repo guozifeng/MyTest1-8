@@ -6,7 +6,6 @@ import java.util.Date;
 
 public class DateDemo {
 	public static void main(String[] args) {
-		test5();
 	}
 
 	public static void test1() {
@@ -14,15 +13,6 @@ public class DateDemo {
 		String strDateFormat = "yyyy-MM-dd HH:mm:ss";
 		SimpleDateFormat sdf = new SimpleDateFormat(strDateFormat);
 		System.out.println(sdf.format(date));
-	}
-	
-	public static void test5() {
-		try {
-			System.out.println(DateUtil.parse("10-10-2017"));
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	public static void test2() {

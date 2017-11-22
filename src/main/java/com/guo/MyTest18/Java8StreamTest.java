@@ -19,7 +19,7 @@ import com.google.common.collect.Lists;
 public class Java8StreamTest {
 
 	public static void main(String[] args) {
-		//Test5();
+		Test5();
 
 		//Test4();
 		List<Integer> ints = Lists.newArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
@@ -140,12 +140,11 @@ public class Java8StreamTest {
 		Date date = new Date();
 		Calendar ca = Calendar.getInstance();
 		ca.setTime(date);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy骞碝M鏈坉d鏃�");
+		SimpleDateFormat sdf = new SimpleDateFormat("");
 
 		String st = sdf.format(date);
 		int i = ca.get(Calendar.DAY_OF_YEAR);
 		int a = ca.get(Calendar.DAY_OF_MONTH);
-		System.out.println("褰撳墠鏃堕棿鏄細" + st + ";涓�骞翠腑鐨�" + i + "涓�涓湀涓殑" + a);
 
 		String collectDate = "171115";
 		System.out.println(new Integer(collectDate.substring(4)));

@@ -46,7 +46,7 @@ public class testOptional {
 		Competition comp = new Competition();
 		CompResult cn = new CompResult();
 		User u = new User();
-		u.setName("222");
+		//u.setName("222");
 		cn.setUser(u);
 		//comp.setUser(u);
 		comp.setCompResult(cn);
