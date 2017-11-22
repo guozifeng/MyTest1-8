@@ -26,13 +26,13 @@ public class CollectTest1 {
 				(list, item) -> {
 					list.add(item);
 
-					System.out.println("item = " + item);
-					System.out.println("list = " + list);
+					System.out.println("item = " + item + " " + Thread.currentThread().getName());
+					System.out.println("list = " + list + " " + Thread.currentThread().getName());
 
 				}, (list1, list2) -> {
 					list1.addAll(list2);
-					System.out.println("*************list1 = " + list1);
-					System.out.println("*************list2 = " + list2);
+					System.out.println("*************list1 = " + list1 + " " + Thread.currentThread().getName());
+					System.out.println("*************list2 = " + list2 + " " + Thread.currentThread().getName());
 				});
 		System.out.println(numsWithoutNull);
 		System.out.println();

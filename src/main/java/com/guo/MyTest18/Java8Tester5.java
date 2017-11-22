@@ -9,78 +9,81 @@ import java.util.stream.Collectors;
 
 public class Java8Tester5 {
 	public static void main(String args[]) {
-		System.out.println("ä½¿ç”¨ Java 7: ");
+		System.out.println("Ê¹ÓÃ Java 7: ");
 
-		// è®¡ç®—ç©ºå­—ç¬¦ä¸²
+		// ¼ÆËã¿Õ×Ö·û´®
 		List<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd", "", "jkl");
-		System.out.println("åˆ—è¡¨: " + strings);
+		System.out.println("ÁĞ±í: " + strings);
 		long count = getCountEmptyStringUsingJava7(strings);
 
-		System.out.println("ç©ºå­—ç¬¦æ•°é‡ä¸º: " + count);
+		System.out.println("¿Õ×Ö·ûÊıÁ¿Îª: " + count);
 		count = getCountLength3UsingJava7(strings);
 
-		System.out.println("å­—ç¬¦ä¸²é•¿åº¦ä¸º 3 çš„æ•°é‡ä¸º: " + count);
+		System.out.println("×Ö·û´®³¤¶ÈÎª 3 µÄÊıÁ¿Îª: " + count);
 
-		// åˆ é™¤ç©ºå­—ç¬¦ä¸²
+		// É¾³ı¿Õ×Ö·û´®
 		List<String> filtered = deleteEmptyStringsUsingJava7(strings);
-		System.out.println("ç­›é€‰åçš„åˆ—è¡¨: " + filtered);
+		System.out.println("É¸Ñ¡ºóµÄÁĞ±í: " + filtered);
 
-		// åˆ é™¤ç©ºå­—ç¬¦ä¸²ï¼Œå¹¶ä½¿ç”¨é€—å·æŠŠå®ƒä»¬åˆå¹¶èµ·æ¥
+		// É¾³ı¿Õ×Ö·û´®£¬²¢Ê¹ÓÃ¶ººÅ°ÑËüÃÇºÏ²¢ÆğÀ´
 		String mergedString = getMergedStringUsingJava7(strings, ", ");
-		System.out.println("åˆå¹¶å­—ç¬¦ä¸²: " + mergedString);
+		System.out.println("ºÏ²¢×Ö·û´®: " + mergedString);
 		List<Integer> numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
 
-		// è·å–åˆ—è¡¨å…ƒç´ å¹³æ–¹æ•°
+		// »ñÈ¡ÁĞ±íÔªËØÆ½·½Êı
 		List<Integer> squaresList = getSquares(numbers);
-		System.out.println("å¹³æ–¹æ•°åˆ—è¡¨: " + squaresList);
+		System.out.println("Æ½·½ÊıÁĞ±í: " + squaresList);
 		List<Integer> integers = Arrays.asList(1, 2, 13, 4, 15, 6, 17, 8, 19);
 
-		System.out.println("åˆ—è¡¨: " + integers);
-		System.out.println("åˆ—è¡¨ä¸­æœ€å¤§çš„æ•° : " + getMax(integers));
-		System.out.println("åˆ—è¡¨ä¸­æœ€å°çš„æ•° : " + getMin(integers));
-		System.out.println("æ‰€æœ‰æ•°ä¹‹å’Œ : " + getSum(integers));
-		System.out.println("å¹³å‡æ•° : " + getAverage(integers));
-		System.out.println("éšæœºæ•°: ");
+		System.out.println("ÁĞ±í: " + integers);
+		System.out.println("ÁĞ±íÖĞ×î´óµÄÊı : " + getMax(integers));
+		System.out.println("ÁĞ±íÖĞ×îĞ¡µÄÊı : " + getMin(integers));
+		System.out.println("ËùÓĞÊıÖ®ºÍ : " + getSum(integers));
+		System.out.println("Æ½¾ùÊı : " + getAverage(integers));
+		System.out.println("Ëæ»úÊı: ");
 
-		// è¾“å‡º10ä¸ªéšæœºæ•°
+		// Êä³ö10¸öËæ»úÊı
 		Random random = new Random();
 
 		for (int i = 0; i < 10; i++) {
 			System.out.println(random.nextInt());
 		}
 
-		System.out.println("ä½¿ç”¨ Java 8: ");
-		System.out.println("åˆ—è¡¨: " + strings);
+		System.out.println("Ê¹ÓÃ Java 8: ");
+		System.out.println("ÁĞ±í: " + strings);
 
-		count = strings.stream().filter(x -> x.isEmpty()).count();
-		System.out.println("ç©ºå­—ç¬¦ä¸²æ•°é‡ä¸º: " + count);
+		count = strings.stream().filter(string -> string.isEmpty()).count();
+		System.out.println("¿Õ×Ö·û´®ÊıÁ¿Îª: " + count);
 
 		count = strings.stream().filter(string -> string.length() == 3).count();
-		System.out.println("å­—ç¬¦ä¸²é•¿åº¦ä¸º 3 çš„æ•°é‡ä¸º: " + count);
+		System.out.println("×Ö·û´®³¤¶ÈÎª 3 µÄÊıÁ¿Îª: " + count);
 
 		filtered = strings.stream().filter(string -> !string.isEmpty()).collect(Collectors.toList());
-		System.out.println("ç­›é€‰åçš„åˆ—è¡¨: " + filtered);
+		System.out.println("É¸Ñ¡ºóµÄÁĞ±í: " + filtered);
 
 		mergedString = strings.stream().filter(string -> !string.isEmpty()).collect(Collectors.joining(", "));
-		System.out.println("åˆå¹¶å­—ç¬¦ä¸²: " + mergedString);
-
+		System.out.println("ºÏ²¢×Ö·û´®: " + mergedString);
+		
+		//System.out.println(numbers.stream().map(i -> i * i));
+		
 		squaresList = numbers.stream().map(i -> i * i).distinct().collect(Collectors.toList());
+		
 		System.out.println("Squares List: " + squaresList);
-		System.out.println("åˆ—è¡¨: " + integers);
+		System.out.println("ÁĞ±í: " + integers);
 
 		IntSummaryStatistics stats = integers.stream().mapToInt((x) -> x).summaryStatistics();
 
-		System.out.println("åˆ—è¡¨ä¸­æœ€å¤§çš„æ•° : " + stats.getMax());
-		System.out.println("åˆ—è¡¨ä¸­æœ€å°çš„æ•° : " + stats.getMin());
-		System.out.println("æ‰€æœ‰æ•°ä¹‹å’Œ : " + stats.getSum());
-		System.out.println("å¹³å‡æ•° : " + stats.getAverage());
-		System.out.println("éšæœºæ•°: ");
+		System.out.println("ÁĞ±íÖĞ×î´óµÄÊı : " + stats.getMax());
+		System.out.println("ÁĞ±íÖĞ×îĞ¡µÄÊı : " + stats.getMin());
+		System.out.println("ËùÓĞÊıÖ®ºÍ : " + stats.getSum());
+		System.out.println("Æ½¾ùÊı : " + stats.getAverage());
+		System.out.println("Ëæ»úÊı: ");
 
 		random.ints().limit(10).sorted().forEach(System.out::println);
 
-		// å¹¶è¡Œå¤„ç†
+		// ²¢ĞĞ´¦Àí
 		count = strings.parallelStream().filter(string -> string.isEmpty()).count();
-		System.out.println("ç©ºå­—ç¬¦ä¸²çš„æ•°é‡ä¸º: " + count);
+		System.out.println("¿Õ×Ö·û´®µÄÊıÁ¿Îª: " + count);
 	}
 
 	private static int getCountEmptyStringUsingJava7(List<String> strings) {
