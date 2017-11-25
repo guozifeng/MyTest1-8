@@ -48,6 +48,6 @@ class SyncThread implements Runnable {
 
 	public static void main(String[] args) {
 
-		test1();
+		test2();
 	}
 }

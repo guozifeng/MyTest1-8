@@ -1,5 +1,9 @@
 package com.guo.offer.testmath;
 
+import java.util.Random;
+
+import org.junit.Test;
+
 /**
  * 
  * Math类中提供了三个与取整有关的方法：ceil,floor,round, 这些方法的作用于 它们的英文名称的含义相对应，
@@ -15,55 +19,53 @@ package com.guo.offer.testmath;
  */
 public class TestMath {
 
-	public TestMath() {
-		// TODO Auto-generated constructor stub
-	}
-
 	public static void main(String[] args) {
-		test1();
-		test2();
+		test4();
+		System.out.println(test4());
 	}
-
+	public static String test4() {
+		
+		boolean flag = true;
+		
+		if(flag){
+			return "222";
+		}
+		
+		return "333";
+	}
+	public static void test3() {
+		Random R = new Random();
+		for(int i =0;i<100;i++){
+			System.out.println(R.nextInt(10));
+		}
+		
+	}
+	
 	public static void test1() {
-
 		int i = 0;
 		for (int j = 0; j < 10; j++) {
 			i = i++;
 		}
 		System.out.println("i的最后结果" + i);
-
 		int temp = i;
 		// 做自增
 		i = i++;
 		System.out.println("i的最后结果" + temp);
-
 	}
 
 	public static void test2() {
 		System.out.println(Math.round(-11.52));
-
 		// Math.round():Java中的四舍五入函数
-
 		System.out.println("Case1：小数点后第一位 = 5");
-
 		System.out.println("正数：Math.round(11.5) = " + Math.round(11.5));// 12
-
 		System.out.println("负数：Math.round(-11.5) = " + Math.round(-11.5));// -11
-
 		System.out.println("Case2：小数点后第一位 < 5");
-
 		System.out.println("正数：Math.round(11.49) = " + Math.round(11.49));// 11
-
 		System.out.println("负数：Math.round(-11.49) = " + Math.round(-11.49));// -11
-
 		System.out.println("Case3：小数点后第一位 > 5");
-
 		System.out.println("正数：Math.round(11.69) = " + Math.round(11.69));// 12
-
 		System.out.println("负数：Math.round(-11.69) = " + Math.round(-11.69));// -12
-
 		System.out.println("结论：正数小数点后大于5则进位；负数小数点后小于以及等于5都舍去，大于5的则进位");
-
 		System.out.println("也就是说：小数点后大于5全部加，等于5正数加，小于5全不加");
 	}
 

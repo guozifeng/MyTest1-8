@@ -1,13 +1,14 @@
 package com.guo.offer.testthread.threadstatus;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 import org.junit.Test;
 
 public class TestCompletableFuture {
 
 	public static void main(String[] args) throws Exception {
-		test5();
+		test1();
 	}
 
 	private static void test5() {
@@ -80,7 +81,15 @@ public class TestCompletableFuture {
 			}
 
 		}));
-
+		try {
+			future.get();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("=======22======");
 	}
 
