@@ -1,7 +1,6 @@
 package com.guo.offer.outofmemory;
 
 import java.lang.reflect.Field;
-
 import sun.misc.Unsafe;
 
 /**

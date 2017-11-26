@@ -9,9 +9,9 @@ public class OOMTest2 {
 		List<String> list = new ArrayList<String>();
 		while (true) {
 			list.add(UUID.randomUUID().toString().intern());
-			System.out.println("æ€»å†…å­˜ï¼š" + Runtime.getRuntime().totalMemory() / 1024 / 1024 + "M");
-			System.out.println("ç©ºé—²å†…å­˜ï¼š" + Runtime.getRuntime().freeMemory() / 1024 / 1024 + "M");
-			System.out.println("å·²ä½¿ç”¨å†…å­˜ï¼š"
+			System.out.println("×ÜÄÚ´æ£º" + Runtime.getRuntime().totalMemory() / 1024 / 1024 + "M");
+			System.out.println("¿ÕÏÐÄÚ´æ£º" + Runtime.getRuntime().freeMemory() / 1024 / 1024 + "M");
+			System.out.println("ÒÑÊ¹ÓÃÄÚ´æ£º"
 					+ (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1024 / 1024 + "M");
 
 		}
