@@ -9,26 +9,26 @@ public class Java8Tester2 {
 		List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
 
 		// Predicate<Integer> predicate = n -> true
-		// n æ˜¯ä¸€ä¸ªå‚æ•°ä¼ é€’åˆ° Predicate æŽ¥å£çš„ test æ–¹æ³•
-		// n å¦‚æžœå­˜åœ¨åˆ™ test æ–¹æ³•è¿”å›ž true
+		// n ÊÇÒ»¸ö²ÎÊý´«µÝµ½ Predicate ½Ó¿ÚµÄ test ·½·¨
+		// n Èç¹û´æÔÚÔò test ·½·¨·µ»Ø true
 
-		System.out.println("è¾“å‡ºæ‰€æœ‰æ•°æ®:");
+		System.out.println("Êä³öËùÓÐÊý¾Ý:");
 
-		// ä¼ é€’å‚æ•° n
+		// ´«µÝ²ÎÊý n
 		eval(list, n -> true);
 
 		// Predicate<Integer> predicate1 = n -> n%2 == 0
-		// n æ˜¯ä¸€ä¸ªå‚æ•°ä¼ é€’åˆ° Predicate æŽ¥å£çš„ test æ–¹æ³•
-		// å¦‚æžœ n%2 ä¸º 0 test æ–¹æ³•è¿”å›ž true
+		// n ÊÇÒ»¸ö²ÎÊý´«µÝµ½ Predicate ½Ó¿ÚµÄ test ·½·¨
+		// Èç¹û n%2 Îª 0 test ·½·¨·µ»Ø true
 
-		System.out.println("è¾“å‡ºæ‰€æœ‰å¶æ•°:");
+		System.out.println("Êä³öËùÓÐÅ¼Êý:");
 		eval(list, n -> n % 2 == 0);
 
 		// Predicate<Integer> predicate2 = n -> n > 3
-		// n æ˜¯ä¸€ä¸ªå‚æ•°ä¼ é€’åˆ° Predicate æŽ¥å£çš„ test æ–¹æ³•
-		// å¦‚æžœ n å¤§äºŽ 3 test æ–¹æ³•è¿”å›ž true
+		// n ÊÇÒ»¸ö²ÎÊý´«µÝµ½ Predicate ½Ó¿ÚµÄ test ·½·¨
+		// Èç¹û n ´óÓÚ 3 test ·½·¨·µ»Ø true
 
-		System.out.println("è¾“å‡ºå¤§äºŽ 3 çš„æ‰€æœ‰æ•°å­—:");
+		System.out.println("Êä³ö´óÓÚ 3 µÄËùÓÐÊý×Ö:");
 		eval(list, n -> n > 3);
 	}
 

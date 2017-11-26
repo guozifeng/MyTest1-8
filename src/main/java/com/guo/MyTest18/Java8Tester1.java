@@ -9,17 +9,17 @@ public class Java8Tester1 {
 
 interface Vehicle {
 	default void print() {
-		System.out.println("æˆ‘æ˜¯ä¸€è¾†è½¦!");
+		System.out.println("ÎÒÊÇÒ»Á¾³µ!");
 	}
 
 	static void blowHorn() {
-		System.out.println("æŒ‰å–‡å­!!!");
+		System.out.println("°´À®°È!!!");
 	}
 }
 
 interface FourWheeler {
 	default void print() {
-		System.out.println("æˆ‘æ˜¯ä¸€è¾†å››è½®è½¦!");
+		System.out.println("ÎÒÊÇÒ»Á¾ËÄÂÖ³µ!");
 	}
 }
 
@@ -28,6 +28,6 @@ class Car implements Vehicle, FourWheeler {
 		Vehicle.super.print();
 		FourWheeler.super.print();
 		Vehicle.blowHorn();
-		System.out.println("æˆ‘æ˜¯ä¸€è¾†æ±½è½¦!");
+		System.out.println("ÎÒÊÇÒ»Á¾Æû³µ!");
 	}
 }
