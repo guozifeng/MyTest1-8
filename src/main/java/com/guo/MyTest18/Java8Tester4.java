@@ -12,11 +12,11 @@ public class Java8Tester4 {
 
 	@Test
 	public void testLocalDateTime() {
-		System.out.println("å½“å‰æ—¶é—´æˆ³: " + Instant.now());
-		// è·å–å½“å‰çš„æ—¥æœŸæ—¶é—´
+		System.out.println("µ±Ç°Ê±¼ä´Á: " + Instant.now());
+		// »ñÈ¡µ±Ç°µÄÈÕÆÚÊ±¼ä
 		LocalDateTime currentTime = LocalDateTime.now();
 					
-		System.out.println("å½“å‰æ—¶é—´: " + currentTime);
+		System.out.println("µ±Ç°Ê±¼ä: " + currentTime);
 
 		LocalDate date1 = currentTime.toLocalDate();
 		System.out.println("date1: " + date1);
@@ -25,7 +25,7 @@ public class Java8Tester4 {
 		int day = currentTime.getDayOfMonth();
 		int seconds = currentTime.getSecond();
 
-		System.out.println("æœˆ: " + month + ", æ—¥: " + day + ", ç§’: " + seconds);
+		System.out.println("ÔÂ: " + month + ", ÈÕ: " + day + ", Ãë: " + seconds);
 
 		LocalDateTime date2 = currentTime.withDayOfMonth(10).withYear(2012);
 		System.out.println("date2: " + date2);
@@ -34,11 +34,11 @@ public class Java8Tester4 {
 		LocalDate date3 = LocalDate.of(2014, Month.DECEMBER, 12);
 		System.out.println("date3: " + date3);
 
-		// 22 å°æ—¶ 15 åˆ†é’Ÿ
+		// 22 Ğ¡Ê± 15 ·ÖÖÓ
 		LocalTime date4 = LocalTime.of(22, 15);
 		System.out.println("date4: " + date4);
 
-		// è§£æå­—ç¬¦ä¸²
+		// ½âÎö×Ö·û´®
 		LocalTime date5 = LocalTime.parse("20:15:30");
 		System.out.println("date5: " + date5);
 	}
