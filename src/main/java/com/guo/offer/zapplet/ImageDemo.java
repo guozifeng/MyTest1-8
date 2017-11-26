@@ -1,4 +1,4 @@
-package com.guo.offer.applet;
+package com.guo.offer.zapplet;
 
 import java.applet.*;
 import java.awt.*;
