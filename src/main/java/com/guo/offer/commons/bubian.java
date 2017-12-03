@@ -21,7 +21,7 @@ public class bubian {
 	                    }
 	                }
 	            });
-
+                
 	            Thread printThread = new Thread(new Runnable() {
 	                @Override
 	                public void run() {
