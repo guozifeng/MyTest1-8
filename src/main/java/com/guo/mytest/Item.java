@@ -47,33 +47,6 @@ public class Item {
         return (int)System.currentTimeMillis();
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Item other = (Item)obj;
-        if (name == null) {
-            if (other.name != null)
-                return false;
-        } else if (!name.equals(other.name))
-            return false;
-        if (price == null) {
-            if (other.price != null)
-                return false;
-        } else if (!price.equals(other.price))
-            return false;
-        if (qty == null) {
-            if (other.qty != null)
-                return false;
-        } else if (!qty.equals(other.qty))
-            return false;
-        return true;
-    }
-
     public void setName(String name) {
         this.name = name;
     }

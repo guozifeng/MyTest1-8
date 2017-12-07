@@ -6,16 +6,19 @@ public class testOptional {
 
 	// 使用Optional，我们就可以把下面这样的代码进行改写。
 	public static String getName0(User u) {
-		if (u == null)
-			return "Unknown";
+		if (u == null){
+		    return "Unknown";
+		}
+			
 		return u.name;
 	}
 
 	// 不过，千万不要改写成这副样子。
 	public static String getName1(User u) {
 		Optional<User> user = Optional.ofNullable(u);
-		if (!user.isPresent())
-			return "Unknown";
+		if (!user.isPresent()){
+            return "Unknown";
+        }
 		return user.get().name;
 	}
 

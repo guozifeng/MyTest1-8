@@ -19,7 +19,7 @@ import com.google.common.collect.Lists;
 public class Java8StreamTest {
 
 	public static void main(String[] args) {
-		Test5();
+		test5();
 
 		//Test4();
 		List<Integer> ints = Lists.newArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
@@ -36,7 +36,7 @@ public class Java8StreamTest {
 
 	}
 
-	private static void Test5() {
+	private static void test5() {
 		// 3 apple, 2 banana, others 1
 		
 		List<Item> items = Arrays.asList(new Item("apple", 10, new BigDecimal("9.99")),
