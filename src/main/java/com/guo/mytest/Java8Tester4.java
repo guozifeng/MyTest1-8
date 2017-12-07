@@ -1,4 +1,4 @@
-package com.guo.MyTest18;
+package com.guo.mytest;
 
 import java.time.Instant;
 import java.time.LocalDate;

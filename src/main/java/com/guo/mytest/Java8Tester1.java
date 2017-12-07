@@ -1,4 +1,4 @@
-package com.guo.MyTest18;
+package com.guo.mytest;
 
 public class Java8Tester1 {
 	public static void main(String args[]) {
