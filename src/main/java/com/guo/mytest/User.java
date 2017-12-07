@@ -2,6 +2,11 @@ package com.guo.mytest;
 
 import java.util.Optional;
 
+/**
+ * 
+ * @author Administrator
+ * @date 2017/12/07
+ */
 public class User {
 	String name;
 
