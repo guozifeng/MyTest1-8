@@ -33,7 +33,10 @@ public class Java8Tester9 {
 		System.out.println(names2);
 	}
 
-	// 使用 java 7 排序
+	/**
+	 * 121
+	 * @param names
+	 */
 	private void sortUsingJava7(List<String> names) {
 		Collections.sort(names, new Comparator<String>() {
 			@Override
@@ -43,7 +46,10 @@ public class Java8Tester9 {
 		});
 	}
 
-	// 使用 java 8 排序
+	/**
+	 * 112
+	 * @param names
+	 */
 	private void sortUsingJava8(List<String> names) {
 		Collections.sort(names, (s1, s2) -> s1.compareTo(s2));
 	}

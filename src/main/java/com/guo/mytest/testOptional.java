@@ -4,7 +4,11 @@ import java.util.Optional;
 
 public class testOptional {
 
-	// 使用Optional，我们就可以把下面这样的代码进行改写。
+	/**
+	 *  使用Optional，我们就可以把下面这样的代码进行改写。
+	 * @param u
+	 * @return
+	 */
 	public static String getName0(User u) {
 		if (u == null){
 		    return "Unknown";
@@ -13,7 +17,11 @@ public class testOptional {
 		return u.name;
 	}
 
-	// 不过，千万不要改写成这副样子。
+	/**
+	 *  不过，千万不要改写成这副样子。
+	 * @param u
+	 * @return
+	 */
 	public static String getName1(User u) {
 		Optional<User> user = Optional.ofNullable(u);
 		if (!user.isPresent()){
@@ -22,11 +30,20 @@ public class testOptional {
 		return user.get().name;
 	}
 
-	// 这样改写非但不简洁，而且其操作还是和第一段代码一样。无非就是用isPresent方法来替代u==null。这样的改写并不是Optional正确的用法，我们再来改写一次。
+	/**
+	 * 
+	 *  这样改写非但不简洁，而且其操作还是和第一段代码一样。无非就是用isPresent方法来替代u==null。这样的改写并不是Optional正确的用法，我们再来改写一次。
+	 */
 	public static String getName2(User u) {
 		return Optional.ofNullable(u).map(user -> user.name).orElse("Unknown");
 	}
 
+	/**
+	 * 
+	 * @param comp
+	 * @return
+	 * @throws IllegalArgumentException
+	 */
 	public static String getChampionName(Competition comp) throws IllegalArgumentException {
 		if (comp != null) {
 			CompResult result = comp.getCompResult();
