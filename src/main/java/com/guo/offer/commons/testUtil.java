@@ -25,6 +25,8 @@ public class testUtil {
 		System.out.println(StringUtils.indexOf(null, "abc")); // -1
 		System.out.println(StringUtils.indexOf("abcd", "abc")); // 0
 
+		String str4 = "0171127000";
+		System.out.println(str4.subSequence(1, 7));
 	}
 
 }

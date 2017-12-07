@@ -20,8 +20,13 @@ import org.junit.Test;
 public class TestMath {
 
 	public static void main(String[] args) {
-		test4();
-		System.out.println(test4());
+		Integer a = 1;
+		if(a == 1){
+			System.out.println("1111");
+		}else{
+			System.out.println("222");
+		}
+		
 	}
 	public static String test4() {
 		
