@@ -12,7 +12,8 @@ public class ImageDemo extends Applet {
 	private Image image;
 	private AppletContext context;
 
-	public void init() {
+	@Override
+    public void init() {
 		context = this.getAppletContext();
 		String imageURL = this.getParameter("image");
 		if (imageURL == null) {
@@ -28,7 +29,8 @@ public class ImageDemo extends Applet {
 		}
 	}
 
-	public void paint(Graphics g) {
+	@Override
+    public void paint(Graphics g) {
 		context.showStatus("Displaying image");
 		g.drawImage(image, 0, 0, 200, 84, null);
 		g.drawString("www.javalicense.com", 35, 100);

@@ -13,21 +13,25 @@ public class ExampleEventHandling extends Applet implements MouseListener {
 	private static final long serialVersionUID = 1L;
 	StringBuffer strBuffer;
 
-	public void init() {
+	@Override
+    public void init() {
 		addMouseListener(this);
 		strBuffer = new StringBuffer();
 		addItem("initializing the apple ");
 	}
 
-	public void start() {
+	@Override
+    public void start() {
 		addItem("starting the applet ");
 	}
 
-	public void stop() {
+	@Override
+    public void stop() {
 		addItem("stopping the applet ");
 	}
 
-	public void destroy() {
+	@Override
+    public void destroy() {
 		addItem("unloading the applet");
 	}
 
@@ -37,7 +41,8 @@ public class ExampleEventHandling extends Applet implements MouseListener {
 		repaint();
 	}
 
-	public void paint(Graphics g) {
+	@Override
+    public void paint(Graphics g) {
 		// Draw a Rectangle around the applet's display area.
 		g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
 
@@ -45,19 +50,24 @@ public class ExampleEventHandling extends Applet implements MouseListener {
 		g.drawString(strBuffer.toString(), 10, 20);
 	}
 
-	public void mouseEntered(MouseEvent event) {
+	@Override
+    public void mouseEntered(MouseEvent event) {
 	}
 
-	public void mouseExited(MouseEvent event) {
+	@Override
+    public void mouseExited(MouseEvent event) {
 	}
 
-	public void mousePressed(MouseEvent event) {
+	@Override
+    public void mousePressed(MouseEvent event) {
 	}
 
-	public void mouseReleased(MouseEvent event) {
+	@Override
+    public void mouseReleased(MouseEvent event) {
 	}
 
-	public void mouseClicked(MouseEvent event) {
+	@Override
+    public void mouseClicked(MouseEvent event) {
 		addItem("mouse clicked! ");
 	}
 }

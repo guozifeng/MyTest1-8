@@ -7,7 +7,8 @@ class MyThread extends Thread {
 	MyThread() {
 	}
 
-	public void run() {
+	@Override
+    public void run() {
 		String thrdName = Thread.currentThread().getName();
 		System.out.println(thrdName + " starting.");
 		while (waiting) {
@@ -33,8 +34,9 @@ class MyThread extends Thread {
 
 	synchronized void startWait() {
 		try {
-			while (!ready)
-				wait();
+			while (!ready) {
+                wait();
+            }
 		} catch (InterruptedException exc) {
 			System.out.println("wait() interrupted");
 		}
@@ -60,8 +62,9 @@ public class TestStatusNotify {
 		thrd.notice();
 		Thread.sleep(5000);
 		showThreadStatus(thrd);
-		while (thrd.isAlive())
-			System.out.println("alive");
+		while (thrd.isAlive()) {
+            System.out.println("alive");
+        }
 		showThreadStatus(thrd);
 	}
 

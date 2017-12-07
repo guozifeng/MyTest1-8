@@ -8,7 +8,8 @@ public class Salary extends Employee {
 		setSalary(salary);
 	}
 
-	public void mailCheck() {
+	@Override
+    public void mailCheck() {
 		super.mailCheck();
 		System.out.println("Salary 类的 mailCheck 方法 ");
 		System.out.println("邮寄支票给：" + getName() + " ，工资为：" + salary);

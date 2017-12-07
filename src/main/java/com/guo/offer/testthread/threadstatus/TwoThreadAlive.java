@@ -1,7 +1,8 @@
 package com.guo.offer.testthread.threadstatus;
 
 public class TwoThreadAlive extends Thread {
-	public void run() {
+	@Override
+    public void run() {
 		for (int i = 0; i < 10; i++) {
 			printMsg();
 		}

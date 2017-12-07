@@ -9,15 +9,18 @@ public class SleepingThread extends Thread {
 		start();
 	}
 
-	public String toString() {
+	@Override
+    public String toString() {
 		return "#" + getName() + ": " + countDown;
 	}
 
-	public void run() {
+	@Override
+    public void run() {
 		while (true) {
 			System.out.println(this);
-			if (--countDown == 0)
-				return;
+			if (--countDown == 0) {
+                return;
+            }
 			try {
 				sleep(100);
 			} catch (InterruptedException e) {

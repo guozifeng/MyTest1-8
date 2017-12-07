@@ -53,7 +53,8 @@ class Consumer extends Thread {
 		this.number = number;
 	}
 
-	public void run() {
+	@Override
+    public void run() {
 		int value = 0;
 		for (int i = 0; i < 10; i++) {
 			value = cubbyhole.get();
@@ -71,7 +72,8 @@ class Producer extends Thread {
 		this.number = number;
 	}
 
-	public void run() {
+	@Override
+    public void run() {
 		for (int i = 0; i < 10; i++) {
 			cubbyhole.put(i);
 			System.out.println("Éú²úÕß #" + this.number + " put: " + i);

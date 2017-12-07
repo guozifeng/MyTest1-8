@@ -5,7 +5,8 @@ public class TestVolatile1 implements Runnable {
 
 	private volatile boolean active;
 
-	public void run() {
+	@Override
+    public void run() {
 		active = true;
 		while (active) // µÚÒ»ÐÐ
 		{

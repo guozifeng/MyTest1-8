@@ -28,7 +28,8 @@ public class testArraysSort2 implements Comparable {
 		this.id = id;
 	}
 
-	public int compareTo(Object o) {
+	@Override
+    public int compareTo(Object o) {
 		return this.age - ((testArraysSort2) o).getAge();
 	}
 

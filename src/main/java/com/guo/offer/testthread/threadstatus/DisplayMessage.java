@@ -9,7 +9,8 @@ public class DisplayMessage implements Runnable {
 		this.message = message;
 	}
 
-	public void run() {
+	@Override
+    public void run() {
 		while (true) {
 			System.out.println(message);
 		}

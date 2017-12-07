@@ -47,8 +47,9 @@ public class testArraysSort1 {
 	}
 
 	public static void printDogs(Dog[] dogs) {
-		for (Dog d : dogs)
-			System.out.print("size=" + d.size + " weight=" + d.weight + " ");
+		for (Dog d : dogs) {
+            System.out.print("size=" + d.size + " weight=" + d.weight + " ");
+        }
 
 		System.out.println();
 	}

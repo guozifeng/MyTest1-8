@@ -17,7 +17,8 @@ public class Employee {
 		System.out.println("ÓÊ¼ÄÖ§Æ±¸ø£º " + this.name + " " + this.address);
 	}
 
-	public String toString() {
+	@Override
+    public String toString() {
 		return name + " " + address + " " + number;
 	}
 

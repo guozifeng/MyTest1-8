@@ -3,7 +3,8 @@ package com.guo.offer.testutils;
 public class TestThreadLocal {
 	// ①通过匿名内部类覆盖ThreadLocal的initialValue()方法，指定初始值
 	private static ThreadLocal<Integer> seqNum = new ThreadLocal<Integer>() {
-		public Integer initialValue() {
+		@Override
+        public Integer initialValue() {
 			return 0;
 		}
 	};
@@ -32,7 +33,8 @@ public class TestThreadLocal {
 			this.sn = sn;
 		}
 
-		public void run() {
+		@Override
+        public void run() {
 			for (int i = 0; i < 3; i++) {
 				// ④每个线程打出3个序列值
 				System.out.println("thread[" + Thread.currentThread().getName() + "] --> sn[" + sn.getNextNum() + "]");

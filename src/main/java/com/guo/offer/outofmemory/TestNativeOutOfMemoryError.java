@@ -21,7 +21,8 @@ class HoldThread extends Thread {
 		this.setDaemon(true);
 	}
 
-	public void run() {
+	@Override
+    public void run() {
 		try {
 			cdl.await();
 		} catch (InterruptedException e) {

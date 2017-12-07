@@ -29,7 +29,8 @@ abstract class Animal {
 }
 
 class Cat extends Animal {
-	public void eat() {
+	@Override
+    public void eat() {
 		System.out.println("≥‘”„");
 	}
 
@@ -39,7 +40,8 @@ class Cat extends Animal {
 }
 
 class Dog extends Animal {
-	public void eat() {
+	@Override
+    public void eat() {
 		System.out.println("≥‘π«Õ∑");
 	}
 

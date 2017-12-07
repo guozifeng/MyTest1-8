@@ -15,7 +15,8 @@ public class LockTest {
 }
 
 class LockA implements Runnable {
-	public void run() {
+	@Override
+    public void run() {
 		try {
 			System.out.println(new Date().toString() + " LockA 开始执行");
 			while (true) {
@@ -35,7 +36,8 @@ class LockA implements Runnable {
 }
 
 class LockB implements Runnable {
-	public void run() {
+	@Override
+    public void run() {
 		try {
 			System.out.println(new Date().toString() + " LockB 开始执行");
 			while (true) {

@@ -31,7 +31,8 @@ public class CountDownLatchTest {
 		for (int index = 0; index < 10; index++) {
 			final int NO = index + 1;
 			Runnable run = new Runnable() {
-				public void run() {
+				@Override
+                public void run() {
 					try {
 						// 如果当前计数为零，则此方法立即返回。
 						// 等待

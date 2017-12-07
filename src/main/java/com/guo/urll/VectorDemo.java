@@ -27,13 +27,15 @@ public class VectorDemo {
 		v.addElement(new Integer(12));
 		System.out.println("First element: " + (Integer) v.firstElement());
 		System.out.println("Last element: " + (Integer) v.lastElement());
-		if (v.contains(new Integer(3)))
-			System.out.println("Vector contains 3.");
+		if (v.contains(new Integer(3))) {
+            System.out.println("Vector contains 3.");
+        }
 		// enumerate the elements in the vector.
 		Enumeration vEnum = v.elements();
 		System.out.println("\nElements in vector:");
-		while (vEnum.hasMoreElements())
-			System.out.print(vEnum.nextElement() + " ");
+		while (vEnum.hasMoreElements()) {
+            System.out.print(vEnum.nextElement() + " ");
+        }
 		System.out.println();
 	}
 }

@@ -10,7 +10,8 @@ class SyncThread implements Runnable {
 		count = 0;
 	}
 
-	public void run() {
+	@Override
+    public void run() {
 		synchronized (this) {
 			for (int i = 0; i < 5; i++) {
 				try {

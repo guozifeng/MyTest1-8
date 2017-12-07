@@ -19,7 +19,8 @@ public class UnLockTest {
 }
 
 class LockAa implements Runnable {
-	public void run() {
+	@Override
+    public void run() {
 		try {
 			System.out.println(new Date().toString() + " LockA 开始执行");
 			while (true) {
@@ -45,7 +46,8 @@ class LockAa implements Runnable {
 }
 
 class LockBb implements Runnable {
-	public void run() {
+	@Override
+    public void run() {
 		try {
 			System.out.println(new Date().toString() + " LockB 开始执行");
 			while (true) {

@@ -21,7 +21,8 @@ class SyncThread1 implements Runnable {
 		}
 	}
 
-	public void run() {
+	@Override
+    public void run() {
 		method();
 	}
 

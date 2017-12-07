@@ -59,7 +59,8 @@ public class SendEmail {
 		properties.put("mail.smtp.ssl.socketFactory", sf);
 		// 获取默认session对象
 		Session session = Session.getDefaultInstance(properties, new Authenticator() {
-			public PasswordAuthentication getPasswordAuthentication() {
+			@Override
+            public PasswordAuthentication getPasswordAuthentication() {
 				return new PasswordAuthentication("602394902@qq.com", "fvzmostizjlsbebi"); // 发件人邮件用户名、密码
 			}
 		});
