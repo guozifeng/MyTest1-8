@@ -21,7 +21,7 @@ public class testNumber {
 		/**
 		 * 注意 == 与 equals的区别 == 它比较的是对象的地址 equlas 比较的是对象的内容
 		 */
-		if (i1 == i2) {
+		if (i1.equals(i2)) {
 			System.out.println("true");
 		} else {
 			System.out.println("false");
