@@ -10,7 +10,7 @@ public class FinalPeople {
 
 	@Override
     public String toString() {
-        return "people [name=" + name + "]";
+        return "FinalPeople [name=" + name + "]";
     }
 
     public String getName() {
