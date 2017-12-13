@@ -24,7 +24,9 @@ public class FinalTest {
 		System.out.println(buffer1);
 		
 		final FinalPeople p = new FinalPeople();
-		System.out.println(p);
+		final FinalPeople p1 = new FinalPeople();
+		System.out.println(p.equals(p1));
+		
 	}
 
 	public static void test2() {
