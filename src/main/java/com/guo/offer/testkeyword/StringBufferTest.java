@@ -1,4 +1,4 @@
-package com.guo.offer.testdatatype;
+package com.guo.offer.testkeyword;
 
 /*
  * 形式参数问题：
@@ -12,7 +12,7 @@ package com.guo.offer.testdatatype;
  * 注意：
  *         String作为参数传递，效果和基本类型作为参数传递是一样的。
  */
-public class StringBufferDemo {
+public class StringBufferTest {
 	public static void main(String[] args) {
 		String s1 = "hello";
 		String s2 = "world";
