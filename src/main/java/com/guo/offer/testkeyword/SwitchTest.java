@@ -8,7 +8,7 @@ package com.guo.offer.testkeyword;
  * @author Administrator
  *
  */
-public class TestSwitch {
+public class SwitchTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

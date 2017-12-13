@@ -1,7 +1,4 @@
-/**
- * 
- */
-package com.guo.offer.testdatatype;
+package com.guo.offer.testkeyword;
 
 /**
  * 枚举用法详解
@@ -9,7 +6,7 @@ package com.guo.offer.testdatatype;
  * @author jiqinlin
  * 
  */
-public class TestEnum {
+public class EnumTest {
 	/**
 	 * 普通枚举
 	 * 
