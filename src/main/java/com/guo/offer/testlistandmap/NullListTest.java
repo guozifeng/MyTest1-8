@@ -39,5 +39,12 @@ public class NullListTest {
             System.out.println("2");
         }
         
+        
+        String b = null;
+        String a = "aa";
+        
+        System.out.println(a.equals(b));
+        //Å×³öÒì³£
+        System.out.println(b.equals(a));
     }
 }
