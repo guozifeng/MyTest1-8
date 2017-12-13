@@ -1,10 +1,10 @@
-package com.guo.test;
+package com.guo.offer.testkeyword;
 
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class Test {
+public class HashMapTest1 {
 	public static void main(String[] args) {
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("1", "value1");
