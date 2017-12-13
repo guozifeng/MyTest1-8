@@ -27,7 +27,7 @@ import java.util.List;
  * @author Administrator
  *
  */
-public class testNullList {
+public class NullListTest {
     public static void main(String[] args) {
         List list = null;
         
