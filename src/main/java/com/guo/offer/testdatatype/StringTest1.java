@@ -5,7 +5,7 @@ package com.guo.offer.testdatatype;
  * @author Administrator
  *
  */
-public class b {
+public class StringTest1 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
