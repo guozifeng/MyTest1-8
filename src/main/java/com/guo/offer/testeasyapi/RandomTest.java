@@ -27,7 +27,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author Administrator
  *
  */
-public class testrandom {
+public class RandomTest {
 	public static void main(String[] args) throws Exception {
 		test1();
 	}
