@@ -10,7 +10,7 @@ package com.guo.offer.testkeyword;
 public class FinalTest {
 
 	public static void main(String[] args) {
-		test3();
+		test1();
 	}
 
 	public static void test1() {
@@ -22,6 +22,9 @@ public class FinalTest {
 		final StringBuffer buffer1 = new StringBuffer("hello");
 		buffer1.append(" guo");
 		System.out.println(buffer1);
+		
+		final people p = new people();
+		System.out.println(p);
 	}
 
 	public static void test2() {
