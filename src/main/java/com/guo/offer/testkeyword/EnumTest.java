@@ -155,7 +155,7 @@ public class EnumTest {
 
 		// --------------------------
 		System.out.println("=======1====");
-		System.err.println("2季节为" + SeasonEnum.getSeason());
+		System.out.println("2季节为" + SeasonEnum.getSeason());
 
 		// --------------
 		System.out.println("3===========");
