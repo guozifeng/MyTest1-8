@@ -10,21 +10,7 @@ package com.guo.offer.testkeyword;
 public class testFinal {
 
 	public static void main(String[] args) {
-		test1();
-	}
-
-	public static void test3() {
-		MyClass2 myClass1 = new MyClass2();
-		MyClass2 myClass2 = new MyClass2();
-		System.out.println(myClass1.i);
-		System.out.println(myClass1.i);
-		System.out.println(myClass2.i);
-		System.out.println(myClass2.i);
-		System.out.println("**********************");
-		System.out.println(myClass1.j);
-		System.out.println(myClass1.j);
-		System.out.println(myClass2.j);
-		System.out.println(myClass2.j);
+		test2();
 	}
 
 	public static void test1() {
@@ -32,9 +18,9 @@ public class testFinal {
 		StringBuffer buffer = new StringBuffer("hello");
 		myClass.changeValue(buffer);
 		System.out.println(buffer.toString());
-		System.out.println();
+
 		final StringBuffer buffer1 = new StringBuffer("hello");
-		buffer1.append(" 2121");
+		buffer1.append(" guo");
 		System.out.println(buffer1);
 	}
 
@@ -44,6 +30,20 @@ public class testFinal {
 		myClass.changeValue(i);
 		System.out.println("main = "+i);
 	}
+	
+	public static void test3() {
+        MyClass2 myClass1 = new MyClass2();
+        MyClass2 myClass2 = new MyClass2();
+        System.out.println(myClass1.i);
+        System.out.println(myClass1.i);
+        System.out.println(myClass2.i);
+        System.out.println(myClass2.i);
+        System.out.println("**********************");
+        System.out.println(myClass1.j);
+        System.out.println(myClass1.j);
+        System.out.println(myClass2.j);
+        System.out.println(myClass2.j);
+    }
 }
 
 class MyClass {
