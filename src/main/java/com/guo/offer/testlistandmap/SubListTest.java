@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class TestSubList {
+public class SubListTest {
 
 	public static void main(String[] args) {
 		test2();
