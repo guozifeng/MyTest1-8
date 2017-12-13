@@ -14,7 +14,8 @@ public class Test {
 		list.add(4);
 		list.add(5);
 		Thread thread1 = new Thread() {
-			public void run() {
+			@Override
+            public void run() {
 				synchronized (b) {
 					Iterator<Integer> iterator = list.iterator();
 					while (iterator.hasNext()) {
@@ -30,13 +31,15 @@ public class Test {
 			};
 		};
 		Thread thread2 = new Thread() {
-			public void run() {
+			@Override
+            public void run() {
 				synchronized (b) {
 					Iterator<Integer> iterator = list.iterator();
 					while (iterator.hasNext()) {
 						Integer integer = iterator.next();
-						if (integer == 2)
-							iterator.remove();
+						if (integer == 2) {
+                            iterator.remove();
+                        }
 					}
 				}
 
