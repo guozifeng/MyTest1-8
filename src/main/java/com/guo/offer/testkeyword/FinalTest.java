@@ -7,7 +7,7 @@ package com.guo.offer.testkeyword;
  * @author Administrator
  *
  */
-public class testFinal {
+public class FinalTest {
 
 	public static void main(String[] args) {
 		test3();
