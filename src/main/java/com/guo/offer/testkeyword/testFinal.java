@@ -10,7 +10,7 @@ package com.guo.offer.testkeyword;
 public class testFinal {
 
 	public static void main(String[] args) {
-		test2();
+		test3();
 	}
 
 	public static void test1() {
