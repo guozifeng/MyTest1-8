@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Person1 implements Comparable<Person1> {
+public class Person implements Comparable<Person> {
 	private int age;
 	private String name;
 
-	public Person1(String name, int age) {
+	public Person(String name, int age) {
 		this.name = name;
 		this.age = age;
 	}
 
 	@Override
-	public int compareTo(Person1 o) {
+	public int compareTo(Person o) {
 		return this.name.compareTo(o.name);
 	}
 
@@ -24,11 +24,11 @@ public class Person1 implements Comparable<Person1> {
 	}
 
 	public static void main(String[] args) {
-		Person1 person1 = new Person1("one", 18);
-		Person1 person2 = new Person1("two", 17);
-		Person1 person3 = new Person1("three", 19);
+		Person person1 = new Person("one", 18);
+		Person person2 = new Person("two", 17);
+		Person person3 = new Person("three", 19);
 
-		List<Person1> list = new ArrayList<>();
+		List<Person> list = new ArrayList<>();
 		list.add(person1);
 		list.add(person2);
 		list.add(person3);
