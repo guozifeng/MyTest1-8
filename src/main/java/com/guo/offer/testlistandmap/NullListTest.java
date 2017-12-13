@@ -31,6 +31,8 @@ public class NullListTest {
     public static void main(String[] args) {
         List list = null;
         
+        //list==null 时  list.size() 和  list.isEmpty() 均抛出异常
+        
         if(list != null && list.size() == 0){
             System.out.println("1");
         }else{
