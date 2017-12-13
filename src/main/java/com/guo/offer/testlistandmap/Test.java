@@ -20,7 +20,7 @@ public class Test {
 					Iterator<Integer> iterator = list.iterator();
 					while (iterator.hasNext()) {
 						Integer integer = iterator.next();
-						System.out.println(integer);
+						System.out.println(integer+"  "+Thread.currentThread().getName());
 						try {
 							Thread.sleep(100);
 						} catch (InterruptedException e) {
@@ -45,7 +45,7 @@ public class Test {
 
 			};
 		};
-		thread1.start();
 		thread2.start();
+		thread1.start();
 	}
 }
