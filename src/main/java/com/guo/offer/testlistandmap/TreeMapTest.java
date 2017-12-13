@@ -11,7 +11,7 @@ import java.util.TreeMap;
  * @author Administrator
  *
  */
-public class testTreeMap {
+public class TreeMapTest {
 
 	public static void main(String[] args) {
 		TreeMap<String, String> map = new TreeMap<String, String>();
