@@ -1,5 +1,7 @@
 package com.guo.offer.testlistandmap;
 
+import java.util.List;
+
 /**
  * java中判断list是否为空的用法 1、如果想判断list是否为空，可以这么判断：
  * 
@@ -26,5 +28,14 @@ package com.guo.offer.testlistandmap;
  *
  */
 public class testNullList {
-
+    public static void main(String[] args) {
+        List list = null;
+        
+        if(list != null && list.size() == 0){
+            System.out.println("1");
+        }else{
+            System.out.println("2");
+        }
+        
+    }
 }

@@ -3,7 +3,7 @@ package com.guo.offer.testlistandmap;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Test {
+public class SynchronListTest {
 	static ArrayList<Integer> list = new ArrayList<Integer>();
 
 	public static void main(String[] args) {
