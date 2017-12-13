@@ -7,7 +7,7 @@ import java.util.List;
 public class TestSubList {
 
 	public static void main(String[] args) {
-		test1();
+		test2();
 	}
 
 	public static void test1() {
@@ -22,7 +22,7 @@ public class TestSubList {
 		System.out.println();
 		List<Integer> sub = test.subList(2, 4);
 		System.out.println(sub);
-		// sub.remove(1);
+		sub.remove(1);
 		test.add(23);
 		System.out.println(test.size());
 		System.out.println(test);
@@ -38,20 +38,22 @@ public class TestSubList {
 	}
 
 	public static void test2() {
-		List<String> list = new ArrayList<>();
+		List list = new ArrayList<>();
 
 		list.add("d");
 		list.add("33");
 		list.add("44");
 		list.add("55");
 		list.add("66");
-
+		list.add(22);
+		
 		List<String> list2 = list.subList(0, 2);
 		ArrayList<String> a = new ArrayList<String>();
 		a = (ArrayList<String>) list2;
 		System.out.println(a);
 		list2.add("77");
-
+		a.add("33");
+		
 		List<Object> tempList = new ArrayList<Object>(list.subList(0, list.size()));
 		tempList.add("xxxxx");
 		System.out.println(tempList.size());// 3

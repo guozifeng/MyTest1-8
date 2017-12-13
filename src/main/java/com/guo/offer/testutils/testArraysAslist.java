@@ -10,7 +10,7 @@ public class testArraysAslist {
 
 		String[] str = new String[] { "you", "wu" };
 		List list = Arrays.asList(str);
-		//list.add("yangguanbao");
+		list.add("yangguanbao");
 		str[1] = "gujin";
 		System.out.println(str[0] + " " + str[1]);
 		System.out.println(list.get(0) + " " + list.get(1));
