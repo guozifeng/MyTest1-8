@@ -23,7 +23,7 @@ public class FinalTest {
 		buffer1.append(" guo");
 		System.out.println(buffer1);
 		
-		final people p = new people();
+		final FinalPeople p = new FinalPeople();
 		System.out.println(p);
 	}
 
