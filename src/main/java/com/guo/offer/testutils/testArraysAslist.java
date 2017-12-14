@@ -8,12 +8,12 @@ public class testArraysAslist {
 
 	public static void main(String[] args) {
 
-		String[] str = new String[] { "a", "b" };
+		String[] str = new String[] { "you", "wu" };
 		List list = Arrays.asList(str);
-		//list.add("22");
-		str[1] = "22";
-		System.out.println(str[0]);
-		System.out.println(str[1]);
+		list.add("yangguanbao");
+		str[1] = "gujin";
+		System.out.println(str[0] + " " + str[1]);
+		System.out.println(list.get(0) + " " + list.get(1));
 	}
 
 }
