@@ -2,12 +2,12 @@ package com.guo.offer.testmath;
 
 import java.math.BigDecimal;
 
-public class testBigDecimal {
+public class BigDecimalTest {
     // 默认除法运算精度
     private static final int DEF_SCALE = 10;
 
     // 这个类不能实例化
-    private testBigDecimal() {}
+    private BigDecimalTest() {}
 
     public static void main(String[] args) {
 

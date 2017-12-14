@@ -17,7 +17,7 @@ import org.junit.Test;
  * @author Administrator
  *
  */
-public class TestMath {
+public class MathTest {
 
 	public static void main(String[] args) {
 		Integer a = 1;
