@@ -1,15 +1,15 @@
 package com.guo.offer.testkeyword;
 
-public class TestInnerClass {
+public class InnerClassTest {
 	public static void main(String[] args) {
 		// 初始化Bean1
-		TestInnerClass test = new TestInnerClass();
+		InnerClassTest test = new InnerClassTest();
 
-		TestInnerClass.Bean1 bean1 = test.new Bean1();
+		InnerClassTest.Bean1 bean1 = test.new Bean1();
 		System.out.println(++bean1.I);
 
 		// 初始化Bean2
-		TestInnerClass.Bean2 bean2 = new TestInnerClass.Bean2();
+		InnerClassTest.Bean2 bean2 = new InnerClassTest.Bean2();
 		System.out.println(++bean2.J);
 
 		// 初始化Bean3

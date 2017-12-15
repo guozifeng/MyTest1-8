@@ -14,8 +14,11 @@ public class CallableThreadTest implements Callable<Integer> {
 				new Thread(ft, "有返回值的线程").start();
 			}
 		}
+		
 		try {
+		    System.out.println("子线程的返回值：" + ft.isDone());
 			System.out.println("子线程的返回值：" + ft.get());
+			System.out.println("子线程的返回值：" + ft.isDone());
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} catch (ExecutionException e) {

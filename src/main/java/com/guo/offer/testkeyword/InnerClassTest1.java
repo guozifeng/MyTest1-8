@@ -1,6 +1,6 @@
 package com.guo.offer.testkeyword;
 
-public class TestInnerClass1 {
+public class InnerClassTest1 {
 	public static void main(String[] args) {
 		Outter outter = new Outter();
 		outter.new Inner().print();
