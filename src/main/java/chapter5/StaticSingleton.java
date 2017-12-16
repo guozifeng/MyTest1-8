@@ -15,4 +15,12 @@ public class StaticSingleton {
     public static StaticSingleton getInstance() {
         return SingletonHolder.instance;
     }
+
+    public static void main(String args[]) {
+        StaticSingleton a1 = StaticSingleton.getInstance();
+        StaticSingleton a2 = StaticSingleton.getInstance();
+        System.out.println(a1 == a2);
+        StaticSingleton a3 = new StaticSingleton();
+        System.out.println(a3 == a2);
+    }
 }
