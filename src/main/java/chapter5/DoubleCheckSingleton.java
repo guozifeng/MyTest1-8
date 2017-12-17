@@ -10,7 +10,7 @@ public class DoubleCheckSingleton {
 
     public static DoubleCheckSingleton getSingleton() {
         if (singleton == null) {
-            synchronized (Singleton.class) {
+            synchronized (DoubleCheckSingleton.class) {
                 if (singleton == null) {
                     singleton = new DoubleCheckSingleton();
                 }
