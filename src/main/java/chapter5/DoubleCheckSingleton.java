@@ -2,6 +2,12 @@ package chapter5;
 
 public class DoubleCheckSingleton {
     
+    static String a ="aa";
+    
+    static {
+        System.out.println("DoubleCheckSingletonDoubleCheckSingleton");
+    }
+    
     private volatile static DoubleCheckSingleton singleton;
 
     private DoubleCheckSingleton() {

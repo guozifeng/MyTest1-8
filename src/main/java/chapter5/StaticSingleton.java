@@ -7,6 +7,10 @@ public class StaticSingleton {
     
     static String a ="aa";
     
+    static {
+        System.out.println("StaticSingletonStaticSingleton");
+    }
+    
     private StaticSingleton() {
         System.out.println("StaticSingle is create");
     }
