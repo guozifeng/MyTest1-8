@@ -1,8 +1,11 @@
 package chapter5;
 
+import lombok.ToString;
+
 /**
  * Created by 13 on 2017/5/6.
  */
+@ToString
 public class StaticSingleton {
     
     static String a ="aa";
