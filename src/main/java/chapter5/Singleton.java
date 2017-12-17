@@ -4,6 +4,9 @@ package chapter5;
  * Created by 13 on 2017/5/6.
  */
 public class Singleton {
+    
+    static String a = "aa";
+    
     private Singleton() {
         System.out.println("Singleton is create");
     }

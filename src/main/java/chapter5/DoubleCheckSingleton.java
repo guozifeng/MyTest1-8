@@ -8,6 +8,12 @@ public class DoubleCheckSingleton {
         System.out.println("DoubleCheckSingletonDoubleCheckSingleton");
     }
     
+    @Override
+    public String toString() {
+        return "DoubleCheckSingleton [getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+            + super.toString() + "]";
+    }
+
     private volatile static DoubleCheckSingleton singleton;
 
     private DoubleCheckSingleton() {
