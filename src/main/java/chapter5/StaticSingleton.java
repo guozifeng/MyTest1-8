@@ -4,6 +4,9 @@ package chapter5;
  * Created by 13 on 2017/5/6.
  */
 public class StaticSingleton {
+    
+    static String a ="aa";
+    
     private StaticSingleton() {
         System.out.println("StaticSingle is create");
     }
