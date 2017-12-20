@@ -18,12 +18,7 @@ import org.junit.Test;
 public class MathTest {
 
     public static void main(String[] args) {
-        Integer a = 1;
-        if (a == 1) {
-            System.out.println("1111");
-        } else {
-            System.out.println("222");
-        }
+        test3();
 
     }
 
