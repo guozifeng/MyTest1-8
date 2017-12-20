@@ -1,4 +1,4 @@
-package com.guo.offer.testutils;
+package chapter4;
 
 public class ThreadLocalTest2 {
 	// ①通过匿名内部类覆盖ThreadLocal的initialValue()方法，指定初始值

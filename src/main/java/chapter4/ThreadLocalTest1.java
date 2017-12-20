@@ -1,4 +1,4 @@
-package com.guo.offer.testutils;
+package chapter4;
 
 import java.util.Random;
 
