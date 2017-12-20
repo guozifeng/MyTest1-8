@@ -19,7 +19,6 @@ public class MathTest {
 
     public static void main(String[] args) {
         test3();
-
     }
 
     public static String test4() {
