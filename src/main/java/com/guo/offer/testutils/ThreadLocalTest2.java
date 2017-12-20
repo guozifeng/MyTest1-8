@@ -1,6 +1,6 @@
 package com.guo.offer.testutils;
 
-public class TestThreadLocal {
+public class ThreadLocalTest2 {
 	// ①通过匿名内部类覆盖ThreadLocal的initialValue()方法，指定初始值
 	private static ThreadLocal<Integer> seqNum = new ThreadLocal<Integer>() {
 		public Integer initialValue() {
@@ -15,7 +15,7 @@ public class TestThreadLocal {
 	}
 
 	public static void main(String[] args) {
-		TestThreadLocal sn = new TestThreadLocal();
+		ThreadLocalTest2 sn = new ThreadLocalTest2();
 		// ③ 3个线程共享sn，各自产生序列号
 		TestClient t1 = new TestClient(sn);
 		TestClient t2 = new TestClient(sn);
@@ -26,9 +26,9 @@ public class TestThreadLocal {
 	}
 
 	private static class TestClient extends Thread {
-		private TestThreadLocal sn;
+		private ThreadLocalTest2 sn;
 
-		public TestClient(TestThreadLocal sn) {
+		public TestClient(ThreadLocalTest2 sn) {
 			this.sn = sn;
 		}
 
