@@ -34,6 +34,7 @@ public class ThreadLocalTest1 implements Runnable {
 
     private Studen getStudent() {
         Studen studen = studenThreadLocal.get();
+        
         if (null == studen) {
             studen = new Studen(Thread.currentThread().getName());
             studenThreadLocal.set(studen);
