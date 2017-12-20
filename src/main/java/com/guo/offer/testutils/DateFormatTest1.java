@@ -1,17 +1,15 @@
-package com.guo.offer.testSimpleDateFormat;
+package com.guo.offer.testutils;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 /**
- * 问题解决第三种方式
+ * 问题解决第一种方式
  * 
  * @author Administrator
  *
  */
-public class DateFormatTest3 {
-    private static SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy", Locale.US);
+public class DateFormatTest1 {
     private static String date[] = {"01-Jan-1999", "01-Jan-2000", "01-Jan-2001"};
 
     public static void main(String[] args) {
@@ -21,11 +19,10 @@ public class DateFormatTest3 {
                 @Override
                 public void run() {
                     try {
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy", Locale.US);
                         while (true) {
                             String str1 = date[temp];
-                            Date date = DateUtil.parse(str1, "yyyy-MM-dd");
-                            String str2 = DateUtil.format(date, "yyyy-MM-dd");
-                            // String str2 = sdf.format(sdf.parse(str1));
+                            String str2 = sdf.format(sdf.parse(str1));
                             // System.out.println(Thread.currentThread().getName()
                             // + ", " + str1 + "," + str2);
                             if (!str1.equals(str2)) {
