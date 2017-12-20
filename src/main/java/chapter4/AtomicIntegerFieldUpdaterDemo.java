@@ -12,8 +12,9 @@ public class AtomicIntegerFieldUpdaterDemo {
         volatile int score;
     }
 
-    public final static AtomicIntegerFieldUpdater<Candidate> scoreUpdater = AtomicIntegerFieldUpdater.newUpdater(Candidate.class, "score");
-    //检查Updater是否工作正确
+    public final static AtomicIntegerFieldUpdater<Candidate> scoreUpdater
+        = AtomicIntegerFieldUpdater.newUpdater(Candidate.class, "score");
+    // 检查Updater是否工作正确
     public static AtomicInteger allScore = new AtomicInteger(0);
 
     public static void main(String args[]) throws InterruptedException {
@@ -32,13 +33,11 @@ public class AtomicIntegerFieldUpdaterDemo {
             t[i].start();
         }
 
-
         for (int i = 0; i < 10000; i++) {
             t[i].join();
         }
         System.out.println("score=" + stu.score);
         System.out.println("allScore=" + allScore);
     }
-
 
 }

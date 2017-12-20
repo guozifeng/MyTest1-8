@@ -20,7 +20,6 @@ public class CountTask extends RecursiveTask {
         this.end = end;
     }
 
-
     @Override
     protected Long compute() {
         long sum = 0;
@@ -47,14 +46,12 @@ public class CountTask extends RecursiveTask {
             }
 
             for (CountTask t : subTasks) {
-                sum += (Long) t.join();
+                sum += (Long)t.join();
             }
         }
 
-
         return sum;
     }
-
 
     public static void main(String args[]) {
         ForkJoinPool forkJoinPool = new ForkJoinPool();

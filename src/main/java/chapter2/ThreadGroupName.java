@@ -5,19 +5,17 @@ package chapter2;
  */
 public class ThreadGroupName implements Runnable {
     /**
-     * When an object implementing interface <code>Runnable</code> is used
-     * to create a thread, starting the thread causes the object's
-     * <code>run</code> method to be called in that separately executing
-     * thread.
+     * When an object implementing interface <code>Runnable</code> is used to create a thread, starting the thread
+     * causes the object's <code>run</code> method to be called in that separately executing thread.
      * <p/>
-     * The general contract of the method <code>run</code> is that it may
-     * take any action whatsoever.
+     * The general contract of the method <code>run</code> is that it may take any action whatsoever.
      *
      * @see Thread#run()
      */
     @Override
     public void run() {
-        String groupAndName = Thread.currentThread().getThreadGroup().getName() + "-" + Thread.currentThread().getName();
+        String groupAndName
+            = Thread.currentThread().getThreadGroup().getName() + "-" + Thread.currentThread().getName();
         while (true) {
             System.out.println("I am " + groupAndName);
             try {

@@ -12,13 +12,10 @@ public class AccountingVol implements Runnable {
     }
 
     /**
-     * When an object implementing interface <code>Runnable</code> is used
-     * to create a thread, starting the thread causes the object's
-     * <code>run</code> method to be called in that separately executing
-     * thread.
+     * When an object implementing interface <code>Runnable</code> is used to create a thread, starting the thread
+     * causes the object's <code>run</code> method to be called in that separately executing thread.
      * <p/>
-     * The general contract of the method <code>run</code> is that it may
-     * take any action whatsoever.
+     * The general contract of the method <code>run</code> is that it may take any action whatsoever.
      *
      * @see Thread#run()
      */
@@ -30,8 +27,7 @@ public class AccountingVol implements Runnable {
     }
 
     /**
-     * 主函数是通过两个线程对i进行累加操作,最终的正确结果应为20000000,但是实际运行却远远小于正确数值,因为多个线程同事对i进行写入操作时,
-     * 其中一个线程的结果会覆盖另外一个线程的操作,线程不安全导致了这种冲突.
+     * 主函数是通过两个线程对i进行累加操作,最终的正确结果应为20000000,但是实际运行却远远小于正确数值,因为多个线程同事对i进行写入操作时, 其中一个线程的结果会覆盖另外一个线程的操作,线程不安全导致了这种冲突.
      *
      * @param args
      * @throws InterruptedException

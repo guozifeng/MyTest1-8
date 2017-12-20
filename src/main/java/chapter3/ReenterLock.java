@@ -3,8 +3,7 @@ package chapter3;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * 重入锁
- * Created by 13 on 2017/5/5.
+ * 重入锁 Created by 13 on 2017/5/5.
  */
 public class ReenterLock implements Runnable {
     public static ReentrantLock lock = new ReentrantLock();

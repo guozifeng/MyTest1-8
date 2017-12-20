@@ -49,7 +49,6 @@ public class ThreadLocalDemo_GC {
         }
     }
 
-
     public static void main(String args[]) throws InterruptedException {
         ExecutorService executorService = Executors.newFixedThreadPool(10);
         for (int i = 0; i < 100; i++) {

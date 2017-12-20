@@ -9,7 +9,7 @@ public class PriorityDemo {
 
         public void run() {
             while (true) {
-                synchronized (PriorityDemo.class) {//此处产生资源竞争
+                synchronized (PriorityDemo.class) {// 此处产生资源竞争
                     count++;
                     if (count > 1000000) {
                         System.out.println("HightPriority is complete!");
@@ -25,7 +25,7 @@ public class PriorityDemo {
 
         public void run() {
             while (true) {
-                synchronized (PriorityDemo.class) {//此处产生资源竞争
+                synchronized (PriorityDemo.class) {// 此处产生资源竞争
                     count++;
                     if (count > 1000000) {
                         System.out.println("LowPriority is complete!");
@@ -35,7 +35,6 @@ public class PriorityDemo {
             }
         }
     }
-
 
     /**
      * 低优先级的线程先启动,但是并不能保证每次都是LowPriority先完成,资源竞争的情况下还是会先确保优先级较高的线程获得资源.

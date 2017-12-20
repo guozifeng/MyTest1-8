@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 public class AtomicRefrenceDemo {
 
-    //运行中可能不会出现书中提到的情况
+    // 运行中可能不会出现书中提到的情况
     public static void main(String args[]) {
         final AtomicReference<Integer> money = new AtomicReference<Integer>();
         money.set(19);

@@ -28,6 +28,6 @@ public class InterruptAndStopThread {
 
         thread.start();
         Thread.sleep(2000);
-        thread.interrupt();//进行中断操作
+        thread.interrupt();// 进行中断操作
     }
 }

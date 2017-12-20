@@ -8,8 +8,9 @@ import java.util.concurrent.TimeUnit;
  * Created by 13 on 2017/5/5.
  */
 public class TraceThreadPoolExecutor extends ThreadPoolExecutor {
-    
-    public TraceThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue) {
+
+    public TraceThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit,
+        BlockingQueue<Runnable> workQueue) {
         super(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue);
     }
 
@@ -35,4 +36,3 @@ public class TraceThreadPoolExecutor extends ThreadPoolExecutor {
         return new Exception("Client stack trace");
     }
 }
-

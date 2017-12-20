@@ -14,9 +14,8 @@ public class FutureData implements Data {
         }
         this.realData = realData;
         isReady = true;
-        notifyAll();//RealData已经被注入,通知getResult
+        notifyAll();// RealData已经被注入,通知getResult
     }
-
 
     @Override
     public synchronized String getResult() {

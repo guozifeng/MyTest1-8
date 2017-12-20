@@ -4,27 +4,27 @@ import java.util.concurrent.CountDownLatch;
 
 public class TestNativeOutOfMemoryError {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		for (int i = 0;; i++) {
-			System.out.println("i = " + i);
-			new Thread(new HoldThread()).start();
-		}
-	}
+        for (int i = 0;; i++) {
+            System.out.println("i = " + i);
+            new Thread(new HoldThread()).start();
+        }
+    }
 
 }
 
 class HoldThread extends Thread {
-	CountDownLatch cdl = new CountDownLatch(1);
+    CountDownLatch cdl = new CountDownLatch(1);
 
-	public HoldThread() {
-		this.setDaemon(true);
-	}
+    public HoldThread() {
+        this.setDaemon(true);
+    }
 
-	public void run() {
-		try {
-			cdl.await();
-		} catch (InterruptedException e) {
-		}
-	}
+    public void run() {
+        try {
+            cdl.await();
+        } catch (InterruptedException e) {
+        }
+    }
 }

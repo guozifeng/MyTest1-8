@@ -10,34 +10,34 @@ import java.util.Locale;
  *
  */
 public class DateFormatTest2 {
-	private static SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy", Locale.US);
-	private static String date[] = { "01-Jan-1999", "01-Jan-2000", "01-Jan-2001" };
+    private static SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy", Locale.US);
+    private static String date[] = {"01-Jan-1999", "01-Jan-2000", "01-Jan-2001"};
 
-	public static void main(String[] args) {
-		for (int i = 0; i < date.length; i++) {
-			final int temp = i;
-			new Thread(new Runnable() {
-				@Override
-				public void run() {
-					try {
-						synchronized (sdf) {
-							while (true) {
-								String str1 = date[temp];
-								String str2 = sdf.format(sdf.parse(str1));
-								// System.out.println(Thread.currentThread().getName()
-								// + ", " + str1 + "," + str2);
-								if (!str1.equals(str2)) {
-									throw new RuntimeException(Thread.currentThread().getName() + ", Expected " + str1
-											+ " but got " + str2);
-								}
-							}
-						}
+    public static void main(String[] args) {
+        for (int i = 0; i < date.length; i++) {
+            final int temp = i;
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        synchronized (sdf) {
+                            while (true) {
+                                String str1 = date[temp];
+                                String str2 = sdf.format(sdf.parse(str1));
+                                // System.out.println(Thread.currentThread().getName()
+                                // + ", " + str1 + "," + str2);
+                                if (!str1.equals(str2)) {
+                                    throw new RuntimeException(
+                                        Thread.currentThread().getName() + ", Expected " + str1 + " but got " + str2);
+                                }
+                            }
+                        }
 
-					} catch (Exception e) {
-						throw new RuntimeException("parse failed", e);
-					}
-				}
-			}).start();
-		}
-	}
+                    } catch (Exception e) {
+                        throw new RuntimeException("parse failed", e);
+                    }
+                }
+            }).start();
+        }
+    }
 }

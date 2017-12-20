@@ -13,23 +13,23 @@ import java.util.TreeMap;
  */
 public class TreeMapTest {
 
-	public static void main(String[] args) {
-		TreeMap<String, String> map = new TreeMap<String, String>();
-		map.put("one", "1");
-		map.put("two", "2");
-		map.put("three", "3");
-		a(map);
-	}
+    public static void main(String[] args) {
+        TreeMap<String, String> map = new TreeMap<String, String>();
+        map.put("one", "1");
+        map.put("two", "2");
+        map.put("three", "3");
+        a(map);
+    }
 
-	private static void a(Map<String, String> map) {
-		Collection<?> c = map.entrySet();
-		Iterator<?> it = c.iterator();
+    private static void a(Map<String, String> map) {
+        Collection<?> c = map.entrySet();
+        Iterator<?> it = c.iterator();
 
-		while (it.hasNext()) {
-			Object o = it.next();
-			System.out.println(o.toString());
-		}
+        while (it.hasNext()) {
+            Object o = it.next();
+            System.out.println(o.toString());
+        }
 
-	}
+    }
 
 }

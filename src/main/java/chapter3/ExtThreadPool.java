@@ -29,24 +29,24 @@ public class ExtThreadPool {
         }
     }
 
-
     public static void main(String args[]) throws InterruptedException {
-        ExecutorService executorService = new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<Runnable>()) {
-            
-            @Override
-            protected void beforeExecute(Thread t, Runnable r) {
-                System.out.println("准备执行:" + ((MyTask) r).name);
-            }
-            
-            @Override
-            protected void afterExecute(Runnable r, Throwable t) {
-                System.out.println("执行完成:" + ((MyTask) r).name);
-            }
+        ExecutorService executorService
+            = new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<Runnable>()) {
 
-            protected void terminated() {
-                System.out.println("线程池退出!");
-            }
-        };
+                @Override
+                protected void beforeExecute(Thread t, Runnable r) {
+                    System.out.println("准备执行:" + ((MyTask)r).name);
+                }
+
+                @Override
+                protected void afterExecute(Runnable r, Throwable t) {
+                    System.out.println("执行完成:" + ((MyTask)r).name);
+                }
+
+                protected void terminated() {
+                    System.out.println("线程池退出!");
+                }
+            };
 
         for (int i = 0; i < 5; i++) {
             MyTask task = new MyTask("TASK-GEYM-" + i);

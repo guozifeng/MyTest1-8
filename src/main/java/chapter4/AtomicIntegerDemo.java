@@ -2,7 +2,6 @@ package chapter4;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-
 public class AtomicIntegerDemo {
     static AtomicInteger i = new AtomicInteger();
 

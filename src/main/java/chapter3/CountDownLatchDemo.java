@@ -29,9 +29,9 @@ public class CountDownLatchDemo implements Runnable {
         for (int i = 0; i < 10; i++) {
             executorService.submit(demo);
         }
-        //µÈ´ý¼ì²é
+        // µÈ´ý¼ì²é
         end.await();
-        //·¢Éä»ð¼ý
+        // ·¢Éä»ð¼ý
         System.out.println("Fire!");
         executorService.shutdown();
     }

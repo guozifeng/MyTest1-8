@@ -66,8 +66,7 @@ public class MethodReference {
     static class Person {
         private String name;
 
-        public Person() {
-        }
+        public Person() {}
 
         public String getName() {
             return name;

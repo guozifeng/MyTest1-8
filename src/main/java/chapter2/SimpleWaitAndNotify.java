@@ -44,5 +44,5 @@ public class SimpleWaitAndNotify {
         thread2.start();
     }
 
-    //wait()方法会释放目标对象的锁,而Thread.sleep()方法不会释放任何资源.
+    // wait()方法会释放目标对象的锁,而Thread.sleep()方法不会释放任何资源.
 }
