@@ -38,7 +38,9 @@ public class bubian {
 	            printThread.start();
 
 	            //不要同时产生过多的线程，否则会导致操作系统假死
-	            while (Thread.activeCount() > 20);
+	            while (Thread.activeCount() > 20) {
+                    ;
+                }
 	        }
 	    }
 

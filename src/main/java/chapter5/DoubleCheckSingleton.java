@@ -1,10 +1,12 @@
 package chapter5;
 
-/**
- * @author Administrator
- * @date 2017/12/16
- */
 public class DoubleCheckSingleton {
+
+    static String a = "aa";
+
+    static {
+        System.out.println("DoubleCheckSingletonDoubleCheckSingleton");
+    }
 
     private volatile static DoubleCheckSingleton singleton;
 
@@ -14,7 +16,7 @@ public class DoubleCheckSingleton {
 
     public static DoubleCheckSingleton getSingleton() {
         if (singleton == null) {
-            synchronized (Singleton.class) {
+            synchronized (DoubleCheckSingleton.class) {
                 if (singleton == null) {
                     singleton = new DoubleCheckSingleton();
                 }

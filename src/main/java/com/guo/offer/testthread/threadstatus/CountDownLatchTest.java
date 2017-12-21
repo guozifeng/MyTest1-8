@@ -11,7 +11,6 @@ import java.util.concurrent.Executors;
  * @author Administrator
  *
  */
-
 public class CountDownLatchTest {
 
     // 模拟了100米赛跑，10名选手已经准备就绪，只等裁判一声令下。当所有人都到达终点时，比赛结束。
@@ -29,6 +28,7 @@ public class CountDownLatchTest {
         for (int index = 0; index < 10; index++) {
             final int NO = index + 1;
             Runnable run = new Runnable() {
+                @Override
                 public void run() {
                     try {
                         // 如果当前计数为零，则此方法立即返回。

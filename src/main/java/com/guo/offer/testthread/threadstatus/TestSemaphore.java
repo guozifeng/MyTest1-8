@@ -31,7 +31,8 @@ public class TestSemaphore {
 		for (int index = 0; index < 20; index++) {
 			final int NO = index;
 			Runnable run = new Runnable() {
-				public void run() {
+				@Override
+                public void run() {
 					try {
 						// 获取许可
 						semp.acquire();

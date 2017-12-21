@@ -1,7 +1,8 @@
 package com.guo.offer.testthread.threadstatus;
 
 public class ThreadInterrupt extends Thread {
-	public void run() {
+	@Override
+    public void run() {
 		try {
 			sleep(50000); // —”≥Ÿ50√Î
 		} catch (InterruptedException e) {

@@ -7,7 +7,8 @@ public class GuessANumber extends Thread {
 		this.number = number;
 	}
 
-	public void run() {
+	@Override
+    public void run() {
 		int counter = 0;
 		int guess = 0;
 		do {

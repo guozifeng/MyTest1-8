@@ -4,6 +4,9 @@ package chapter5;
  * Created by 13 on 2017/5/6.
  */
 public class LazySingleton {
+    
+    static String a = "aa";
+    
     private LazySingleton() {
         System.out.println("LazySingleton is create");
     }
