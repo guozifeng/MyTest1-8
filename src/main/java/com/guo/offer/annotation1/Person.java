@@ -1,4 +1,4 @@
-package com.guo.offer.annotation;
+package com.guo.offer.annotation1;
 public class Person extends BasePerson {
     
     @Encrypt

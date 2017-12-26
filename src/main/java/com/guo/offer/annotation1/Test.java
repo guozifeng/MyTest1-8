@@ -1,4 +1,4 @@
-package com.guo.offer.annotation;
+package com.guo.offer.annotation1;
 import java.lang.reflect.Field;
 
 public class Test {
