@@ -1,4 +1,4 @@
-package com.kepus.model;
+package com.annotation.model;
 
 public enum SexEnum {
     GG, MM, BNBN // ¸ç¸ç£¬ÃÃÃÃ£¬²»ÄĞ²»Å®

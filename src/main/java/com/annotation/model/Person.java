@@ -1,7 +1,8 @@
-package com.kepus.model;
+package com.annotation.model;
 
 import java.util.Arrays;
-import com.kepus.annotation.MyAnnotation;
+
+import com.annotation.annotation.MyAnnotation;
 
 /**
  * @author ¹®´Ï 2015Äê8ÔÂ9ÈÕ15:12:04

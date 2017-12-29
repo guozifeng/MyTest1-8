@@ -1,4 +1,4 @@
-package com.kepus.annotation;
+package com.annotation.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -7,7 +7,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.kepus.model.SexEnum;
+import com.annotation.model.SexEnum;
 
 // 表示在生成文档的时候添加注解
 @Documented

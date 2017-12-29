@@ -1,9 +1,9 @@
-package com.kepus.test;
+package com.annotation.test;
 
 import java.lang.reflect.Field;
 
-import com.kepus.annotation.MyAnnotation;
-import com.kepus.model.Person;
+import com.annotation.annotation.MyAnnotation;
+import com.annotation.model.Person;
 
 @SuppressWarnings("all")
 public class Test {
