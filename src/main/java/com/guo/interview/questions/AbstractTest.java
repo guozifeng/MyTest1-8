@@ -29,14 +29,14 @@ abstract class Dog extends Animal {
 
 }
 
-public class BigDog extends Dog {
-    public BigDog() {
+public class AbstractTest extends Dog {
+    public AbstractTest() {
         super(10);
         System.out.println("≥ı ºªØBigDog");
     }
 
     public static void main(String[] args) {
-        BigDog a = new BigDog();
+        AbstractTest a = new AbstractTest();
         a.move();
     }
 }
