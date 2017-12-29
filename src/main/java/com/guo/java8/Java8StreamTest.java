@@ -1,4 +1,4 @@
-package com.guo.mytest;
+package com.guo.java8;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;

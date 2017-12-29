@@ -1,4 +1,4 @@
-package com.guo.mytest;
+package com.guo.java8;
 
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
