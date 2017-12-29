@@ -1,4 +1,4 @@
-package com.guo.urll;
+package com.guo.offer.urll;
 
 import java.util.Vector;
 import java.util.Enumeration;
