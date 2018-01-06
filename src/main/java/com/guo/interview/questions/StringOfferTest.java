@@ -1,4 +1,4 @@
-package com.guo.offer.testdatatype;
+package com.guo.interview.questions;
 
 /**
  * true 要说明一点：当两个字符串字面值连接时（相加），得到的新字符串依然是字符串字面值，保存在常量池中。
@@ -6,12 +6,12 @@ package com.guo.offer.testdatatype;
  * @author Administrator
  *
  */
-public class testStringOffer1 {
+public class StringOfferTest {
     private static String a = "ab";
     private static String a1 = new String("ab");
 
     public static void main(String[] args) {
-
+        test4();
     }
 
     public static void test1() {
