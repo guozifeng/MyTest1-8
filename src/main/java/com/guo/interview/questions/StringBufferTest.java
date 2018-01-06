@@ -1,4 +1,4 @@
-package com.guo.offer.testdatatype;
+package com.guo.interview.questions;
 
 /**
  * 打印出来是AB B 请看这样两个语句： String x = "abc"; String y = new String("abcd");
@@ -16,7 +16,7 @@ package com.guo.offer.testdatatype;
  * @author Administrator
  *
  */
-public class TestStringBuffer {
+public class StringBufferTest {
 
     public static void main(String[] args) {
         // TODO Auto-generated method stub
