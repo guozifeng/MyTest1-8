@@ -23,12 +23,12 @@ public class StringBufferTest {
         StringBuffer a = new StringBuffer("A");
         StringBuffer b = new StringBuffer("B");
         append(a, b);
-        System.out.println(a + " " + b);
+        System.out.println(a + " +++ " + b);
     }
 
     public static void append(StringBuffer a, StringBuffer b) {
         a.append(b);
         b = a;
-        System.out.println(a + " " + b);
+        System.out.println(a + " === " + b);
     }
 }
