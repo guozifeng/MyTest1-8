@@ -6,7 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
-public class testReflect {
+public class ReflectTest {
     /**
      * 为了看清楚Java反射部分代码，所有异常我都最后抛出来给虚拟机处理！
      * 
