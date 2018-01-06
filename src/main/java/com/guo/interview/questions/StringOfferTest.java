@@ -11,7 +11,7 @@ public class StringOfferTest {
     private static String a1 = new String("ab");
 
     public static void main(String[] args) {
-        test4();
+        test6();
     }
 
     public static void test1() {
