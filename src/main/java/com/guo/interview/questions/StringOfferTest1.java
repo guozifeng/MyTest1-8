@@ -1,7 +1,7 @@
 package com.guo.interview.questions;
  
 /**
- * 
+ * https://www.cnblogs.com/ydpvictor/archive/2012/09/09/2677260.html
  * @author Administrator
  * @date 2018/01/06
  */
@@ -23,6 +23,7 @@ public class StringOfferTest1 {
          * 
          */
         String str2 = "SEUCalvin";//新加的一行代码，其余不变
+        //String str3 = new String("SEUCalvin");
         String str1 = new String("SEU") + new String("Calvin");
         System.out.println(str1.intern() == str1);
         System.out.println(str1 == "SEUCalvin");
