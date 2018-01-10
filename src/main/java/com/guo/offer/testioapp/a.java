@@ -1,13 +1,8 @@
 package com.guo.offer.testioapp;
 
-import java.io.FileNotFoundException;
 import java.io.RandomAccessFile;
 
 public class a {
-
-    public a() {
-        // TODO Auto-generated constructor stub
-    }
 
     public static void main(String[] args) throws Exception {
         // TODO Auto-generated method stub
