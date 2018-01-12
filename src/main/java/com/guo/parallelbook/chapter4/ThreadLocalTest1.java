@@ -27,7 +27,8 @@ public class ThreadLocalTest1 implements Runnable {
         String currentThreadName = Thread.currentThread().getName();
         Random random = new Random();
         int age = random.nextInt(100);
-        Studen studen = getStudent(); // 通过这个方法，为每个线程都独立的new一个student对象，每个线程的的student对象都可以设置不同的值
+        Studen studen = getStudent(); 
+        // 通过这个方法，为每个线程都独立的new一个student对象，每个线程的的student对象都可以设置不同的值
         studen.setAge(age);
         try {
             Thread.sleep(500);
@@ -45,6 +46,7 @@ public class ThreadLocalTest1 implements Runnable {
             studen = new Studen(Thread.currentThread().getName());
             studenThreadLocal.set(studen);
         }
+        
         return studen;
     }
 
