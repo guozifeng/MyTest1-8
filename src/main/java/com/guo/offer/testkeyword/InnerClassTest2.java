@@ -25,7 +25,9 @@ public class InnerClassTest2 {
             // 只能直接访问外部类的静态成员
             // 静态内部类只能访问外部类的静态成员(包括静态变量和静态方法)
 
-            System.out.println("Inner " + address);// 访问本内部类成员。
+            System.out.println("Inner " + address);
+            System.out.println("Inner " + x);
+            // 访问本内部类成员。
 
         }
     }
