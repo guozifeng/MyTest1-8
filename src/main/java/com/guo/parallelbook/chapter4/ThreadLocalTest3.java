@@ -1,5 +1,7 @@
 package com.guo.parallelbook.chapter4;
 
+import java.util.Arrays;
+
 /**
  * 
  * 从输出可以看出，一旦threadLocal的强引用断开，key的内存就可以得到释放。只有当线程结束后，value的内存才释放。 * 
@@ -28,22 +30,31 @@ public class ThreadLocalTest3 {
     }
 
     public static class My50MB {// 占用内存的大对象
+        @Override
+        public String toString() {
+            return "My50MB [a=" + 1111 + "]";
+        }
+
         private byte[] a = new byte[1024 * 1024 * 50];
 
         @Override
         public void finalize() {
             System.out.println("My 50 MB finalized.");
         }
+        
+        
     }
 
     public static void main(String[] args) throws InterruptedException {
+        
         new Thread(new Runnable() {
             @Override
             public void run() {
                 ThreadLocal tl = new MyThreadLocal();
                 tl.set(new My50MB());
-
+                System.out.println(tl.get());
                 tl = null;// 断开ThreadLocal的强引用
+                //System.out.println(tl.get());
                 System.out.println("Full GC 1");
                 System.gc();
 
@@ -51,13 +62,13 @@ public class ThreadLocalTest3 {
 
         }).start();
 
-        Thread.sleep(10000);
+        //Thread.sleep(1000);
         System.out.println("Full GC 2");
         System.gc();
-        Thread.sleep(10000);
+        Thread.sleep(1000);
         System.out.println("Full GC 3");
         System.gc();
-        Thread.sleep(10000);
+        Thread.sleep(1000);
         System.out.println("Full GC 4");
         System.gc();
         Thread.sleep(1000);
