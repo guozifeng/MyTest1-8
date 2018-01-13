@@ -53,6 +53,9 @@ public class ThreadLocalTest3 {
                 ThreadLocal tl = new MyThreadLocal();
                 tl.set(new My50MB());
                 System.out.println(tl.get());
+                
+                tl.remove();
+                
                 tl = null;// 断开ThreadLocal的强引用
                 //System.out.println(tl.get());
                 System.out.println("Full GC 1");
