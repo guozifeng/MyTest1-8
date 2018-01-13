@@ -35,7 +35,8 @@ public class InnerClassTest2 {
     public void printInfo() {
 
         Person person = new Person();
-
+        Person person1 = new Person();
+        System.out.println(person.equals(person1));
         // 外部类访问内部类的非静态成员:实例化内部类即可
 
         person.display();
