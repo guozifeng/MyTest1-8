@@ -1,4 +1,4 @@
-package com.guo.offer.datastructure.sort;
+package com.guo.interview.questions;
 
 import java.util.ArrayList;
 import java.util.Arrays;
