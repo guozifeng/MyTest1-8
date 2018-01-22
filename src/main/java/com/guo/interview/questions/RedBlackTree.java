@@ -1,847 +1,409 @@
 package com.guo.interview.questions;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.NoSuchElementException;
+import java.util.List;
 import java.util.Queue;
 
-public class RedBlackTree<K extends Comparable<K>, V> {
+import com.guo.interview.questions.RBTreeNode.Color;
 
-    private static final boolean RED = true;
-    private static final boolean BLACK = false;
+public class RedBlackTree {
+    // 缓存中序遍历的数据
+    // 若调用了update/delete操作，导致结点变化
+    // 则在update/delete方法中clear这个List
+    protected List<Integer> midOrderVisitList = new ArrayList<Integer>();
 
-    private Node root;
+    // 类似于链表中的头指针
+    // 它的左孩子才是真正的根结点
+    // delete操作和rotate操作中，涉及父结点
+    // fakeRoot的存在就是为了方便真正根结点的操作
+    protected RBTreeNode fakeRoot;
 
-    private class Node {
-        private K key;
-        private V value;
-        private Node left, right;
-        private boolean color;
-        private int N;
-
-        public Node(K key, V value, boolean color, int N) {
-            this.key = key;
-            this.value = value;
-            this.color = color;
-            this.N = N;
-        }
-
+    public RedBlackTree(RBTreeNode root) {
+        this();
+        fakeRoot.setLeftChild(root);
+        root.setParent(fakeRoot);
+        root.setColor(Color.BLACK);
     }
 
     public RedBlackTree() {
-
-    }
-
-    /**
-     * 空节点默认都是黑色节点
-     * 
-     * @param x
-     * @return
-     */
-    private boolean isRed(Node x) {
-        if (x == null)
-            return false;
-        return x.color == RED;
-    }
-
-    /**
-     * 返回以X为根的子树的节点数目
-     * 
-     * @param x
-     * @return
-     */
-    private int size(Node x) {
-        if (x == null)
-            return 0;
-        return x.N;
-    }
-
-    /**
-     * 返回整棵树的节点数目
-     * 
-     * @return
-     */
-    public int size() {
-        return size(root);
+        fakeRoot = new RBTreeNode(-1);
     }
 
     public boolean isEmpty() {
-        return root == null;
+        return fakeRoot.getLeftChild().isNull();
+    }
+
+    public void invalidateVisitList() {
+        midOrderVisitList.clear();
+    }
+
+    public RBTreeNode getRoot() {
+        return fakeRoot.getLeftChild();
+    }
+
+    public boolean isRed(RBTreeNode node) {
+        return node.getColor() == Color.RED;
     }
 
     /**
-     * 根据key进行查找
+     * 递归查询某个数据是否在树中
      * 
-     * @param key
-     * @return
+     * @param node 指定的子树
+     * @param data 要查找的数据
+     * @return 结果结点。若有匹配数据项，则返回对应结点。若无匹配，则返回叶子结点。
      */
-    public V get(K key) {
-        if (key == null) {
-            throw new NullPointerException("key不能为空");
-        }
-        return get(root, key);
-    }
-
-    private V get(Node x, K key) {
-        while (x != null) {
-            int cmp = key.compareTo(x.key);
-            if (cmp < 0) {
-                x = x.left;
-            } else if (cmp > 0) {
-                x = x.right;
-            } else {
-                return x.value;
-            }
-        }
-        return null;
+    protected RBTreeNode recursiveSearch(RBTreeNode node, int data) {
+        // 子树为空（空结点），即找不到匹配的结点
+        // 此时parent有三种情况：
+        // 1、叶结点 2、仅有左子树 3、仅有右子树
+        // 返回parent是为了方便进行插入操作，因为插入一个结点要先search
+        if (node.isNull())
+            return node.getParent();
+        int _data = node.getData();
+        if (_data == data)
+            return node;
+        // 左子树或右子树递归查找
+        if (data < _data)
+            return recursiveSearch(node.getLeftChild(), data);
+        return recursiveSearch(node.getRightChild(), data);
     }
 
     /**
-     * 判断树中是否包含名字为key的键
+     * 非递归查询某个数据项是否在树中
      * 
-     * @param key
-     * @return
+     * @param node 指定的子树
+     * @param data 要查找的数据
+     * @return 结果结点。若有匹配数据项，则返回对应结点。若无匹配，则返回叶子结点。
      */
-    public boolean contains(K key) {
-        return get(key) != null;
-    }
-
-    /**
-     * 右旋转， 将向左倾斜的红链接变为向右倾斜
-     * 
-     * @param h
-     * @return
-     */
-    private Node rotateRight(Node h) {
-        // assert (h != null) && isRed(h.left);
-        Node x = h.left;
-        h.left = x.right;
-        x.right = h;
-        x.color = h.color;
-        h.color = RED;
-        x.N = h.N;
-        h.N = size(h.left) + size(h.right) + 1;
-        return x;
-    }
-
-    /**
-     * 左旋转，与右旋转相反
-     * 
-     * @param h
-     * @return
-     */
-    private Node rotateLeft(Node h) {
-        // assert (h != null) && isRed(h.right);
-        Node x = h.right;
-        h.right = x.left;
-        x.left = h;
-        x.color = h.color;
-        h.color = RED;
-        x.N = h.N;
-        h.N = size(h.left) + size(h.right) + 1;
-        return x;
-    }
-
-    /**
-     * 颜色反转，注意：h必须与其两个子节点颜色相反
-     * 
-     * @param h
-     */
-    private void flipColors(Node h) {
-        // assert (h != null) && (h.left != null) && (h.right != null);
-        // assert (!isRed(h) && isRed(h.left) && isRed(h.right))
-        // || (isRed(h) && !isRed(h.left) && !isRed(h.right));
-        h.color = !h.color;
-        h.left.color = !h.left.color;
-        h.right.color = !h.right.color;
-    }
-
-    /**
-     * 如果h节点是红色节点， 并且 h.right和h.right.left是黑色。将h.right或者其某个子节点变为红色
-     * 
-     * @param h
-     * @return
-     */
-    private Node moveRedRight(Node h) {
-        // assert (h != null);
-        // assert isRed(h) && !isRed(h.right) && !isRed(h.right.left);
-        flipColors(h);
-        if (isRed(h.left.left)) {
-            h = rotateRight(h);
-            flipColors(h);
+    protected RBTreeNode normalSearch(RBTreeNode node, int data) {
+        RBTreeNode parent = RBTreeNode.NULL_NODE;
+        while (!node.isNull()) {
+            int _data = node.getData();
+            if (_data == data)
+                return node;
+            parent = node;
+            if (data < _data)
+                node = node.getLeftChild();
+            else
+                node = node.getRightChild();
         }
-        return h;
+        return parent;
     }
 
-    /**
-     * 如果h节点是红色节点，并且 h.left和h.left.left是黑色。将 h.left或者其某个子节点变为红色
-     * 
-     * @param h
-     * @return
-     */
-    private Node moveRedLeft(Node h) {
-        // assert (h != null);
-        // assert isRed(h) && !isRed(h.left) && !isRed(h.left.left);
-
-        flipColors(h);
-        if (isRed(h.right.left)) {
-            h.right = rotateRight(h.right);
-            h = rotateLeft(h);
-            flipColors(h);
-        }
-        return h;
+    // 对外提供的查询接口
+    // 具体的实现可使用递归查询，也可不使用递归查询
+    public RBTreeNode search(int data) {
+        if (!isEmpty())
+            // return recursiveSearch(getRoot(), data);
+            return normalSearch(getRoot(), data);
+        return RBTreeNode.NULL_NODE;
     }
 
-    private Node balance(Node h) {
-        // assert (h != null);
-
-        if (isRed(h.right)) {
-            h = rotateLeft(h);
-        }
-        if (isRed(h.left) && isRed(h.left.left)) {
-            h = rotateRight(h);
-        }
-        if (isRed(h.left) && isRed(h.right)) {
-            flipColors(h);
-        }
-
-        h.N = size(h.left) + size(h.right) + 1;
-        return h;
-    }
-
-    /**
-     * 插入键值对
-     * 
-     * @param key
-     * @param value
-     */
-    public void put(K key, V value) {
-        if (key == null) {
-            throw new NullPointerException("key不能为空");
-        }
-        if (value == null) {
-            delete(key);
+    protected void midOrderVisit(RBTreeNode tree, List<Integer> dataList) {
+        if (tree.isNull())
             return;
-        }
-
-        root = put(root, key, value);
-        root.color = BLACK;
-        assert check();
+        midOrderVisit(tree.getLeftChild(), dataList);
+        dataList.add(tree.getData());
+        midOrderVisit(tree.getRightChild(), dataList);
     }
 
-    /**
-     * 在以h为根节点的子树中插入键值对
-     * 
-     * @param h
-     * @param key
-     * @param value
-     * @return
-     */
-    private Node put(Node h, K key, V value) {
-        if (h == null) {
-            return new Node(key, value, RED, 1);
-        }
-
-        int cmp = key.compareTo(h.key);
-        if (cmp < 0) {
-            h.left = put(h.left, key, value);
-        } else if (cmp > 0) {
-            h.right = put(h.right, key, value);
-        } else {
-            h.value = value;
-        }
-
-        // 修正任意向右倾斜的红链接
-        if (isRed(h.right) && !isRed(h.left)) {
-            h = rotateLeft(h);
-        }
-        if (isRed(h.left) && isRed(h.left.left)) {
-            h = rotateRight(h);
-        }
-        if (isRed(h.left) && isRed(h.right)) {
-            flipColors(h);
-        }
-        h.N = size(h.left) + size(h.right) + 1;
-
-        return h;
+    public List<Integer> midOrderVisit() {
+        // 中序缓存列表中有数据，则无须再次遍历，直接返回该列表
+        if (midOrderVisitList.size() == 0)
+            midOrderVisit(fakeRoot.getLeftChild(), midOrderVisitList);
+        return midOrderVisitList;
     }
 
-    public void deleteMin() {
-        if (isEmpty()) {
-            throw new NoSuchElementException("该红黑树为空, 删毛线！！！");
-        }
+    public boolean insert(int data) {
+        RBTreeNode resultTree = search(data);
 
-        if (!isRed(root.left) && !isRed(root.right)) {
-            root.color = RED;
-        }
-
-        root = deleteMin(root);
-        if (!isEmpty()) {
-            root.color = BLACK;
-        }
-        assert check();
-    }
-
-    private Node deleteMin(Node h) {
-        if (h.left == null) {
-            return null;
-        }
-
-        if (!isRed(h.left) && !isRed(h.left.left)) {
-            h = moveRedLeft(h);
-        }
-
-        h.left = deleteMin(h.left);
-        return balance(h);
-    }
-
-    public void deleteMax() {
-        if (isEmpty()) {
-            throw new NoSuchElementException("该红黑树为空, 删毛线！！！");
-        }
-
-        // if both children of root are black, set root to red
-        if (!isRed(root.left) && !isRed(root.right)) {
-            root.color = RED;
-        }
-
-        root = deleteMax(root);
-        if (!isEmpty()) {
-            root.color = BLACK;
-        }
-        assert check();
-    }
-
-    private Node deleteMax(Node h) {
-        if (isRed(h.left)) {
-            h = rotateRight(h);
-        }
-
-        if (h.right == null) {
-            return null;
-        }
-
-        if (!isRed(h.right) && !isRed(h.right.left)) {
-            h = moveRedRight(h);
-        }
-
-        h.right = deleteMax(h.right);
-
-        return balance(h);
-    }
-
-    public void delete(K key) {
-        if (key == null) {
-            throw new NullPointerException("key不能为空");
-        }
-        if (!contains(key)) {
-            return;
-        }
-
-        // 如果两个子节点的颜色都为黑色，设置root节点为红色
-        if (!isRed(root.left) && !isRed(root.right)) {
-            root.color = RED;
-        }
-
-        root = delete(root, key);
-        if (!isEmpty()) {
-            root.color = BLACK;
-        }
-        assert check();
-    }
-
-    private Node delete(Node h, K key) {
-        // assert get(h, key) != null;
-
-        if (key.compareTo(h.key) < 0) {
-            if (!isRed(h.left) && !isRed(h.left.left)) {
-                h = moveRedLeft(h);
-            }
-            h.left = delete(h.left, key);
-        } else {
-            if (isRed(h.left)) {
-                h = rotateRight(h);
-            }
-            if (key.compareTo(h.key) == 0 && (h.right == null)) {
-                return null;
-            }
-            if (!isRed(h.right) && !isRed(h.right.left)) {
-                h = moveRedRight(h);
-            }
-            if (key.compareTo(h.key) == 0) {
-                Node x = min(h.right);
-                h.key = x.key;
-                h.value = x.value;
-                // h.val = get(h.right, min(h.right).key);
-                // h.key = min(h.right).key;
-                h.right = deleteMin(h.right);
-            } else {
-                h.right = delete(h.right, key);
-            }
-        }
-        return balance(h);
-    }
-
-    /**
-     * 求红黑树的高度
-     * 
-     * @return
-     */
-    public int height() {
-        return height(root);
-    }
-
-    private int height(Node x) {
-        if (x == null) {
-            return -1;
-        }
-        return 1 + Math.max(height(x.left), height(x.right));
-    }
-
-    /**
-     * 返回最小键
-     * 
-     * @return
-     */
-    public K min() {
-        if (isEmpty()) {
-            throw new NoSuchElementException("该红黑树为空，没有任何节点");
-        }
-        return min(root).key;
-    }
-
-    private Node min(Node x) {
-        // assert x != null;
-        if (x.left == null) {
-            return x;
-        } else {
-            return min(x.left);
-        }
-    }
-
-    public K max() {
-        if (isEmpty()) {
-            throw new NoSuchElementException("该红黑树为空，没有任何节点");
-        }
-        return max(root).key;
-    }
-
-    /**
-     * 返回以x为根节点的子树中的最大的key
-     * 
-     * @param x
-     * @return
-     */
-    private Node max(Node x) {
-        // assert x != null;
-        if (x.right == null) {
-            return x;
-        } else {
-            return max(x.right);
-        }
-    }
-
-    public K floor(K key) {
-        if (key == null) {
-            throw new NullPointerException("key不能为空");
-        }
-        if (isEmpty()) {
-            throw new NoSuchElementException("该红黑树为空，没有任何节点");
-        }
-        Node x = floor(root, key);
-        if (x == null) {
-            return null;
-        } else {
-            return x.key;
-        }
-    }
-
-    /**
-     * 返回存在于以x为根节点的子树中的， 键的值小于或等于key的最大键
-     * 
-     * @param x
-     * @param key
-     * @return
-     */
-    private Node floor(Node x, K key) {
-        if (x == null) {
-            return null;
-        }
-        int cmp = key.compareTo(x.key);
-        if (cmp == 0) {
-            return x;
-        }
-        if (cmp < 0) {
-            return floor(x.left, key);
-        }
-        Node t = floor(x.right, key);
-        if (t != null) {
-            return t;
-        } else {
-            return x;
-        }
-    }
-
-    public K ceiling(K key) {
-        if (key == null) {
-            throw new NullPointerException("key不能为空");
-        }
-        if (isEmpty()) {
-            throw new NoSuchElementException("该红黑树为空，没有任何节点");
-        }
-        Node x = ceiling(root, key);
-        if (x == null) {
-            return null;
-        } else {
-            return x.key;
-        }
-    }
-
-    /**
-     * 返回以x为根节点的子树中， 大于或等于key的最小键
-     * 
-     * @param x
-     * @param key
-     * @return
-     */
-    private Node ceiling(Node x, K key) {
-        if (x == null) {
-            return null;
-        }
-        int cmp = key.compareTo(x.key);
-        if (cmp == 0) {
-            return x;
-        }
-        if (cmp > 0) {
-            return ceiling(x.right, key);
-        }
-        Node t = ceiling(x.left, key);
-        if (t != null) {
-            return t;
-        } else {
-            return x;
-        }
-    }
-
-    public K select(int k) {
-        if (k < 0 || k >= size()) {
-            throw new IllegalArgumentException();
-        }
-        Node x = select(root, k);
-        return x.key;
-    }
-
-    /**
-     * 返回以x为根节点的子树中， 大小排名（从小到大的排序，也即升序排序）为k的节点
-     * 
-     * @param x
-     * @param k
-     * @return
-     */
-    private Node select(Node x, int k) {
-        // assert x != null;
-        // assert k >= 0 && k < size(x);
-        int t = size(x.left);
-        if (t > k) {
-            return select(x.left, k);
-        } else if (t < k) {
-            return select(x.right, k - t - 1);
-        } else {
-            return x;
-        }
-    }
-
-    public int rank(K key) {
-        if (key == null) {
-            throw new NullPointerException("key不能为空");
-        }
-        return rank(key, root);
-    }
-
-    private int rank(K key, Node x) {
-        if (x == null) {
-            return 0;
-        }
-        int cmp = key.compareTo(x.key);
-        if (cmp < 0) {
-            return rank(key, x.left);
-        } else if (cmp > 0) {
-            return 1 + size(x.left) + rank(key, x.right);
-        } else {
-            return size(x.left);
-        }
-    }
-
-    /**
-     * 迭代整棵红黑树中的所有键
-     * 
-     * @return
-     */
-    public Iterable<K> keys() {
-        if (isEmpty()) {
-            return new LinkedList<K>();
-        }
-        return keys(min(), max());
-    }
-
-    /**
-     * 迭代low~high范围内的键
-     * 
-     * @param low
-     * @param high
-     * @return
-     */
-    public Iterable<K> keys(K low, K high) {
-        if (low == null)
-            throw new NullPointerException("low不能为空");
-        if (high == null)
-            throw new NullPointerException("high不能为空");
-
-        Queue<K> queue = new LinkedList<K>();
-        // if (isEmpty() || lo.compareTo(hi) > 0) return queue;
-        keys(root, queue, low, high);
-        return queue;
-    }
-
-    /**
-     * 将以x为根节点的子树中的， 范围在low~high之间的所有键添加到队列中。 过程是：首先判断节点x对应的key在不在low~high范围内，在则添加到队列中
-     * ，不在则不添加。然后递归调用，判断其左节点和右节点在不在low~high指定的范围内。
-     * 
-     * @param x
-     * @param queue
-     * @param low
-     * @param high
-     */
-    private void keys(Node x, Queue<K> queue, K low, K high) {
-        if (x == null) {
-            return;
-        }
-        int cmplo = low.compareTo(x.key);
-        int cmphi = high.compareTo(x.key);
-        if (cmplo < 0) {
-            keys(x.left, queue, low, high);
-        }
-        if (cmplo <= 0 && cmphi >= 0) {
-            queue.add(x.key);
-        }
-        if (cmphi > 0) {
-            keys(x.right, queue, low, high);
-        }
-    }
-
-    private boolean check() {
-        if (!isBST()) {
-            System.out.println("不满足二叉树的定义");
-        }
-        if (!isSizeConsistent()) {
-            System.out.println("节点数目不一致");
-        }
-        if (!isRankConsistent()) {
-            System.out.println("排名不一致");
-        }
-        if (!is23()) {
-            System.out.println("不满足2-3树的定义");
-        }
-        if (!isBalanced()) {
-            System.out.println("不满足红黑树的完美黑色平衡");
-        }
-        return isBST() && isSizeConsistent() && isRankConsistent() && is23() && isBalanced();
-    }
-
-    /**
-     * 判断红黑树是否满足二叉树（二叉搜索树）的定义（左节点比当前节点小， 右节点比当前节点大）
-     * 
-     * @return
-     */
-    private boolean isBST() {
-        return isBST(root, null, null);
-    }
-
-    private boolean isBST(Node x, K min, K max) {
-        if (x == null) {
+        // 空树
+        if (resultTree.isNull()) {
+            RBTreeNode root = new RBTreeNode(data);
+            fakeRoot.setLeftChild(root);
+            root.setParent(fakeRoot);
+            // 红黑树中根结点为黑
+            root.setColor(Color.BLACK);
             return true;
         }
-        if (min != null && x.key.compareTo(min) <= 0) {
-            return false;
-        }
-        if (max != null && x.key.compareTo(max) >= 0) {
-            return false;
-        }
-        return isBST(x.left, min, x.key) && isBST(x.right, x.key, max);
-    }
 
-    /**
-     * 递归判断每一个节点的大小是不是等于： size(x.left) + 1 + size(x.right)
-     * 
-     * @return
-     */
-    private boolean isSizeConsistent() {
-        return isSizeConsistent(root);
-    }
-
-    private boolean isSizeConsistent(Node x) {
-        if (x == null) {
-            return true;
-        }
-        if (x.N != size(x.left) + size(x.right) + 1) {
+        // 原树中已经有该数据项，不必插入
+        int _data = resultTree.getData();
+        if (data == _data)
             return false;
-        }
-        return isSizeConsistent(x.left) && isSizeConsistent(x.right);
-    }
 
-    /**
-     * 通过select与rank方法验证二叉树（此处的二叉树就是指红黑树）
-     * 
-     * @return
-     */
-    private boolean isRankConsistent() {
-        for (int i = 0; i < size(); i++)
-            if (i != rank(select(i))) {
-                return false;
-            }
-        for (K key : keys()) {
-            if (key.compareTo(select(rank(key))) != 0) {
-                return false;
-            }
-        }
+        // 非空树
+        RBTreeNode newTree = new RBTreeNode(data);
+        if (data < _data)
+            resultTree.setLeftChild(newTree);
+        else
+            resultTree.setRightChild(newTree);
+        newTree.setParent(resultTree);
+
+        // 调整红黑树使之平衡
+        insertRebalance(newTree);
+
+        // 树结构变化，中序缓存清空
+        midOrderVisitList.clear();
         return true;
     }
 
-    /**
-     * 判断是否满足二三树（或者红黑树）的定义。注意：红黑树是二三树的一种具体实现。二三树的定义大家自己查询咯
-     * 
-     * @return
-     */
-    private boolean is23() {
-        return is23(root);
-    }
-
-    private boolean is23(Node x) {
-        if (x == null) {
-            return true;
-        }
-        if (isRed(x.right)) {
-            return false;
-        }
-        if (x != root && isRed(x) && isRed(x.left)) {
-            return false;
-        }
-        return is23(x.left) && is23(x.right);
-    }
-
-    /**
-     * 判断从根节点到叶节点的任意一条路径上的黒链接的数量是否相等（也即判断23树是否满足完美黑色平衡）
-     * 
-     * @return
-     */
-    private boolean isBalanced() {
-        int black = 0; // number of black links on path from root to min
-        Node x = root;
-        // while循环结束的时候，可以计算得出任意空链接到根节点的路径上的黒链接的数量
-        while (x != null) {
-            if (!isRed(x)) {
-                black++;
+    private void insertRebalance(RBTreeNode node) {
+        RBTreeNode parent = node.getParent();
+        while (parent != fakeRoot && parent.getColor() == Color.RED) {
+            RBTreeNode grandpa = parent.getParent();
+            RBTreeNode uncle;
+            // 父结点是祖父结点的左孩子
+            if (parent == grandpa.getLeftChild()) {
+                uncle = grandpa.getRightChild();
+                // case1——叔结点为红
+                if (isRed(uncle)) {
+                    uncle.setColor(Color.BLACK);
+                    parent.setColor(Color.BLACK);
+                    grandpa.setColor(Color.RED);
+                    node = grandpa;
+                }
+                // case2——叔结点为黑，且当前结点是其父结点的右孩子
+                else if (node == parent.getRightChild()) {
+                    node = parent;
+                    node.leftRotate();
+                }
+                // case 3——叔结点为黑，且当前结点是其父结点的左孩子
+                else if (node == parent.getLeftChild()) {
+                    parent.setColor(Color.BLACK);
+                    grandpa.setColor(Color.RED);
+                    node = grandpa;
+                    node.rightRotate();
+                }
             }
-            x = x.left;
+            // 父结点是祖父结点的右孩子
+            else {
+                uncle = grandpa.getLeftChild();
+                // case1——叔结点为红
+                if (isRed(uncle)) {
+                    uncle.setColor(Color.BLACK);
+                    parent.setColor(Color.BLACK);
+                    grandpa.setColor(Color.RED);
+                    node = grandpa;
+                }
+                // case2——叔结点为黑，且当前结点是其父结点的左孩子
+                else if (node == parent.getLeftChild()) {
+                    node = parent;
+                    node.rightRotate();
+                }
+                // case 3——叔结点为黑，且当前结点是其父结点的右孩子
+                else if (node == parent.getRightChild()) {
+                    parent.setColor(Color.BLACK);
+                    grandpa.setColor(Color.RED);
+                    node = grandpa;
+                    node.leftRotate();
+                }
+            }
+            parent = node.getParent();
         }
-        return isBalanced(root, black);
+        getRoot().setColor(Color.BLACK);
     }
 
     /**
-     * @param x
-     * @param black
-     * @return
+     * 红黑树删除结点
+     * 
+     * @param data 要删除的数据
+     * @return true——删除成功。false——删除失败
      */
-    private boolean isBalanced(Node x, int black) {
-        if (x == null) {
-            return black == 0;
+    public boolean delete(int data) {
+        // 空树
+        if (isEmpty())
+            return false;
+
+        RBTreeNode target = search(data);
+        // 树中不存在该数据，无法删除
+        int targetData = target.getData();
+        if (targetData != data)
+            return false;
+
+        final RBTreeNode parent = target.getParent();
+        final RBTreeNode left = target.getLeftChild();
+        final RBTreeNode right = target.getRightChild();
+        // 保存用于替代被删除结点的那个结点
+        RBTreeNode replacement;
+        Color originalColor = target.getColor();
+
+        // 右子树空（包含两种情况：1、左右子树均空 2、仅有左子树）
+        if (right.isNull()) {
+            if (target == parent.getLeftChild())
+                parent.setLeftChild(left);
+            else
+                parent.setRightChild(left);
+            left.setParent(parent);
+            replacement = left;
         }
-        if (!isRed(x)) {
-            black--;
+        // 左子树空
+        else if (left.isNull()) {
+            if (target == parent.getLeftChild())
+                parent.setLeftChild(right);
+            else
+                parent.setRightChild(right);
+            right.setParent(parent);
+            replacement = right;
         }
-        return isBalanced(x.left, black) && isBalanced(x.right, black);
+        // 左右子树均非空
+        else {
+            // 找到欲删除结点的左子树的右分支尽头的叶结点
+            // 以之替换欲删除的结点的位置
+            RBTreeNode temp = target.getLeftChild();
+            while (!temp.getRightChild().isNull())
+                temp = temp.getRightChild();
+
+            target.setData(temp.getData());
+
+            RBTreeNode tempLeftChild = temp.getLeftChild();
+            RBTreeNode tempParent = temp.getParent();
+            // temp的父结点仍等于target结点
+            // 说明循环并没有执行，即target的左子树并没有右分支
+            if (tempParent == target)
+                tempParent.setLeftChild(tempLeftChild);
+            else
+                tempParent.setRightChild(tempLeftChild);
+            tempLeftChild.setParent(tempParent);
+
+            // 这里用了一个trick，交换temp与target的data
+            // 最终不会删除target。而是删除temp结点
+            // 用于替补temp位置的，就是tempLeftChild
+            replacement = tempLeftChild;
+            // 因为删除的是temp，所以originColor要修改成temp的颜色
+            originalColor = temp.getColor();
+        }
+        // 树结构变化，中序缓存清空
+        midOrderVisitList.clear();
+        // 被删除的结点为黑才可能引起红黑树不平衡
+        if (originalColor == Color.BLACK)
+            deleteRebalance(replacement);
+        return true;
     }
 
-    public void recursiveInorder() {
-        recursiveInorder(root);
+    public RBTreeNode getBrother(RBTreeNode node) {
+        RBTreeNode parent = node.getParent();
+        if (node == parent.getLeftChild())
+            return parent.getRightChild();
+        return parent.getLeftChild();
     }
 
-    /** 递归实现中序遍历 */
-    private void recursiveInorder(Node node) {
-        if (node != null) {
-            recursiveInorder(node.left);
-            visit(node);
-            recursiveInorder(node.right);
+    public void deleteRebalance(RBTreeNode node) {
+        while (node != getRoot() && node.getColor() == Color.BLACK) {
+            RBTreeNode parent = node.getParent();
+            RBTreeNode brother, brotherLeftChild, brotherRightChild;
+
+            // 左孩子
+            if (node == parent.getLeftChild()) {
+                brother = parent.getRightChild();
+                brotherLeftChild = brother.getLeftChild();
+                brotherRightChild = brother.getRightChild();
+                // case 1——兄弟节点为红
+                // 则反转兄弟结点与父结点的颜色
+                // 以父结点为轴心左旋
+                // 更新兄弟结点为原父结点在左旋后的新右孩子
+                // 因为这个新的右孩子是原兄弟结点的孩子
+                // 而原兄弟结点为红，其孩子必为黑
+                // 因此case 1最终会转换成case 2/3/4中的某一种
+                if (isRed(brother)) {
+                    brother.setColor(Color.BLACK);
+                    parent.setColor(Color.RED);
+                    parent.leftRotate();
+                    brother = parent.getRightChild();
+                }
+                // case 2——兄弟为黑，且兄弟的两个孩子为黑
+                // 兄弟变红，欲修复结点上移一层至父结点
+                // 只有case 2会导致修复点上移
+                // 上移后的情形不确定，可能是case 1/2/3/4，也可能修复完成
+                // 修复完成的情况有两种：
+                // 1、上移后的结点为红，此时跳出循环，并将node置黑
+                // 2、上移后到达根结点，同样跳出循环，并将node置黑
+                else if (!isRed(brotherLeftChild) && !isRed(brotherRightChild)) {
+                    brother.setColor(Color.RED);
+                    node = parent;
+                }
+                // case 3——兄弟为黑，且兄弟的左孩子为红, 右孩子为黑
+                // 交换兄弟和其左孩子的颜色
+                // 再以兄弟为轴点右旋
+                // 更新兄弟结点为原父结点在右旋后的新右孩子
+                // 右旋后，变成第4种情况
+                else if (!isRed(brotherRightChild)) {
+                    brother.setColor(Color.RED);
+                    brotherLeftChild.setColor(Color.BLACK);
+                    brother.rightRotate();
+                    brother = parent.getRightChild();
+                }
+                // case 4——兄弟为黑，且兄弟的右孩子为红（左孩子红或黑）
+                // 兄弟结点的颜色改成父结点颜色
+                // 随后父结点与兄弟的右孩子都涂成黑
+                // 以父结点为轴心左旋，此时修复完成
+                else if (isRed(brotherRightChild)) {
+                    brother.setColor(parent.getColor());
+                    parent.setColor(Color.BLACK);
+                    brotherRightChild.setColor(Color.BLACK);
+                    parent.leftRotate();
+                    node = getRoot();// 修复完成，结束循环
+                }
+            }
+            // 右孩子
+            else {
+                brother = parent.getLeftChild();
+                brotherLeftChild = brother.getLeftChild();
+                brotherRightChild = brother.getRightChild();
+                // case 1——兄弟节点为红
+                if (isRed(brother)) {
+                    brother.setColor(Color.BLACK);
+                    parent.setColor(Color.RED);
+                    parent.rightRotate();
+                    brother = parent.getLeftChild();
+                }
+                // case 2——兄弟为黑，且兄弟的两个孩子为黑
+                else if (!isRed(brotherLeftChild) && !isRed(brotherRightChild)) {
+                    brother.setColor(Color.RED);
+                    node = parent;
+                }
+                // case 3——兄弟为黑，且兄弟的右孩子为红, 左孩子为黑
+                else if (!isRed(brotherLeftChild)) {
+                    brother.setColor(Color.RED);
+                    brotherRightChild.setColor(Color.RED);
+                    brother.rightRotate();
+                    brother = parent.getLeftChild();
+                }
+                // case 4——兄弟为黑，且兄弟的左孩子为红（右孩子红或黑）
+                else if (isRed(brotherLeftChild)) {
+                    brother.setColor(parent.getColor());
+                    parent.setColor(Color.BLACK);
+                    brotherLeftChild.setColor(Color.BLACK);
+                    parent.rightRotate();
+                    node = getRoot();// 修复完成，结束循环
+                }
+            }
+        }
+        node.setColor(Color.BLACK);
+    }
+
+    /**
+     * 树的层序遍历
+     */
+    public void layerVisit() {
+        if (isEmpty())
+            return;
+        Queue<RBTreeNode> queue = new LinkedList<RBTreeNode>();
+        queue.offer(getRoot());
+        while (!queue.isEmpty()) {
+            RBTreeNode node = queue.poll();
+
+            if (node.isNull()) {
+                System.out.println("null");
+                continue;
+            }
+            System.out.println(node);
+
+            RBTreeNode left = node.getLeftChild();
+            RBTreeNode right = node.getRightChild();
+            queue.offer(left);
+            queue.offer(right);
         }
     }
-
-    public void visit(Node node) {
-        StringBuffer buff = new StringBuffer();
-        if (node != null) {
-            buff.append(" " + node.key + "[");
-            String left = node.left != null ? node.left.key + "" : "null";
-            String right = node.right != null ? node.right.key + "" : "null";
-            String color = node.color == RED ? "红" : "黑";
-            buff.append(left).append(" : ").append(right).append(" - ").append(color).append("] ");
-        }
-        System.out.print(buff.toString());
-    }
-
-    public static void main(String... args) {
-        RedBlackTree<Integer, String> st = new RedBlackTree<Integer, String>();
-        st.put(1, "yi");
-        st.put(2, "er");
-        st.put(3, "san");
-        st.put(4, "si");
-        st.put(5, "wu");
-        st.put(6, "liu");
-        st.put(7, "qi");
-        st.put(8, "ba");
-        st.put(9, "jiu");
-        st.put(10, "shi");
-        st.put(11, "shiyi");
-        st.put(21, "eryi");
-        st.put(31, "sanyi");
-
-        // 添加后得到的红黑树入下图：标有*号的节点是红色节点 。添加后红黑树是完美黑色平衡的
-        // 8
-        // / \
-        // / \
-        // / \
-        // 4* 21
-        // / \ / \
-        // 2 6 10* 31
-        // /\ /\ /\
-        // / \ 5 7 / \
-        // 1 3 9 11
-
-        System.out.println("插入值后的大小是" + st.size());
-        for (Integer s : st.keys()) {
-            System.out.print(st.get(s) + "  ");
-        }
-        System.out.println();
-
-        st.recursiveInorder();
-        System.out.println();
-
-        st.delete(8);
-        st.delete(10);
-        st.delete(5);
-        st.delete(3);
-        st.delete(4);
-        System.out.println("删除后的大小是:" + st.size());
-        System.out.println();
-
-        // 删除后得到的红黑树入下图：标有*号的节点是红色节点 。删除后红黑树依然是完美黑色平衡的
-        // 9
-        // / \
-        // / \
-        // 6 21
-        // / \ / \
-        // 2 7 11 31
-        // /
-        // 1*
-
-        st.recursiveInorder();
-    }
-
 }
