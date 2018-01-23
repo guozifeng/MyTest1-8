@@ -5,11 +5,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
-public class myClass {
+public class BinaryTree {
 
     public static void main(String[] args) {
         // TODO Auto-generated method stub
-        myClass tree = new myClass();
+        BinaryTree tree = new BinaryTree();
         int[] datas = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9};
         List<Node> nodelist = new LinkedList<>();
         tree.creatBinaryTree(datas, nodelist);
