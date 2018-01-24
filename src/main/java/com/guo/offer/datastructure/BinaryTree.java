@@ -84,8 +84,9 @@ public class BinaryTree {
      * @param root 二叉树根节点
      */
     public void preOrderTraversal(Node node) {
-        if (node == null) // 很重要，必须加上 当遇到叶子节点用来停止向下遍历
+        if (node == null) {
             return;
+        }
         checkCurrentNode(node);
         preOrderTraversal(node.getLeft());
         preOrderTraversal(node.getRight());
@@ -97,8 +98,9 @@ public class BinaryTree {
      * @param root 根节点
      */
     public void inOrderTraversal(Node node) {
-        if (node == null) // 很重要，必须加上
+        if (node == null) {
             return;
+        }
         inOrderTraversal(node.getLeft());
         checkCurrentNode(node);
         inOrderTraversal(node.getRight());
@@ -110,8 +112,9 @@ public class BinaryTree {
      * @param root 根节点
      */
     public void postOrderTraversal(Node node) {
-        if (node == null) // 很重要，必须加上
+        if (node == null) {
             return;
+        }
         postOrderTraversal(node.getLeft());
         postOrderTraversal(node.getRight());
         checkCurrentNode(node);
@@ -208,8 +211,9 @@ public class BinaryTree {
      * @param root
      */
     public void bfs(Node root) {
-        if (root == null)
+        if (root == null) {
             return;
+        }
         LinkedList<Node> queue = new LinkedList<Node>();
         queue.offer(root); // 首先将根节点存入队列
         // 当队列里有值时，每次取出队首的node打印，打印之后判断node是否有子节点，若有，则将子节点加入队列
@@ -235,8 +239,9 @@ public class BinaryTree {
      */
     public void dfs(Node node, List<List<Integer>> rst, List<Integer> list) {
         System.out.println("node  =  " + node);
-        if (node == null)
+        if (node == null) {
             return;
+        }
 
         if (node.left == null && node.right == null) {
             list.add(node.var);
