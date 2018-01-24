@@ -75,7 +75,7 @@ public class BinaryTree {
      * @param node
      */
     public void checkCurrentNode(Node node) {
-        System.out.println(node.getVar() + " ");
+        System.out.print(node.getVar() + " ");
     }
 
     /**
@@ -150,19 +150,19 @@ public class BinaryTree {
         Stack<Node> stack = new Stack();
         Node p = node;
         while (p != null || !stack.isEmpty()) {
-            System.out.println("11111111 = "+p);
+            //System.out.println("11111111 = "+p);
             while (p != null) {
-                System.out.println("22222 = "+p);
+                //System.out.println("22222 = "+p);
                 stack.push(p);
                 p = p.getLeft();
-                System.out.println("3333 = "+p);
+                //System.out.println("3333 = "+p);
             }
             if (!stack.isEmpty()) {
                 p = stack.pop();
-                System.out.println("44444 = "+p);
+                //System.out.println("44444 = "+p);
                 checkCurrentNode(p);
                 p = p.getRight();
-                System.out.println("555555 = "+p);
+                //System.out.println("555555 = "+p);
             }
         }
     }
@@ -175,15 +175,22 @@ public class BinaryTree {
     public void postOrderTraversalbyLoop(Node node) {
         Stack<Node> stack = new Stack<>();
         Node p = node, prev = node;
+        
         while (p != null || !stack.isEmpty()) {
+            //System.out.println(" node = "+p);
+            
             while (p != null) {
+                System.out.println(" p = "+p);
                 stack.push(p);
                 p = p.getLeft();
             }
+            
             if (!stack.isEmpty()) {
                 Node temp = stack.peek().getRight();
+                System.out.println( (temp == prev) +" temp = "+ temp + " prev = " + prev);
                 if (temp == null || temp == prev) {
                     p = stack.pop();
+                    //System.out.println(" 222222222222 = "+p);
                     checkCurrentNode(p);
                     prev = p;
                     p = null;
