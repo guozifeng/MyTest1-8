@@ -34,6 +34,7 @@ public class E07QueueWithTwoStacks {
         E07QueueWithTwoStacks test  = new E07QueueWithTwoStacks();
         test.appendTail("1");
         test.appendTail("2");
-        test.deletedHead();
+        test.appendTail("3");
+        System.out.println(test.deletedHead());
     }
 }
