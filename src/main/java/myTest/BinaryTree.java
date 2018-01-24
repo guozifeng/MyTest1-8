@@ -226,9 +226,10 @@ public class BinaryTree {
      * @param list
      */
     public void dfs(Node node, List<List<Integer>> rst, List<Integer> list) {
+        System.out.println("node  =  "+node);
         if (node == null)
             return;
-        System.out.println("node  =  "+node);
+        
         if (node.left == null && node.right == null) {
             list.add(node.var);
             /* 这里将list存入rst中时，不能直接将list存入，而是通过新建一个list来实现，
@@ -241,7 +242,7 @@ public class BinaryTree {
         list.add(node.var);
         //System.out.println("--------1-------"+list);
         dfs(node.left, rst, list);
-        //System.out.println("--------4-------"+list);
+        System.out.println("--------4-------"+list);
         dfs(node.right, rst, list);
         //System.out.println("***************"+list);
         list.remove(list.size() - 1);
