@@ -75,7 +75,7 @@ public class BinaryTree {
      * @param node
      */
     public void checkCurrentNode(Node node) {
-        System.out.print(node.getVar() + " ");
+        System.out.println(node.getVar() + " ");
     }
 
     /**
@@ -126,10 +126,13 @@ public class BinaryTree {
         Stack<Node> stack = new Stack();
         Node p = node;
         while (p != null || !stack.isEmpty()) {
+            // System.out.println("11111111 = "+p);
             while (p != null) { // 当p不为空时，就读取p的值，并不断更新p为其左子节点，即不断读取左子节点
+                // System.out.println("checkCurrentNode = "+p);
                 checkCurrentNode(p);
                 stack.push(p); // 将p入栈
                 p = p.getLeft();
+                // System.out.println("getLeft = "+p);
             }
             if (!stack.isEmpty()) {
                 p = stack.pop();
@@ -147,14 +150,19 @@ public class BinaryTree {
         Stack<Node> stack = new Stack();
         Node p = node;
         while (p != null || !stack.isEmpty()) {
+            System.out.println("11111111 = " + p);
             while (p != null) {
+                System.out.println("22222 = " + p);
                 stack.push(p);
                 p = p.getLeft();
+                System.out.println("3333 = " + p);
             }
             if (!stack.isEmpty()) {
                 p = stack.pop();
+                System.out.println("44444 = " + p);
                 checkCurrentNode(p);
                 p = p.getRight();
+                System.out.println("555555 = " + p);
             }
         }
     }
@@ -237,6 +245,12 @@ public class BinaryTree {
      * 节点类 var 节点值 left 节点左子节点 right 右子节点
      */
     class Node {
+
+        @Override
+        public String toString() {
+            return "Node [var=" + var + ", left=" + left + ", right=" + right + "]";
+        }
+
         int var;
         Node left;
         Node right;
