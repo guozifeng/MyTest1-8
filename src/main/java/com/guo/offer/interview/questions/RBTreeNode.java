@@ -1,4 +1,4 @@
-package com.guo.interview.questions;
+package com.guo.offer.interview.questions;
 
 public class RBTreeNode {
     // nil结点的data为这个常量

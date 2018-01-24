@@ -1,9 +1,9 @@
-package com.guo.interview.questions;
+package com.guo.offer.interview.questions;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public final class SortDemo {
+public final class SortDemo2 {
 
     // 排序原始数据
     private static final int[] NUMBERS
@@ -20,17 +20,36 @@ public final class SortDemo {
         radixSort(NUMBERS);
     }
 
-    public static void insertSort(int[] array) {
-        for (int i = 1; i < array.length; i++) {
-            int temp = array[i];
-            int j = i - 1;
-            for (; j >= 0 && array[j] > temp; j--) {
-                // 将大于temp的值整体后移一个单位
-                array[j + 1] = array[j];
+    public static void insertSort(int[] a) {
+        int length = a.length;// 数组长度，将这个提取出来是为了提高速度。
+        int insertNum;// 要插入的数
+        for (int i = 1; i < length; i++) {// 插入的次数
+            insertNum = a[i];// 要插入的数
+            int j = i - 1;// 已经排序好的序列元素个数
+            while (j >= 0 && a[j] > insertNum) {// 序列从后到前循环，将大于insertNum的数向后移动一格
+                a[j + 1] = a[j];// 元素移动一格
+                j--;
             }
-            array[j + 1] = temp;
+            a[j + 1] = insertNum;// 将需要插入的数放在要插入的位置。
         }
-        System.out.println(Arrays.toString(array) + " insertSort");
+        System.out.println(Arrays.toString(a) + " insertSort");
+    }
+
+    public static void sheelSort(int[] a) {
+        int d = a.length;
+        while (d != 0) {
+            d = d / 2;
+            for (int x = 0; x < d; x++) {// 分的组数
+                for (int i = x + d; i < a.length; i += d) {// 组中的元素，从第二个数开始
+                    int j = i - d;// j为有序序列最后一位的位数
+                    int temp = a[i];// 要插入的元素
+                    for (; j >= 0 && temp < a[j]; j -= d) {// 从后往前遍历。
+                        a[j + d] = a[j];// 向后移动d位
+                    }
+                    a[j + d] = temp;
+                }
+            }
+        }
     }
 
     public static void shellSort(int[] array) {
@@ -52,6 +71,23 @@ public final class SortDemo {
             }
         }
         System.out.println(Arrays.toString(array) + " shellSort");
+    }
+
+    public void selectSort1(int[] a) {
+        int length = a.length;
+        for (int i = 0; i < length; i++) {// 循环次数
+            int key = a[i];
+            int position = i;
+            for (int j = i + 1; j < length; j++) {// 选出最小的值和位置
+                if (a[j] < key) {
+                    key = a[j];
+                    position = j;
+                }
+            }
+            a[position] = a[i];// 交换位置
+            a[i] = key;
+        }
+        System.out.println(Arrays.toString(a) + " selectSort1");
     }
 
     public static void selectSort(int[] array) {

@@ -1,4 +1,4 @@
-package com.guo.interview.questions;
+package com.guo.offer.interview.questions;
 
 /**
  * true 要说明一点：当两个字符串字面值连接时（相加），得到的新字符串依然是字符串字面值，保存在常量池中。

@@ -1,4 +1,4 @@
-package com.guo.interview.questions;
+package com.guo.offer.interview.questions;
  
 /**
  * https://www.cnblogs.com/ydpvictor/archive/2012/09/09/2677260.html

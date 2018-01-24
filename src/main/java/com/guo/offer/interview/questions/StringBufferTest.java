@@ -1,4 +1,4 @@
-package com.guo.interview.questions;
+package com.guo.offer.interview.questions;
 
 /**
  * 打印出来是AB B 请看这样两个语句： String x = "abc"; String y = new String("abcd");

@@ -1,11 +1,11 @@
-package com.guo.interview.questions;
+package com.guo.offer.interview.questions;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-import com.guo.interview.questions.RBTreeNode.Color;
+import com.guo.offer.interview.questions.RBTreeNode.Color;
 
 public class RedBlackTree {
     // 缓存中序遍历的数据

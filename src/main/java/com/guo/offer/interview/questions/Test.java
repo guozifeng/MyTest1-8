@@ -1,4 +1,4 @@
- package com.guo.interview.questions;
+ package com.guo.offer.interview.questions;
 
  /**
  * @author Administrator
