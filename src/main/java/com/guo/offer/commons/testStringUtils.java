@@ -2,7 +2,7 @@ package com.guo.offer.commons;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class testUtil {
+public class testStringUtils {
 
     public static void main(String[] args) {
         // TODO Auto-generated method stub
