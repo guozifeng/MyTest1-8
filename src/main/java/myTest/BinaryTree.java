@@ -126,13 +126,13 @@ public class BinaryTree {
         Stack<Node> stack = new Stack();
         Node p = node;
         while (p != null || !stack.isEmpty()) {
-            // System.out.println("11111111 = "+p);
+            //System.out.println("11111111 = "+p);
             while (p != null) { // 当p不为空时，就读取p的值，并不断更新p为其左子节点，即不断读取左子节点
-                // System.out.println("checkCurrentNode = "+p);
+                //System.out.println("checkCurrentNode = "+p);
                 checkCurrentNode(p);
                 stack.push(p); // 将p入栈
                 p = p.getLeft();
-                // System.out.println("getLeft = "+p);
+                //System.out.println("getLeft = "+p);
             }
             if (!stack.isEmpty()) {
                 p = stack.pop();
@@ -150,19 +150,19 @@ public class BinaryTree {
         Stack<Node> stack = new Stack();
         Node p = node;
         while (p != null || !stack.isEmpty()) {
-            System.out.println("11111111 = " + p);
+            System.out.println("11111111 = "+p);
             while (p != null) {
-                System.out.println("22222 = " + p);
+                System.out.println("22222 = "+p);
                 stack.push(p);
                 p = p.getLeft();
-                System.out.println("3333 = " + p);
+                System.out.println("3333 = "+p);
             }
             if (!stack.isEmpty()) {
                 p = stack.pop();
-                System.out.println("44444 = " + p);
+                System.out.println("44444 = "+p);
                 checkCurrentNode(p);
                 p = p.getRight();
-                System.out.println("555555 = " + p);
+                System.out.println("555555 = "+p);
             }
         }
     }
@@ -228,24 +228,31 @@ public class BinaryTree {
     public void dfs(Node node, List<List<Integer>> rst, List<Integer> list) {
         if (node == null)
             return;
+        System.out.println("node  =  "+node);
         if (node.left == null && node.right == null) {
             list.add(node.var);
             /* 这里将list存入rst中时，不能直接将list存入，而是通过新建一个list来实现，
              * 因为如果直接用list的话，后面remove的时候也会将其最后一个存的节点删掉*/
             rst.add(new ArrayList<>(list));
+            //System.out.println(rst+"---------2------"+list);
             list.remove(list.size() - 1);
+            //System.out.println("---------3------"+list);
         }
         list.add(node.var);
+        //System.out.println("--------1-------"+list);
         dfs(node.left, rst, list);
+        //System.out.println("--------4-------"+list);
         dfs(node.right, rst, list);
+        //System.out.println("***************"+list);
         list.remove(list.size() - 1);
+        //System.out.println("++++++++++++++++"+list);
     }
 
     /**
      * 节点类 var 节点值 left 节点左子节点 right 右子节点
      */
     class Node {
-
+        
         @Override
         public String toString() {
             return "Node [var=" + var + ", left=" + left + ", right=" + right + "]";
