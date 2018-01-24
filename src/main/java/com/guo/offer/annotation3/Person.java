@@ -1,8 +1,6 @@
-package com.annotation.model;
+package com.guo.offer.annotation3;
 
 import java.util.Arrays;
-
-import com.annotation.annotation.MyAnnotation;
 
 /**
  * @author ¹®´Ï 2015Äê8ÔÂ9ÈÕ15:12:04

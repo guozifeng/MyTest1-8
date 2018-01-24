@@ -1,4 +1,4 @@
-package com.annotation.annotation;
+package com.guo.offer.annotation3;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -6,8 +6,6 @@ import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-
-import com.annotation.model.SexEnum;
 
 // 表示在生成文档的时候添加注解
 @Documented

@@ -1,9 +1,6 @@
-package com.annotation.test;
+package com.guo.offer.annotation3;
 
 import java.lang.reflect.Field;
-
-import com.annotation.annotation.MyAnnotation;
-import com.annotation.model.Person;
 
 @SuppressWarnings("all")
 public class Test {
@@ -11,7 +8,7 @@ public class Test {
         // 定义person，此时person对象没有任何值
         Person person = new Person();
         // 定义person对象的反射
-        Class c = Class.forName("com.kepus.model.Person");
+        Class c = Class.forName("com.annotation.model.Person");
 
         // 在类层面上查看是否有注解（使用的注解的默认值）
         // 判断此反射上面是不是有MyAnnotation注解

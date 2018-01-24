@@ -1,4 +1,4 @@
-package myTest;
+package com.guo.offer.datastructure;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
