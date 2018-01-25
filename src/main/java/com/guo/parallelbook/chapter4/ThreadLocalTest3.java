@@ -52,7 +52,7 @@ public class ThreadLocalTest3 {
                 tl.set(new My50MB());
                 System.out.println(tl.get());
                 
-                tl.remove();
+                //tl.remove();
                 
                 tl = null;// 断开ThreadLocal的强引用
                 //System.out.println(tl.get());
@@ -63,7 +63,7 @@ public class ThreadLocalTest3 {
 
         }).start();
 
-        //Thread.sleep(1000);
+        Thread.sleep(1000);
         System.out.println("Full GC 2");
         System.gc();
         Thread.sleep(1000);
