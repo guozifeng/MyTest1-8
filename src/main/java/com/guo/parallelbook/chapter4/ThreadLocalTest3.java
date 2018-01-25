@@ -1,7 +1,5 @@
 package com.guo.parallelbook.chapter4;
 
-import java.util.Arrays;
-
 /**
  * 
  * 从输出可以看出，一旦threadLocal的强引用断开，key的内存就可以得到释放。只有当线程结束后，value的内存才释放。 * 
