@@ -18,6 +18,7 @@ public class InterruptAndStopThread {
                         Thread.sleep(600);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+                        System.out.println("11收到中断信号,停止该线程!");
                         Thread.currentThread().interrupt();
                     }
                     System.out.println("Running!");
