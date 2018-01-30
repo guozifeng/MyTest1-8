@@ -5,7 +5,7 @@ package com.guo.parallelbook.chapter2;
  */
 public class AccountSync implements Runnable {
     static AccountSync instance = new AccountSync();
-    static volatile int i = 0;
+    static int i = 0;
 
     /**
      * When an object implementing interface <code>Runnable</code> is used to create a thread, starting the thread
