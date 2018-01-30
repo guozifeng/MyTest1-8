@@ -5,7 +5,7 @@ package com.guo.parallelbook.chapter2;
  */
 public class AccountingVol implements Runnable {
     static AccountingVol instance = new AccountingVol();
-    static volatile int i = 0;
+    static int i = 0;
 
     public static void increase() {
         i++;
