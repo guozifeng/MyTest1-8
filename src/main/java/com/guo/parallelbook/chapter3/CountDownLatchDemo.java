@@ -9,7 +9,7 @@ import java.util.concurrent.Executors;
  * Created by 13 on 2017/5/5.
  */
 public class CountDownLatchDemo implements Runnable {
-    static final CountDownLatch end = new CountDownLatch(10);
+    static CountDownLatch end = new CountDownLatch(10);
     static final CountDownLatchDemo demo = new CountDownLatchDemo();
 
     @Override
@@ -32,7 +32,16 @@ public class CountDownLatchDemo implements Runnable {
         // µÈ´ý¼ì²é
         end.await();
         // ·¢Éä»ð¼ý
-        System.out.println("Fire!");
+        System.out.println("Fire1!");
+        end = new CountDownLatch(10);
+        for (int i = 0; i < 10; i++) {
+            executorService.submit(demo);
+        }
+        // µÈ´ý¼ì²é
+        end.await();
+        // ·¢Éä»ð¼ý
+        System.out.println("Fire2!");
+        
         executorService.shutdown();
     }
 }

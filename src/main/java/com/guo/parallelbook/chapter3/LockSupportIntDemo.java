@@ -20,13 +20,12 @@ public class LockSupportIntDemo {
                 System.out.println("in " + getName());
                 LockSupport.park();
                 if (Thread.interrupted()) {
+                    System.out.println(getName() + "被中断了");
                 }
-                System.out.println(getName() + "琚腑鏂?");
             }
-            System.out.println(getName() + "缁х画鎵ц");
+            System.out.println(getName() + "执行结束");
         }
     }
-
 
     public static void main(String args[]) throws InterruptedException {
         t1.start();
