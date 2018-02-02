@@ -29,8 +29,8 @@ public class ReenterLockCondition implements Runnable {
         ReenterLockCondition reenterLockCondition = new ReenterLockCondition();
         Thread thread1 = new Thread(reenterLockCondition);
         thread1.start();
-        System.out.println("ÀØ√ﬂ2√Î÷”");
-        Thread.sleep(2000);
+        System.out.println("ÀØ√ﬂ5√Î÷”");
+        Thread.sleep(5000);
         lock.lock();
         condition.signal();
         lock.unlock();
