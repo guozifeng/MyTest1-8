@@ -9,7 +9,12 @@ import java.util.concurrent.RecursiveTask;
 /**
  * Created by 13 on 2017/5/5.
  */
-public class CountTask extends RecursiveTask {
+public class CountTask extends RecursiveTask<Long> {
+    /**
+     *
+     */
+    private static final long serialVersionUID = -1173014602598239598L;
+
     private static final int THRESHOLD = 10000;
 
     private long start;
