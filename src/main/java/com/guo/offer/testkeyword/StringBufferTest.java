@@ -25,6 +25,10 @@ public class StringBufferTest {
 		System.out.println(sb1 + "---" + sb2);// hello---world
 		change(sb1, sb2);
 		System.out.println(sb1 + "---" + sb2);// hello---worldworld
+		
+		StringBuffer sb3 = new StringBuffer("good_world");
+		sb3.setLength(4);
+		System.out.println(sb3);
 
 	}
 

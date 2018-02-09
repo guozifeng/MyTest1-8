@@ -9,7 +9,9 @@ package com.guo.offer.testkeyword;
  *
  */
 public class SwitchTest {
-
+    static final short a = 0;
+    public static int b =10;
+    
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		String c = "a"; // charÀàÐÍ×Ö·û
@@ -51,6 +53,23 @@ public class SwitchTest {
 
 		}
 		System.out.println(cc + j);
+	}
+	
+	public void test1(){
+	    short aa =0;
+	    switch(a){
+
+            case a+11 : System.out.println(" A ");
+
+	        case 2 : System.out.println(" B ");
+
+	        case 3 : System.out.println(" C ");
+
+	        case 4 : System.out.println(" D ");
+
+	        default : System.out.println(" default ");
+
+	        }
 	}
 
 }
