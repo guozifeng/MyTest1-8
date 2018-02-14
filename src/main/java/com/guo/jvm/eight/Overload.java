@@ -1,5 +1,7 @@
 package com.guo.jvm.eight;
 
+import java.io.Serializable;
+
 public class Overload {
 
     public static void sayHello(Object arg) {
