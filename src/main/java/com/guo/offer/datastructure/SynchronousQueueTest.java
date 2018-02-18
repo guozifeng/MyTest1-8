@@ -17,7 +17,7 @@ public class SynchronousQueueTest {
         // true保证生产或消费者线程以FIFO的顺序访问。
         SynchronousQueue<Integer> queue = new SynchronousQueue<Integer>(true);
         for (int i = 0; i < 1; ++i) {
-            //new Customer(queue).start();
+            new Customer(queue).start();
         }
         for (int i = 0; i < 1; ++i) {
             new Product(queue).start();
@@ -36,7 +36,7 @@ public class SynchronousQueueTest {
             while (true) {
                 int rand = new Random().nextInt(1000);
                 
-                System.out.println("Thread Id11:" + getId() + " 等待两秒后运送出去...");
+                //System.out.println("Thread Id11:" + getId() + " 等待两秒后运送出去...");
                 try {
                     TimeUnit.SECONDS.sleep(2);
                 } catch (InterruptedException e) {
