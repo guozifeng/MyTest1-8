@@ -11,9 +11,9 @@ public class SynchronousQueueTest {
     public static void main(String[] args) {
         SynchronousQueue<String> queue = new SynchronousQueue();
         // TODO Auto-generated method stub
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 1; i++)
             new Thread(new ThreadProducer(queue)).start();
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 1; i++)
             new Thread(new ThreadConsumer(queue)).start();
     }
 }
@@ -45,7 +45,7 @@ class ThreadProducer implements Runnable {
                     name = "offer wait time and name:" + cnt;
                     queue.offer(name, 1000, TimeUnit.MILLISECONDS);
                 }
-                Thread.sleep(1);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -66,7 +66,7 @@ class ThreadConsumer implements Runnable {
             try {
                 name = queue.take();
                 System.out.println("take " + name);
-                Thread.sleep(1);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
