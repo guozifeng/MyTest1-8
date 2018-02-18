@@ -48,16 +48,17 @@ public class SynchronousQueueTest {
                  * 也就是说offer不一定真正的插入的队列中，肯定没成功丢失了
                  */
 
-                // queue.offer(rand); //注意offer与put方法的区别
-                try {
-                    /* 
+                //queue.offer(rand); //注意offer与put方法的区别
+                System.out.println("Thread Id:" + getId() + "  生产了一个产品：" + rand + "   " + queue.offer(rand));
+                /*try {
+                     
                      * put()往queue放进去一个element以后就一直wait直到有其他thread进来把这个element取走。
-                     */
+                     
                     queue.put(rand);
                     System.out.println("Thread Id:" + getId() + "  生产了一个产品：" + rand);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                }
+                }*/
             }
         }
     }
