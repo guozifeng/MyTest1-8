@@ -17,7 +17,7 @@ public class SynchronousQueueTest {
         // true保证生产或消费者线程以FIFO的顺序访问。
         SynchronousQueue<Integer> queue = new SynchronousQueue<Integer>(true);
         for (int i = 0; i < 1; ++i) {
-            new Customer(queue).start();
+            //new Customer(queue).start();
         }
         for (int i = 0; i < 1; ++i) {
             new Product(queue).start();
@@ -36,7 +36,7 @@ public class SynchronousQueueTest {
             while (true) {
                 int rand = new Random().nextInt(1000);
                 
-                //System.out.println("Thread Id:" + getId() + " 等待两秒后运送出去...");
+                System.out.println("Thread Id11:" + getId() + " 等待两秒后运送出去...");
                 try {
                     TimeUnit.SECONDS.sleep(2);
                 } catch (InterruptedException e) {
@@ -49,16 +49,16 @@ public class SynchronousQueueTest {
                  */
 
                 //queue.offer(rand); //注意offer与put方法的区别
-                System.out.println("Thread Id:" + getId() + "  生产了一个产品：" + rand + "   " + queue.offer(rand));
-                /*try {
+                //System.out.println("Thread Id:" + getId() + "  生产了一个产品：" + rand + "   " + queue.offer(rand));
+                try {
                      
-                     * put()往queue放进去一个element以后就一直wait直到有其他thread进来把这个element取走。
+                     // put()往queue放进去一个element以后就一直wait直到有其他thread进来把这个element取走。
                      
                     queue.put(rand);
                     System.out.println("Thread Id:" + getId() + "  生产了一个产品：" + rand);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                }*/
+                }
             }
         }
     }
