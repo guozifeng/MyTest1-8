@@ -10,10 +10,8 @@ public class Test {
         BaseResquest<Person> baseResquest = new BaseResquest<Person>();
         baseResquest.body = person;
         Class<?> cls = Person.class;
-        Object inst = cls.newInstance();
         Field[] fields = cls.getFields();
         for (Field f : fields) {
-            System.out.println(inst.getClass());
             String value = (String)f.get(baseResquest.body);
             if (f.isAnnotationPresent(Encrypt.class)) {
                 value += "654321";

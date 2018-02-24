@@ -5,5 +5,10 @@ public class Person extends BasePerson {
     public String name;
     
     public String phone;
+
+    @Override
+    public String toString() {
+        return "Person [name=" + name + ", phone=" + phone + "]";
+    }
     
 }
