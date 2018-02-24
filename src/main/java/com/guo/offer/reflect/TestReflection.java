@@ -7,128 +7,128 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 public class TestReflection implements ABInterface{
-	private String username;
-	private String password;
-	private int[] age;
+    private String username;
+    private String password;
+    private int[] age;
 
-	public void setUserName(String username) {
-		this.username = username;
-	}
+    public void setUserName(String username) {
+        this.username = username;
+    }
 
-	private void setPassWord(String password) {
-		this.password = password;
-	}
+    private void setPassWord(String password) {
+        this.password = password;
+    }
 
-	public static void test01() throws ClassNotFoundException {
-		Class c1 = TestReflection.class;
-		Class c2 = Class.forName("com.reflection.TestReflection");
-		// è·å–æŒ‡å®šçš„åŒ…å
-		String package01 = c1.getPackage().getName();
-		String package02 = c2.getPackage().getName();
-		System.out.println("package01 = " + package01);
-		System.out.println("package02 = " + package02);
-		// è·å–ç±»çš„ä¿®é¥°ç¬¦
-		int mod = c1.getModifiers();
-		String modifier = Modifier.toString(mod);
-		System.out.println("modifier = " + modifier);
-		// è·å–æŒ‡å®šç±»çš„å®Œå…¨é™å®šå
-		String className = c1.getName();
-		System.out.println("className = " + className);
-		// è·å–æŒ‡å®šç±»çš„çˆ¶ç±»
-		Class superClazz = c1.getSuperclass();
-		String superClazzName = superClazz.getName();
-		System.out.println("superClazzName = " + superClazzName);
-		// è·å–å®ç°çš„æ¥å£
-		Class[] interfaces = c1.getInterfaces();
-		for (Class t : interfaces) {
-			System.out.println("interfacesName = " + t.getName());
-		}
-		// è·å–æŒ‡å®šç±»çš„æˆå‘˜å˜é‡
-		Field[] fields = c1.getDeclaredFields();
-		for (Field field : fields) {
-			modifier = Modifier.toString(field.getModifiers()); // è·å–æ¯ä¸ªå­—æ®µçš„è®¿é—®ä¿®é¥°ç¬¦
-			Class type = field.getType(); // è·å–å­—æ®µçš„æ•°æ®ç±»å‹æ‰€å¯¹åº”çš„Classå¯¹è±¡
-			String name = field.getName(); // è·å–å­—æ®µå
-			if (type.isArray()) { // å¦‚æœæ˜¯æ•°ç»„ç±»å‹åˆ™éœ€è¦ç‰¹åˆ«å¤„ç†
-				String arrType = type.getComponentType().getName() + "[]";
-				System.out.println("" + modifier + " 3" + arrType + " 4" + name + ";");
-			} else {
-				System.out.println("" + modifier + " 1" + type + " 2" + name + ";");
-			}
-		}
-		// è·å–ç±»çš„æ„é€ æ–¹æ³•
-		Constructor[] constructors = c1.getDeclaredConstructors();
-		for (Constructor constructor : constructors) {
-			String name = constructor.getName(); // æ„é€ æ–¹æ³•å
-			modifier = Modifier.toString(constructor.getModifiers()); // è·å–è®¿é—®ä¿®é¥°ç¬¦
-			System.out.println("" + modifier + " " + name + "(");
-			Class[] paramTypes = constructor.getParameterTypes(); // è·å–æ„é€ æ–¹æ³•ä¸­çš„å‚æ•°
-			for (int i = 0; i < paramTypes.length; i++) {
-				if (i > 0) {
-					System.out.print(",");
-				}
-				if (paramTypes[i].isArray()) {
-					System.out.println(paramTypes[i].getComponentType().getName() + "[]");
-				} else {
-					System.out.print(paramTypes[i].getName());
-				}
-			}
-			System.out.println(");");
-		}
-		// è·å–æˆå‘˜æ–¹æ³•
-		Method[] methods = c1.getDeclaredMethods();
-		for (Method method : methods) {
-			modifier = Modifier.toString(method.getModifiers());
-			Class returnType = method.getReturnType(); // è·å–æ–¹æ³•çš„è¿”å›ç±»å‹
-			if (returnType.isArray()) {
-				String arrType = returnType.getComponentType().getName() + "[]";
-				System.out.print("" + modifier + " " + arrType + " " + method.getName() + "(");
-			} else {
-				System.out.print("" + modifier + " " + returnType.getName() + " " + method.getName() + "(");
-			}
-			Class[] paramTypes = method.getParameterTypes();
-			for (int i = 0; i < paramTypes.length; i++) {
-				if (i > 0) {
-					System.out.print(",");
-				}
-				if (paramTypes[i].isArray()) {
-					System.out.println(paramTypes[i].getComponentType().getName() + "[]");
-				} else {
-					System.out.print(paramTypes[i].getName());
-				}
-			}
-			System.out.println(");");
-		}
-	}
+    public static void test01() throws ClassNotFoundException {
+        Class c1 = TestReflection.class;
+        Class c2 = Class.forName("com.reflection.TestReflection");
+        // »ñÈ¡Ö¸¶¨µÄ°üÃû
+        String package01 = c1.getPackage().getName();
+        String package02 = c2.getPackage().getName();
+        System.out.println("package01 = " + package01);
+        System.out.println("package02 = " + package02);
+        // »ñÈ¡ÀàµÄĞŞÊÎ·û
+        int mod = c1.getModifiers();
+        String modifier = Modifier.toString(mod);
+        System.out.println("modifier = " + modifier);
+        // »ñÈ¡Ö¸¶¨ÀàµÄÍêÈ«ÏŞ¶¨Ãû
+        String className = c1.getName();
+        System.out.println("className = " + className);
+        // »ñÈ¡Ö¸¶¨ÀàµÄ¸¸Àà
+        Class superClazz = c1.getSuperclass();
+        String superClazzName = superClazz.getName();
+        System.out.println("superClazzName = " + superClazzName);
+        // »ñÈ¡ÊµÏÖµÄ½Ó¿Ú
+        Class[] interfaces = c1.getInterfaces();
+        for (Class t : interfaces) {
+            System.out.println("interfacesName = " + t.getName());
+        }
+        // »ñÈ¡Ö¸¶¨ÀàµÄ³ÉÔ±±äÁ¿
+        Field[] fields = c1.getDeclaredFields();
+        for (Field field : fields) {
+            modifier = Modifier.toString(field.getModifiers()); // »ñÈ¡Ã¿¸ö×Ö¶ÎµÄ·ÃÎÊĞŞÊÎ·û
+            Class type = field.getType(); // »ñÈ¡×Ö¶ÎµÄÊı¾İÀàĞÍËù¶ÔÓ¦µÄClass¶ÔÏó
+            String name = field.getName(); // »ñÈ¡×Ö¶ÎÃû
+            if (type.isArray()) { // Èç¹ûÊÇÊı×éÀàĞÍÔòĞèÒªÌØ±ğ´¦Àí
+                String arrType = type.getComponentType().getName() + "[]";
+                System.out.println("" + modifier + " 3" + arrType + " 4" + name + ";");
+            } else {
+                System.out.println("" + modifier + " 1" + type + " 2" + name + ";");
+            }
+        }
+        // »ñÈ¡ÀàµÄ¹¹Ôì·½·¨
+        Constructor[] constructors = c1.getDeclaredConstructors();
+        for (Constructor constructor : constructors) {
+            String name = constructor.getName(); // ¹¹Ôì·½·¨Ãû
+            modifier = Modifier.toString(constructor.getModifiers()); // »ñÈ¡·ÃÎÊĞŞÊÎ·û
+            System.out.println("" + modifier + " " + name + "(");
+            Class[] paramTypes = constructor.getParameterTypes(); // »ñÈ¡¹¹Ôì·½·¨ÖĞµÄ²ÎÊı
+            for (int i = 0; i < paramTypes.length; i++) {
+                if (i > 0) {
+                    System.out.print(",");
+                }
+                if (paramTypes[i].isArray()) {
+                    System.out.println(paramTypes[i].getComponentType().getName() + "[]");
+                } else {
+                    System.out.print(paramTypes[i].getName());
+                }
+            }
+            System.out.println(");");
+        }
+        // »ñÈ¡³ÉÔ±·½·¨
+        Method[] methods = c1.getDeclaredMethods();
+        for (Method method : methods) {
+            modifier = Modifier.toString(method.getModifiers());
+            Class returnType = method.getReturnType(); // »ñÈ¡·½·¨µÄ·µ»ØÀàĞÍ
+            if (returnType.isArray()) {
+                String arrType = returnType.getComponentType().getName() + "[]";
+                System.out.print("" + modifier + " " + arrType + " " + method.getName() + "(");
+            } else {
+                System.out.print("" + modifier + " " + returnType.getName() + " " + method.getName() + "(");
+            }
+            Class[] paramTypes = method.getParameterTypes();
+            for (int i = 0; i < paramTypes.length; i++) {
+                if (i > 0) {
+                    System.out.print(",");
+                }
+                if (paramTypes[i].isArray()) {
+                    System.out.println(paramTypes[i].getComponentType().getName() + "[]");
+                } else {
+                    System.out.print(paramTypes[i].getName());
+                }
+            }
+            System.out.println(");");
+        }
+    }
 
-	public static void test02() throws InstantiationException, IllegalAccessException, SecurityException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException {
-		// åå°„è°ƒç”¨æ–¹æ³•ï¼Œå¯ä»¥é€šè¿‡Methodç±»çš„invokeæ–¹æ³•å®ç°åŠ¨æ€æ–¹æ³•çš„è°ƒç”¨
-		// public Object invoke(Object obj, Object... args)
-		// ç¬¬ä¸€ä¸ªå‚æ•°ä»£è¡¨å¯¹è±¡
-		// ç¬¬äºŒä¸ªå‚æ•°ä»£è¡¨æ‰§è¡Œæ–¹æ³•ä¸Šçš„å‚æ•°
-		// è‹¥åå°„è¦è°ƒç”¨ç±»çš„æŸä¸ªç§æœ‰æ–¹æ³•ï¼Œå¯ä»¥åœ¨è¿™ä¸ªç§æœ‰æ–¹æ³•å¯¹åº”çš„Mehtodå¯¹è±¡ä¸Šå…ˆè°ƒç”¨setAccessible(true)
-		Class c1 = TestReflection.class;
-		TestReflection t1 = (TestReflection) c1.newInstance(); // åˆ©ç”¨åå°„æ¥åˆ›å»ºç±»çš„å¯¹è±¡
-		System.out.println("username == " + t1.username);
-		System.out.println("password == " + t1.password);
-		Method method = c1.getDeclaredMethod("setUserName", String.class);
-		method.invoke(t1, "Javaåå°„çš„å­¦ä¹ ");
-		System.out.println("username == " + t1.username);
-		method = c1.getDeclaredMethod("setPassWord", String.class);
-		method.setAccessible(true);
-		method.invoke(t1, "åå°„æ‰§è¡ŒæŸä¸ªPrivateä¿®é¥°çš„æ–¹æ³•");
-		System.out.println("password == " + t1.password);
-	}
+    public static void test02() throws InstantiationException, IllegalAccessException, SecurityException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException {
+        // ·´Éäµ÷ÓÃ·½·¨£¬¿ÉÒÔÍ¨¹ıMethodÀàµÄinvoke·½·¨ÊµÏÖ¶¯Ì¬·½·¨µÄµ÷ÓÃ
+        // public Object invoke(Object obj, Object... args)
+        // µÚÒ»¸ö²ÎÊı´ú±í¶ÔÏó
+        // µÚ¶ş¸ö²ÎÊı´ú±íÖ´ĞĞ·½·¨ÉÏµÄ²ÎÊı
+        // Èô·´ÉäÒªµ÷ÓÃÀàµÄÄ³¸öË½ÓĞ·½·¨£¬¿ÉÒÔÔÚÕâ¸öË½ÓĞ·½·¨¶ÔÓ¦µÄMehtod¶ÔÏóÉÏÏÈµ÷ÓÃsetAccessible(true)
+        Class c1 = TestReflection.class;
+        TestReflection t1 = (TestReflection) c1.newInstance(); // ÀûÓÃ·´ÉäÀ´´´½¨ÀàµÄ¶ÔÏó
+        System.out.println("username == " + t1.username);
+        System.out.println("password == " + t1.password);
+        Method method = c1.getDeclaredMethod("setUserName", String.class);
+        method.invoke(t1, "Java·´ÉäµÄÑ§Ï°");
+        System.out.println("username == " + t1.username);
+        method = c1.getDeclaredMethod("setPassWord", String.class);
+        method.setAccessible(true);
+        method.invoke(t1, "·´ÉäÖ´ĞĞÄ³¸öPrivateĞŞÊÎµÄ·½·¨");
+        System.out.println("password == " + t1.password);
+    }
 
-	public static void main(String[] args) throws ClassNotFoundException, SecurityException, IllegalArgumentException, InstantiationException, IllegalAccessException, NoSuchMethodException,
-			InvocationTargetException {
-		//test01();
-		test02();
-	}
+    public static void main(String[] args) throws ClassNotFoundException, SecurityException, IllegalArgumentException, InstantiationException, IllegalAccessException, NoSuchMethodException,
+            InvocationTargetException {
+        //test01();
+        test02();
+    }
 
-	@Override
-	public void aa() {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void aa() {
+        // TODO Auto-generated method stub
+        
+    }
 }
