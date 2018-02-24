@@ -5,40 +5,40 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 public class ProxyHandler implements InvocationHandler {
-	// ç›®æ ‡å¯¹è±¡
-	private Object target;
+    // Ä¿±ê¶ÔÏó
+    private Object target;
 
-	/**
-	 * æ„é€ æ–¹æ³•
-	 * 
-	 * @param target
-	 *            ç›®æ ‡å¯¹è±¡
-	 */
-	public ProxyHandler(Object target) {
-		super();
-		this.target = target;
-	}
+    /**
+     * ¹¹Ôì·½·¨
+     * 
+     * @param target
+     *            Ä¿±ê¶ÔÏó
+     */
+    public ProxyHandler(Object target) {
+        super();
+        this.target = target;
+    }
 
-	/**
-	 * æ‰§è¡Œç›®æ ‡å¯¹è±¡çš„æ–¹æ³•
-	 */
-	@Override
-	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-		// åœ¨ç›®æ ‡å¯¹è±¡çš„æ–¹æ³•æ‰§è¡Œä¹‹å‰ç®€å•çš„æ‰“å°ä¸€ä¸‹
-		System.out.println("------------------before------------------");
-		// æ‰§è¡Œç›®æ ‡å¯¹è±¡çš„æ–¹æ³•
-		Object result = method.invoke(target, args);
-		// åœ¨ç›®æ ‡å¯¹è±¡çš„æ–¹æ³•æ‰§è¡Œä¹‹åç®€å•çš„æ‰“å°ä¸€ä¸‹
-		System.out.println("-------------------after------------------");
-		return result;
-	}
+    /**
+     * Ö´ĞĞÄ¿±ê¶ÔÏóµÄ·½·¨
+     */
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        // ÔÚÄ¿±ê¶ÔÏóµÄ·½·¨Ö´ĞĞÖ®Ç°¼òµ¥µÄ´òÓ¡Ò»ÏÂ
+        System.out.println("------------------before------------------");
+        // Ö´ĞĞÄ¿±ê¶ÔÏóµÄ·½·¨
+        Object result = method.invoke(target, args);
+        // ÔÚÄ¿±ê¶ÔÏóµÄ·½·¨Ö´ĞĞÖ®ºó¼òµ¥µÄ´òÓ¡Ò»ÏÂ
+        System.out.println("-------------------after------------------");
+        return result;
+    }
 
-	/**
-	 * è·å–ç›®æ ‡å¯¹è±¡çš„ä»£ç†å¯¹è±¡
-	 * 
-	 * @return ä»£ç†å¯¹è±¡
-	 */
-	public Object getProxy() {
-		return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), this);
-	}
+    /**
+     * »ñÈ¡Ä¿±ê¶ÔÏóµÄ´úÀí¶ÔÏó
+     * 
+     * @return ´úÀí¶ÔÏó
+     */
+    public Object getProxy() {
+        return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), this);
+    }
 }

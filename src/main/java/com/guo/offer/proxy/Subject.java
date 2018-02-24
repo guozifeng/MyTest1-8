@@ -1,8 +1,8 @@
 package com.guo.offer.proxy;
 
 public interface Subject {
-	/**
-	 * 鐩爣鏂规硶
-	 */
-	public abstract void add();
+    /**
+     * 目标方法
+     */
+    public abstract void add();
 }

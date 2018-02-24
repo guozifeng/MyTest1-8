@@ -2,18 +2,18 @@ package com.guo.offer.proxy;
 
 public class ProxyTest {
 
-	public static void main(String[] args) {
-		// å®ä¾‹åŒ–ç›®æ ‡å¯¹è±¡
-		Subject userService = new SubjectImpl();
-		// å®ä¾‹åŒ–InvocationHandler
-		//ProxyHandler invocationHandler = new ProxyHandler(userService);
-		// æ ¹æ®ç›®æ ‡å¯¹è±¡ç”Ÿæˆä»£ç†å¯¹è±¡
-		//Subject proxy = (Subject) invocationHandler.getProxy();
-		
-		Subject proxy =(Subject) JDKProxy.getPoxyObject(userService);
-		// è°ƒç”¨ä»£ç†å¯¹è±¡çš„æ–¹æ³•
-		proxy.add();
-		
-	}
+    public static void main(String[] args) {
+        // ÊµÀı»¯Ä¿±ê¶ÔÏó
+        Subject userService = new SubjectImpl();
+        // ÊµÀı»¯InvocationHandler
+        //ProxyHandler invocationHandler = new ProxyHandler(userService);
+        // ¸ù¾İÄ¿±ê¶ÔÏóÉú³É´úÀí¶ÔÏó
+        //Subject proxy = (Subject) invocationHandler.getProxy();
+        
+        Subject proxy =(Subject) JDKProxy.getPoxyObject(userService);
+        // µ÷ÓÃ´úÀí¶ÔÏóµÄ·½·¨
+        proxy.add();
+        
+    }
 
 }

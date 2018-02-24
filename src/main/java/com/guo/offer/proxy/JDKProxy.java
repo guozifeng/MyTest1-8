@@ -5,19 +5,19 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 public class JDKProxy {
-	public static Object getPoxyObject(final Object c) {
-		return Proxy.newProxyInstance(c.getClass().getClassLoader(), c.getClass().getInterfaces(),// JDKå®ç°åŠ¨æ€ä»£ç†ï¼Œä½†JDKå®ç°å¿…é¡»éœ€è¦æ¥å£
-				new InvocationHandler() {
-					public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-						Object reObj = null;
-						System.out.println("------------------before------------------");
-						// æ‰§è¡Œç›®æ ‡å¯¹è±¡çš„æ–¹æ³•
-						reObj = method.invoke(c, args);
-						// åœ¨ç›®æ ‡å¯¹è±¡çš„æ–¹æ³•æ‰§è¡Œä¹‹åç®€å•çš„æ‰“å°ä¸€ä¸‹
-						System.out.println("-------------------after------------------");
-						return reObj;
-					}
-				});
+    public static Object getPoxyObject(final Object c) {
+        return Proxy.newProxyInstance(c.getClass().getClassLoader(), c.getClass().getInterfaces(),// JDKÊµÏÖ¶¯Ì¬´úÀí£¬µ«JDKÊµÏÖ±ØĞëĞèÒª½Ó¿Ú
+                new InvocationHandler() {
+                    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                        Object reObj = null;
+                        System.out.println("------------------before------------------");
+                        // Ö´ĞĞÄ¿±ê¶ÔÏóµÄ·½·¨
+                        reObj = method.invoke(c, args);
+                        // ÔÚÄ¿±ê¶ÔÏóµÄ·½·¨Ö´ĞĞÖ®ºó¼òµ¥µÄ´òÓ¡Ò»ÏÂ
+                        System.out.println("-------------------after------------------");
+                        return reObj;
+                    }
+                });
 
-	}
+    }
 }
