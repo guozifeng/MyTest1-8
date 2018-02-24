@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Vector;
 import java.util.concurrent.TimeUnit;
 
 public class TestParallelStream {
@@ -12,8 +13,10 @@ public class TestParallelStream {
         // TODO Auto-generated method stub
         Integer[] intArray = {1, 2, 3, 11, 4, 5, 6, 7, 8, 0};
         List<Integer> listOfIntegers = new ArrayList<>(Arrays.asList(intArray));
-        // List<Integer> parallelStorage = new ArrayList<>();
-        List<Integer> parallelStorage = Collections.synchronizedList(new ArrayList<>());
+        //parallelStorage必须为线程安全的容器
+        //List<Integer> parallelStorage = new ArrayList<>();
+        //List<Integer> parallelStorage = Collections.synchronizedList(new ArrayList<>());
+        List<Integer> parallelStorage = new Vector();
         listOfIntegers.parallelStream()
             // Don't do this! It uses a stateful lambda expression.
             .map(e -> {
