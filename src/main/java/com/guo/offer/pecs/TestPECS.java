@@ -158,7 +158,8 @@ public class TestPECS {
         fruits2.add(apple);
         fruits2.add(greenapple);
         // fruits2.add(strawberry);
-        List<? super Apple> a = fruits2;
+        List<? super Apple> a = new ArrayList<Apple>();
+        // 只能放入苹果及其子类
         a.add(new GreenApple());
         a.add(new Apple());
         // a.add(fruit);
