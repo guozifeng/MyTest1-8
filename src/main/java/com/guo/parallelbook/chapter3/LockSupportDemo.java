@@ -23,7 +23,6 @@ public class LockSupportDemo {
         }
     }
 
-
     public static void main(String args[]) throws InterruptedException {
         t1.start();
         Thread.sleep(100);
