@@ -18,7 +18,7 @@ public class testHashMap {
         int result = 1;
         result = prime * result + id;
         result = 11;
-        System.out.println(result);
+        System.out.println("-----hashCode------"+result);
         return result;
     }
 
@@ -29,7 +29,7 @@ public class testHashMap {
          * (getClass() != obj.getClass()) return false; testHashMap other =
          * (testHashMap) obj; if (id != other.id) return false;
          */
-        System.out.println("99");
+        System.out.println("-----equals------"+"99");
         return true;
     }
 
