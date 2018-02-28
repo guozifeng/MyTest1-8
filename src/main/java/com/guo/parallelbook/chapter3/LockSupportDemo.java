@@ -19,10 +19,10 @@ public class LockSupportDemo {
             synchronized (u) {
                 System.out.println("in " + getName());
                 LockSupport.park();
+                System.out.println("-------------------------");
             }
         }
     }
-
 
     public static void main(String args[]) throws InterruptedException {
         t1.start();
@@ -30,7 +30,5 @@ public class LockSupportDemo {
         t2.start();
         LockSupport.unpark(t1);
         LockSupport.unpark(t2);
-        t1.join();
-        t2.join();
     }
 }

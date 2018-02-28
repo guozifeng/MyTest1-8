@@ -43,8 +43,16 @@ public class StopThreadUnsafe {
 
 
     public static class ChangeObjectThread extends Thread {
+        volatile boolean stopme = false;
+        public void stopMe(){
+            stopme = true;
+        }
         public void run() {
             while (true) {
+                if(stopme){
+                    System.out.println("============");
+                    break;
+                }
                 synchronized (user) {
                     int v = (int) (System.currentTimeMillis() / 1000);
                     user.setId(v);
@@ -80,7 +88,9 @@ public class StopThreadUnsafe {
             Thread thread = new ChangeObjectThread();
             thread.start();
             Thread.sleep(150);
-            thread.stop();
+            //thread.stop();
+            ChangeObjectThread a = (ChangeObjectThread)thread;
+            a.stopMe();
         }
     }
 }

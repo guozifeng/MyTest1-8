@@ -28,7 +28,7 @@ public class SimpleWaitAndNotify {
                 object.notify();
 
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(6000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -41,6 +41,11 @@ public class SimpleWaitAndNotify {
         Thread thread1 = new Thread1();
         Thread thread2 = new Thread2();
         thread1.start();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         thread2.start();
     }
 
