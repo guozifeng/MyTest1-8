@@ -6,7 +6,6 @@ import java.util.concurrent.atomic.LongAdder;
 public class LongAdderTest {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
 		LongAdder a = new LongAdder();
 		a.add(1);a.add(1);a.add(1);a.add(1);
