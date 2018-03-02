@@ -34,7 +34,7 @@ public class testHashcode {
         final testHashcode o = new testHashcode();
         o.setName("1111");
         System.out.println(o);
-
+        
         testHashcode o1 = o;
         o1.setName("2222");
 
