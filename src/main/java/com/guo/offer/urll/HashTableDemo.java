@@ -6,8 +6,8 @@ public class HashTableDemo {
 
     public static void main(String args[]) {
         // Create a hash map
-        Hashtable balance = new Hashtable();
-        Enumeration names;
+        Hashtable<String, Double> balance = new Hashtable<String, Double>();
+        Enumeration<String> names;
         String str;
         double bal;
 
