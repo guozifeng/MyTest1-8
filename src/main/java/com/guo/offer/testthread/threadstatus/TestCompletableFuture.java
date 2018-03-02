@@ -8,7 +8,7 @@ import org.junit.Test;
 public class TestCompletableFuture {
 
     public static void main(String[] args) throws Exception {
-        test1();
+        test5();
     }
 
     private static void test5() {
