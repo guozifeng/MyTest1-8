@@ -1,8 +1,6 @@
 package com.guo.offer.testutils;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 /**
  * 问题解决第三种方式
