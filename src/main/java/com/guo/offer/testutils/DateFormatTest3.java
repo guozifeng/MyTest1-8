@@ -21,7 +21,7 @@ public class DateFormatTest3 {
                     try {
                         while (true) {
                             String str1 = date[temp];
-                            Date date = DateUtil.parse(str1, "yyyy-MM-dd");
+                            Date date = DateUtil.parse(str1, "dd-MMM-yyyy");
                             String str2 = DateUtil.format(date, "yyyy-MM-dd");
                             // String str2 = sdf.format(sdf.parse(str1));
                             // System.out.println(Thread.currentThread().getName()
