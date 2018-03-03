@@ -4,10 +4,6 @@ import java.util.Arrays;
 
 public class testArraysSort {
 
-    public testArraysSort() {
-        // TODO Auto-generated constructor stub
-    }
-
     public static void main(String[] args) {
         // 数组初始化
         int[] a = {3, 5, 2, 1, 8, 6, 9, 4, 0};
