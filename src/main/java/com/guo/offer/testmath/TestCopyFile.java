@@ -12,7 +12,7 @@ import java.io.InputStream;
  * @date 2017/12/07
  * 
  */
-public class CopyFileTest {
+public class TestCopyFile {
 
     public static boolean copyFile(String str, String sourcePath, String destPath) throws IOException {
         boolean f = false;

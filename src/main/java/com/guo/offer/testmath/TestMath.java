@@ -2,8 +2,6 @@ package com.guo.offer.testmath;
 
 import java.util.Random;
 
-import org.junit.Test;
-
 /**
  * 
  * Math类中提供了三个与取整有关的方法：ceil,floor,round, 这些方法的作用于 它们的英文名称的含义相对应， 例如：ceil的英文意义是天花板，该方法就表示向上取整， Math.ceil（11.3）的结果为12，
@@ -15,7 +13,7 @@ import org.junit.Test;
  * @author Administrator
  *
  */
-public class MathTest {
+public class TestMath {
 
     public static void main(String[] args) {
         test3();
