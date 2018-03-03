@@ -1,4 +1,4 @@
-package com.guo.offer.testutils;
+package com.guo.offer.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
