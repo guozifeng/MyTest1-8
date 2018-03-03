@@ -9,7 +9,7 @@ import java.util.HashMap;
  * @author Administrator
  *
  */
-public class testHashMap {
+public class TestHashMap {
     private int id;
 
     @Override
@@ -36,7 +36,7 @@ public class testHashMap {
     /**
      * 
      */
-    public testHashMap() {
+    public TestHashMap() {
         // TODO Auto-generated constructor stub
     }
 
@@ -53,11 +53,11 @@ public class testHashMap {
      */
     public static void main(String[] args) {
 
-        testHashMap a1 = new testHashMap();
+        TestHashMap a1 = new TestHashMap();
         a1.setId(1);
-        testHashMap a2 = new testHashMap();
+        TestHashMap a2 = new TestHashMap();
         a2.setId(2);
-        testHashMap a3 = new testHashMap();
+        TestHashMap a3 = new TestHashMap();
 
         HashMap map = new HashMap();
         System.out.println(map.put(a1, "a"));
