@@ -4,8 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 /**
- * 问题解决第二种方式
- * 线程加锁方式解决
+ * 问题解决第二种方式 线程加锁方式解决
+ * 
  * @author Administrator
  *
  */
@@ -24,8 +24,9 @@ public class DateFormatTest2 {
                             while (true) {
                                 String str1 = date[temp];
                                 String str2 = sdf.format(sdf.parse(str1));
-                                // System.out.println(Thread.currentThread().getName()
-                                // + ", " + str1 + "," + str2);
+                                
+                                System.out.println(Thread.currentThread().getName() + ", " + str1 + "," + str2);
+                                
                                 if (!str1.equals(str2)) {
                                     throw new RuntimeException(
                                         Thread.currentThread().getName() + ", Expected " + str1 + " but got " + str2);
