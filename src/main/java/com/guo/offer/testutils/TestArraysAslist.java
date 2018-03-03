@@ -3,7 +3,7 @@ package com.guo.offer.testutils;
 import java.util.Arrays;
 import java.util.List;
 
-public class testArraysAslist {
+public class TestArraysAslist {
 
     public static void main(String[] args) {
 

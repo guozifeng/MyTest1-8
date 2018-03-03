@@ -2,7 +2,7 @@ package com.guo.offer.testutils;
 
 import java.util.Arrays;
 
-public class testArraysSort {
+public class TestArraysSort {
 
     public static void main(String[] args) {
         // 数组初始化
