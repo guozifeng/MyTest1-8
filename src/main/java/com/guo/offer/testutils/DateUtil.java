@@ -73,7 +73,7 @@ public class DateUtil {
         String last = formatDate(ca.getTime(), "yyyy-MM-dd HH:mm:ss");
         System.out.println("===============last:" + last);
 
-        Userr r = new Userr();
+        User r = new User();
         r.setDate(new Date());
         System.out.println(r.getDate());
     }

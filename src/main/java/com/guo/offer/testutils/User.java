@@ -2,7 +2,7 @@ package com.guo.offer.testutils;
 
 import java.util.Date;
 
-public class Userr {
+public class User {
 
     private Date date;
 
