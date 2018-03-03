@@ -5,7 +5,7 @@ import java.util.Locale;
 
 /**
  * 问题解决第一种方式
- * 
+ * 每个线程创建一个SimpleDateFormat类
  * @author Administrator
  *
  */

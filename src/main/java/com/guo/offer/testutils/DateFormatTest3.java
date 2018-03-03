@@ -6,7 +6,7 @@ import java.util.Locale;
 
 /**
  * 问题解决第三种方式
- * 
+ * threadlocal方式解决
  * @author Administrator
  *
  */

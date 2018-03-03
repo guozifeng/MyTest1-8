@@ -5,7 +5,7 @@ import java.util.Locale;
 
 /**
  * 问题解决第二种方式
- * 
+ * 线程加锁方式解决
  * @author Administrator
  *
  */
