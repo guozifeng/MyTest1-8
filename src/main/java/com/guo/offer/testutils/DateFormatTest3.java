@@ -11,7 +11,7 @@ import java.util.Locale;
  *
  */
 public class DateFormatTest3 {
-    private static SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy", Locale.US);
+
     private static String date[] = {"01-Jan-1999", "01-Jan-2000", "01-Jan-2001"};
 
     public static void main(String[] args) {
