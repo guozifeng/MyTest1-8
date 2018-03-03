@@ -4,7 +4,7 @@
  * @author Administrator
  * @date 2018/02/26
  */
-public class T {
+public class TestOperator {
 
     /**
      * @param args
