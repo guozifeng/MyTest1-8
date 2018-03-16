@@ -16,7 +16,7 @@ public class TestParallelStream {
         //parallelStorage必须为线程安全的容器
         //List<Integer> parallelStorage = new ArrayList<>();
         //List<Integer> parallelStorage = Collections.synchronizedList(new ArrayList<>());
-        List<Integer> parallelStorage = new Vector();
+        List<Integer> parallelStorage = new Vector<Integer>();
         listOfIntegers.parallelStream()
             // Don't do this! It uses a stateful lambda expression.
             .map(e -> {
