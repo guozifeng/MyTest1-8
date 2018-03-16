@@ -6,10 +6,10 @@ public class ProxyTest {
         // 实例化目标对象
         Subject userService = new SubjectImpl();
         // 实例化InvocationHandler
-        //ProxyHandler invocationHandler = new ProxyHandler(userService);
+        ProxyHandler invocationHandler = new ProxyHandler(userService);
         // 根据目标对象生成代理对象
-        //Subject proxy = (Subject) invocationHandler.getProxy();
-        
+        Subject proxy1 = (Subject) invocationHandler.getProxy();
+        proxy1.add();
         Subject proxy =(Subject) JDKProxy.getPoxyObject(userService);
         // 调用代理对象的方法
         proxy.add();
