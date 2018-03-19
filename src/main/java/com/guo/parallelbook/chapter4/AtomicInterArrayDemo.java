@@ -33,8 +33,8 @@ public class AtomicInterArrayDemo {
             threads[i].start();
         }
         for (int i = 0; i < 10; i++) {
-            threads[i].join();
-            System.out.println(array);
+            threads[i].join();            
         }
+        System.out.println(array);
     }
 }
