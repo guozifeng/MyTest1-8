@@ -38,5 +38,6 @@ public class ParseDateThreadLocalDemo {
         for (int i = 0; i < 1000; i++) {
             executorService.execute(new ParseDate(i));
         }
+        executorService.shutdown();
     }
 }
