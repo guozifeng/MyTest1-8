@@ -36,10 +36,10 @@ public class ThreadLocalDemo_GC {
                             System.out.println(this.toString() + " is gc");
                         }
                     });
-                    System.out.println(Thread.currentThread().getId() + " create SimpleDatFormat");
+                    //System.out.println(Thread.currentThread().getId() + " create SimpleDatFormat");
                 }
                 Date date = threadLocal.get().parse("2017-05-06 12:33:" + i % 60);
-                System.out.println(i + ":" + date);
+                //System.out.println(i + ":" + date);
             } catch (ParseException e) {
                 e.printStackTrace();
             } finally {
@@ -74,5 +74,6 @@ public class ThreadLocalDemo_GC {
         Thread.sleep(1000);
         System.gc();
         System.out.println("second GC complete!");
+        executorService.shutdown();
     }
 }
