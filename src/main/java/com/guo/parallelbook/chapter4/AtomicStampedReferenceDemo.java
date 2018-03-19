@@ -10,11 +10,11 @@ public class AtomicStampedReferenceDemo {
 
     public static void main(String args[]) {
 
-        for (int i = 0; i < 100; i++) {
-            final int timestap = money.getStamp();
-            new Thread() {
-                public void run() {
-                    while (true) {
+        final int timestap = money.getStamp();
+        new Thread() {
+            public void run() {
+                while (true) {
+                    for (int i = 0; i < 100; i++) {
                         Integer m = money.getReference();
                         if (m < 20) {
                             if (money.compareAndSet(m, m + 20, timestap, timestap + 1)) {
@@ -22,13 +22,18 @@ public class AtomicStampedReferenceDemo {
                                 break;
                             }
                         } else {
-                            //System.out.println("余额大于20,无需充值");
+                            // System.out.println("余额大于20,无需充值");
                             break;
+                        }
+                        try {
+                            Thread.sleep(100);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
                         }
                     }
                 }
-            }.start();
-        }
+            }
+        }.start();
 
         new Thread() {
             public void run() {
@@ -44,7 +49,7 @@ public class AtomicStampedReferenceDemo {
                                 break;
                             }
                         } else {
-                            //System.out.println("没有足够的金额");
+                            // System.out.println("没有足够的金额");
                             break;
                         }
                     }
