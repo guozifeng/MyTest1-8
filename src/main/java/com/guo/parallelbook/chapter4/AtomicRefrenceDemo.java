@@ -23,17 +23,20 @@ public class AtomicRefrenceDemo {
                                 break;
                             }
                         } else {
-                            //System.out.println("余额大于20,无需充值");
+                            // System.out.println("余额大于20,无需充值");
                             break;
                         }
                     }
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+
                 }
             }.start();
+
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
         }
 
         new Thread() {
@@ -49,12 +52,12 @@ public class AtomicRefrenceDemo {
                                 break;
                             }
                         } else {
-                            //System.out.println("没有足够的金额");
+                            System.out.println("没有足够的金额" + i);
                             break;
                         }
                     }
                     try {
-                        Thread.sleep(100);
+                        Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
