@@ -15,6 +15,10 @@ public class ThreadLocalDemo_GC {
         protected void finalize() throws Throwable {
             System.out.println(this.toString() + " is gc");
         }
+        @Override
+        public String toString() {
+            return "ThreadLocal<SimpleDateFormat> [a=" + 1111 + "]";
+        }
     };
 
     static volatile CountDownLatch countDownLatch = new CountDownLatch(100);
@@ -34,6 +38,10 @@ public class ThreadLocalDemo_GC {
                     threadLocal.set(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss") {
                         protected void finalize() throws Throwable {
                             System.out.println(this.toString() + " is gc");
+                        }
+                        @Override
+                        public String toString() {
+                            return "SimpleDateFormat [b=" + 1111 + "]";
                         }
                     });
                     //System.out.println(Thread.currentThread().getId() + " create SimpleDatFormat");
@@ -71,9 +79,12 @@ public class ThreadLocalDemo_GC {
         }
 
         countDownLatch.await();
+        //threadLocal = null;
+        System.gc();
+        executorService.shutdown();
         Thread.sleep(1000);
         System.gc();
         System.out.println("second GC complete!");
-        executorService.shutdown();
+        
     }
 }
