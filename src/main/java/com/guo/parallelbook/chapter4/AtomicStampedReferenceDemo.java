@@ -15,7 +15,7 @@ public class AtomicStampedReferenceDemo {
             public void run() {
                 while (true) {
                     for (int i = 0; i < 100; i++) {
-                        Integer m = money.getReference();
+                        Integer m = money.getReference();                        
                         if (m < 20) {
                             if (money.compareAndSet(m, m + 20, timestap, timestap + 1)) {
                                 System.out.println("余额小于20元,充值成功,余额:" + money.getReference() + "元");
