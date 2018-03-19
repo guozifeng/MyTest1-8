@@ -9,7 +9,7 @@ public class AtomicIntegerDemo {
 
         @Override
         public void run() {
-            for (int j = 0; j < 10002; j++) {
+            for (int j = 0; j < 1000; j++) {
                 i.incrementAndGet();
             }
         }
