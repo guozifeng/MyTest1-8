@@ -12,6 +12,12 @@ public class AtomicInterArrayDemo {
         @Override
         public void run() {
             for (int i = 0; i < 10000; i++) {
+                System.out.println(Thread.currentThread().getName() + "=========i=========" + i);
+
+                System.out
+                    .println(Thread.currentThread().getName() + "=========array.length()=========" + array.length());
+                System.out.println(
+                    Thread.currentThread().getName() + "=========i % array.length()=========" + (i % array.length()));
                 array.getAndIncrement(i % array.length());
             }
         }
