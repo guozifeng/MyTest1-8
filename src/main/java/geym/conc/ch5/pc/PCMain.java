@@ -26,6 +26,9 @@ public class PCMain {
         producer2.stop();
         producer3.stop();
         Thread.sleep(3000);
+        consumer1.stop();
+        consumer2.stop();
+        consumer3.stop();
         service.shutdown();
     }
 }

@@ -6,6 +6,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 public class Consumer implements Runnable {
+    private volatile boolean isRunning = true;
 	private BlockingQueue<PCData> queue;
 	private static final int SLEEPTIME = 1000;
 
@@ -19,8 +20,8 @@ public class Consumer implements Runnable {
 		Random r = new Random();
 
 		try {
-			while(true){
-				PCData data = queue.take();
+			while(isRunning){
+				PCData data = queue.poll(2, TimeUnit.SECONDS);
 				if (null != data) {
 					int re = data.getData() * data.getData();
 					System.out.println(MessageFormat.format("{0}*{1}={2}",
@@ -33,4 +34,8 @@ public class Consumer implements Runnable {
 			Thread.currentThread().interrupt();
 		}
 	}
+	
+	public void stop() {
+        isRunning = false;
+    }
 }
