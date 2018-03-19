@@ -24,7 +24,7 @@ public class AtomicRefrenceDemo {
                             }
                         } else {
 
-                            System.out.println("余额大于20,无需充值" + i);
+                            //System.out.println("余额大于20,无需充值" + i);
                             break;
                         }
                     }
@@ -52,7 +52,7 @@ public class AtomicRefrenceDemo {
                                 break;
                             }
                         } else {
-                            System.out.println("没有足够的金额" + i);
+                            //System.out.println("没有足够的金额" + i);
                             break;
                         }
                     }
