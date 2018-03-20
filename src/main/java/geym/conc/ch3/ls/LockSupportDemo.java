@@ -16,6 +16,7 @@ public class LockSupportDemo {
 			synchronized (u) {
 				System.out.println("in "+getName());
 				LockSupport.park(this);
+				System.out.println("out "+getName());
 			}
 		}
 	}
