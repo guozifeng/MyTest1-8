@@ -52,14 +52,14 @@ public class SubListTest {
         a = (ArrayList<String>)list2;
         System.out.println(a);
         list2.add("77");
-        a.add("33");
+        a.add("444");
 
         List<Object> tempList = new ArrayList<Object>(list.subList(0, list.size()));
         tempList.add("xxxxx");
-        System.out.println(tempList.size());// 3
+        System.out.println(tempList);
 
-        System.out.println(list.size());// 6
-        System.out.println(list2.size());// 3
+        System.out.println(list);
+        System.out.println(list2);
     }
 
     public static void test3() {
