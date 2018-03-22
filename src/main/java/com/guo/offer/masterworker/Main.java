@@ -16,7 +16,7 @@ public class Main {
         // 固定使用5个Worker，并指定Worker
         Master m = new Master(new PlusWorker(), 5);
         // 提交100个子任务
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i <= 100; i++) {
             m.submit(i);
         }
         // 开始计算
@@ -47,7 +47,7 @@ public class Main {
             }
 
         }
-
+        System.out.println(re);
     }
 
 }
