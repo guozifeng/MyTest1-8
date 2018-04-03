@@ -15,6 +15,8 @@ public class Test {
         System.out.println((11+3*8)/4);
         System.out.println((11+3*8)/4%3);
         System.out.println(8%3);
+        String path = "";
+        System.out.println(path.concat("uuuu").concat(null));
     }
 
 }
