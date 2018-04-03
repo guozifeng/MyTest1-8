@@ -5,10 +5,10 @@ import java.io.*;
 public class SerializeDemo {
     public static void main(String[] args) {
         Employee e = new Employee();
-        e.name = "Reyan Ali";
-        e.address = "Phokka Kuan, Ambehta Peer";
-        e.SSN = 11122333;
-        e.number = 101;
+        e.setName("wwq");
+        e.setAddress("qqq");
+        e.setSSN(221);
+        e.setNumber(3434);
         try {
             File file = new File("E:/tmp/employee.ser");
             if (!file.getParentFile().exists()) {
