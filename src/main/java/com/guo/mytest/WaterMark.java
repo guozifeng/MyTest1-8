@@ -29,6 +29,9 @@ public class WaterMark {
 	public void addWatermark(String srcImgPath,String tarImgPath,String watermarkContent,Color color,Font font) {
 		
 		try {
+			// Integer degree = -45;//设置水印文字的旋转角度
+			Integer degree = 0;//设置水印文字的旋转角度
+			
 			//获取图片文件
 			File srcImgfile = new File(srcImgPath);
 			//把文件转换成图片
@@ -49,6 +52,10 @@ public class WaterMark {
 			
 			//设置水印的字体
 			g.setFont(font);
+			
+			if (null != degree) {
+                g.rotate(Math.toRadians(degree),(double)buffImg.getWidth()*0.5,(double)buffImg.getHeight()*0.5);//设置水印旋转
+            }
 			
 			//设置水印坐标
 			int x = srcImgwidth*97/100 -getwaterMarkLength(watermarkContent, g);

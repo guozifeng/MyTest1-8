@@ -18,7 +18,7 @@ public class waterMarkTest {
     
     public static void main(String[] args) {
         System.out.println("开始水印：");
-        new waterMarkTest().addWatermark("C:\\Users\\Administrator\\Desktop\\test\\111.jpg", "C:\\Users\\Administrator\\Desktop\\test\\113.jpg", "helloword！", "jpg");
+        new waterMarkTest().addWatermark("C:\\Users\\Administrator\\Desktop\\test\\111.jpg", "C:\\Users\\Administrator\\Desktop\\test\\113.jpg", "21b40359eada4afaaf5d1732a126dee7", "jpg");
         System.out.println("水印完成。");
     }
     
