@@ -49,7 +49,7 @@ public class waterMarkTest {
             g.setFont(font);              //设置字体
             g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, alpha));//设置水印文字透明度
             if (null != degree) {
-                g.rotate(Math.toRadians(degree),(double)bufImg.getWidth(),(double)bufImg.getHeight());//设置水印旋转
+                g.rotate(Math.toRadians(degree),(double)bufImg.getWidth()*0.5,(double)bufImg.getHeight()*1.4);//设置水印旋转
             }
             JLabel label = new JLabel(waterMarkContent);
             FontMetrics metrics = label.getFontMetrics(font);
