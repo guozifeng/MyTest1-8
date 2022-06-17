@@ -84,7 +84,7 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>1.2.41</version>
+			<version>1.2.83</version>
 		</dependency>
 		<!-- spring-boot-starter-web包含了Spring Boot预定义的一些Web开发的常用依赖包如: spring-webmvc,Tomcat.... -->
 		<dependency>
